@@ -9,4 +9,6 @@
 @email:		rdegges@gmail.com
 @date:		10-19-09
 
-pycall is a flexible library for creating and using Asterisk callfiles.
+pycall is a flexible library for creating and using Asterisk callfiles. This
+library was built to work with Asterisk 1.6+ only. It may or may not work with
+previous versions of Asterisk.
