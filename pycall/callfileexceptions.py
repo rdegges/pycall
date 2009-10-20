@@ -46,5 +46,5 @@ class NoAsteriskPermission(exceptions.Exception):
 	"""Exception for use with the CallFile class."""
 
 	def __str__(self):
-		print ': No permissions to send the callfile to Asterisk!'
+		print ': Unable to send the callfile to Asterisk!'
 
