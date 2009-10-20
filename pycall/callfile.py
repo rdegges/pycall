@@ -148,10 +148,17 @@ class CallFile:
 
 		# If user is specified, chown the file to the appropriate user.
 		if self.user:
-			pwd = getpwnam(self.user)
-			uid = pwd[2]
-			gid = pwd[3]
-			chown(fname, uid, gid)
+			try:
+				pwd = getpwnam(self.user)
+				uid = pwd[2]
+				gid = pwd[3]
+
+				try:
+					chown(fname, uid, gid)
+				except:
+					NoPermissionException
+			except:
+				raise NoUserException
 
 		# Change the modification time on the file (access time too) so that
 		# Asterisk knows when to place the call. If none is specified, then we
