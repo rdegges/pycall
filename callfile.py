@@ -11,14 +11,23 @@
 #
 # This file is best viewed in vim. (See .vimrc for more information.)
 
+from time import mktime
+from pwd import getpwnam
 from tempfile import mkstemp
 from datetime import datetime
+from os import chown
+from os import fdopen
+from os import utime
+from os import rename
+from os import path
 from callfileexceptions import *
+
+AST_CALLFILE_DIR = '/var/spool/asterisk/outgoing/'
 
 class CallFile:
 	"""This class allows you to create and use Asterisk callfiles simply."""
 
-	def __init__(self, time='', trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False):
+	def __init__(self, time='', trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False, user=''):
 
 		self.file, self.fname = mkstemp('.call')
 		self.time = time
@@ -39,8 +48,7 @@ class CallFile:
 		self.sets = sets
 		self.always_delete = always_delete
 		self.archive = archive
-
-		print locals().keys()
+		self.user = user
 
 	def add_set(self, var, val):
 		"""Add a variable / value definition to the callfile to pass to Asterisk."""
@@ -122,24 +130,51 @@ class CallFile:
 
 		return callfile
 
-#	# Write out the CallFile using the settings in memory.
-#	def writefile(self):
-#
-#		f = fdopen(self.file, 'w')
-#		f.write(buildfile())
-#		f.close()
+	def writefile(self, callfile):
+		"""Given a callfile list to write, writes the actual callfile and returns the absolute name of the file written. DOES NOT DELETE THE CREATED FILE."""
 
-#	# Schedule the CallFile with Asterisk.
-#	def run(self, time=datetime.now()):
-#
-#		# Write the file.
-#		_writefile(
-#
-#		# Set the timestamp on the file (so Asterisk knows when to place the
-#		# call).
-#		utime(self.fname, (x, 
+		# Securely request a .call file from the OS.
+		file, fname = mkstemp('.call')
 
+		# Open the file and write it, then close the file.
+		f = fdopen(file, 'w')
+		for line in callfile:
+			f.write(line + '\n')
+		f.close()
 
+		return fname
+
+	def run(self, time=None):
+		"""Creates the callfile from memory, then schedules it to run at the optionally specified time (datetime), then passes it off to Asterisk to process."""
+
+		global AST_CALLFILE_DIR
+
+		# Build the file from our settings, then write the file, and store the
+		# written file name.
+		fname = self.writefile(self.buildfile())
+		print fname
+
+		# If user is specified, chown the file to the appropriate user.
+		if self.user:
+			pwd = getpwnam(self.user)
+			uid = pwd[2]
+			gid = pwd[3]
+			chown(fname, uid, gid)
+
+		# Change the modification time on the file (access time too) so that
+		# Asterisk knows when to place the call. If none is specified, then we
+		# place the call immediately.
+		try:
+			time = mktime(time.timetuple())
+			utime(fname, (time, time))
+		except:
+			utime(fname, None)
+
+		# Move the file to asterisk (hand over control).
+		try:
+			rename(fname, AST_CALLFILE_DIR + path.basename(fname))
+		except:
+			raise NoAsteriskPermission
 
 # Used for testing.
 if __name__ == '__main__':
@@ -150,12 +185,16 @@ if __name__ == '__main__':
 	callfile.number = '18182179229'
 	callfile.application = 'Playback'
 	callfile.data = 'hello-world'
+	callfile.user = 'rdegges'
 	#callfile.context = 'do_something'
 	#callfile.extension = 's'
 	#callfile.priority = '1'
 
-	print "\nCallFile:\n"
-	print callfile.buildfile()
+	#print "\nCallFile:\n"
+	#print callfile.buildfile()
+	#print "\n"
+
+	callfile.run(datetime.now())
 
 #	try:
 #		raise NoTrunkTypeDefined

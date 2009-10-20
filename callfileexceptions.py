@@ -35,4 +35,15 @@ class NoActionDefined(exceptions.Exception):
 	def __str__(self):
 		print ': No action was defined! (You must choose either an application or context to execute when the call is answered.)'
 
+class IncorrectTime(exceptions.Exception):
+	"""Exception for use with the CallFile class."""
+
+	def __str__(self):
+		print ': Incorrect time specified! (The time must be a legitimate datetime object.)'
+
+class NoAsteriskPermission(exceptions.Exception):
+	"""Exception for use with the CallFile class."""
+
+	def __str__(self):
+		print ': No permissions to send the callfile to Asterisk!'
 
