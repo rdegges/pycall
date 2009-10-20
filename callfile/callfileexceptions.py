@@ -8,6 +8,8 @@
 #
 # This file contains all of the custom exceptions defined to help users deal
 # with errors in their code.
+#
+# This file is best viewed in vim. (See .vimrc for more information.)
 
 import exceptions
 

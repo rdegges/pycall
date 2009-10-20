@@ -25,7 +25,6 @@ class CallFile:
 
 	def __init__(self, time='', trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False, user=''):
 
-		self.file, self.fname = mkstemp('.call')
 		self.time = time
 		self.trunk_type = trunk_type
 		self.trunk_name = trunk_name
