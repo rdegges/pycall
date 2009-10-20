@@ -18,14 +18,13 @@ from callfileexceptions import *
 class CallFile:
 	"""This class allows you to create and use Asterisk callfiles simply."""
 
-	def __init__(self, time='', trunk_type='', trunk_name='', number='', callerid='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=45, account='', context='', extension='', priority='', application='', data='', sets=[], always_delete=False, archive=False):
+	def __init__(self, time='', trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False):
 
 		self.file, self.fname = mkstemp('.call')
 		self.time = time
 		self.trunk_type = trunk_type
 		self.trunk_name = trunk_name
 		self.number = number
-		self.callerid = callerid
 		self.callerid_name = callerid_name
 		self.callerid_num = callerid_num
 		self.max_retries = max_retries
@@ -43,46 +42,10 @@ class CallFile:
 
 		print locals().keys()
 
-	# All functions below allow the user to set / update / override callfile
-	# settings.
-	# ====================
-	def set_trunk_type(self, trunk_type):
-		self.trunk_type = trunk_type
-	def set_trunk_name(self, trunk_name):
-		self.trunk_name = trunk_name
-	def set_number(self, number):
-		self.number = number
-	def set_callerid(self, callerid):
-		self.callerid = callerid
-	def set_callerid_name(self, callerid_name):
-		self.callerid_name = callerid_name
-	def set_callerid_num(self, callerid_num):
-		self.callerid_num = callerid_num
-	def set_max_retries(self, max_retries):
-		self.max_retries = max_retries
-	def set_retry_time(self, retry_time):
-		self.retry_time = retry_time
-	def set_wait_time(self, wait_time):
-		self.wait_time = wait_time
-	def set_account(self, account):
-		self.account = account
-	def set_context(self, context):
-		self.context = context
-	def set_extension(self, extension):
-		self.extension = extension
-	def set_priority(self, priority):
-		self.priority = priority
-	def set_application(self, application):
-		self.application = application
-	def set_data(self, data):
-		self.data = data
-	def set_set(self, var, val):
-		self.sets.append("%s=%s" % (var, val))
-	def set_always_delete(self, always_delete):
-		self.always_delete = always_delete
-	def set_archive(self, archive):
-		self.archive = archive
-	# ====================
+	def add_set(self, var, val):
+		"""Add a variable / value definition to the callfile to pass to Asterisk."""
+
+		self.sets[var] = val
 
 	def buildfile(self):
 		"""Use the settings in memory to build a callfile string."""
@@ -99,10 +62,65 @@ class CallFile:
 		# Make sure the user has defined either an application or a context
 		# (some action to perform if the call is answered). This is required for
 		# every callfile.
-		if not self.application and (not self.context or not self.extension or not self.priority):
+		if (not self.application or not self.data) and (not self.context or not self.extension or not self.priority):
 			raise NoActionDefined
 
-		
+		# Start building the callfile list. Each list element is a line in the
+		# callfile.
+		callfile = []
+		callfile.append('Channel: %s/%s/%s' % (self.trunk_type, self.trunk_name, self.number))
+
+		# If CallerID was specified, then use it.
+		callerid = ''
+		if self.callerid_name:
+			callerid += '"%s" ' % self.callerid_name
+		if self.callerid_num:
+			callerid += '<%s>' % se;f.callerid_num
+		if callerid:
+			callfile.append('CallerID: %s' % callerid)
+
+		# If MaxRetries was specified, then use it.
+		if self.max_retries:
+			callfile.append('MaxRetries: %s' % self.max_retries)
+
+		# If RetryTime was specified, then use it.
+		if self.retry_time:
+			callfile.append('RetryTime: %s' % self.retry_time)
+
+		# If WaitTime was specified, then use it.
+		if self.wait_time:
+			callfile.append('WaitTime: %s' % self.wait_time)
+
+		# If Account was specified, then use it.
+		if self.account:
+			callfile.append('Account: %s' % self.account)
+
+		# Add in the application / context depending on what was specified.
+		if self.application:
+			callfile.append('Application: %s' % self.application)
+			callfile.append('Data: %s' % self.data)
+		else:
+			callfile.append('Context: %s' % self.context)
+			callfile.append('Extension: %s' % self.extension)
+			callfile.append('Priority: %s' % self.priority)
+
+		# If there are any variables to pass to Asterisk, add them.
+		for var, value in self.sets.iteritems():
+			callfile.append('Set: %s=%s' % (var, value))
+
+		# Set AlwaysDelete appropriately.
+		if self.always_delete:
+			callfile.append('AlwaysDelete: Yes')
+		else:
+			callfile.append('AlwaysDelete: No')
+
+		# Set the Archive appropriately.
+		if self.archive:
+			callfile.append('Archive: Yes')
+		else:
+			callfile.append('Archive: No')
+
+		return callfile
 
 #	# Write out the CallFile using the settings in memory.
 #	def writefile(self):
@@ -135,7 +153,9 @@ if __name__ == '__main__':
 	#callfile.context = 'do_something'
 	#callfile.extension = 's'
 	#callfile.priority = '1'
-	callfile.buildfile()
+
+	print "\nCallFile:\n"
+	print callfile.buildfile()
 
 #	try:
 #		raise NoTrunkTypeDefined
