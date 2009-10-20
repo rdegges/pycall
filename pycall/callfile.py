@@ -175,18 +175,6 @@ class CallFile:
 		except:
 			raise NoAsteriskPermission
 
-# Used for testing.
+# Just incase someone runs this file as a standalone.
 if __name__ == '__main__':
-	callfile = CallFile()
-
-	callfile.trunk_type = 'SIP'
-	callfile.trunk_name = 'flowroute'
-	callfile.number = '18182179229'
-	callfile.application = 'Playback'
-	callfile.data = 'hello-world'
-	callfile.user = 'rdegges'
-	#callfile.context = 'do_something'
-	#callfile.extension = 's'
-	#callfile.priority = '1'
-
-	callfile.run(datetime.now())
+	print 'You have gotten the pycall library installed. Check the demos/ directory for help getting started with pycall!'

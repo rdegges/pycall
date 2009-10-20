@@ -60,3 +60,6 @@ class NoUserException(exceptions.Exception):
 	def __str__(self):
 		print ': No user found! (You must choose a legitimate user on the system to change the callfile ownership to.)'
 
+# Just incase someone runs this file as a standalone.
+if __name__ == '__main__':
+	print 'You have gotten the pycall library installed. Check the demos/ directory for help getting started with pycall!'
