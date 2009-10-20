@@ -15,12 +15,8 @@ from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
 from datetime import datetime
-from os import chown
-from os import fdopen
-from os import utime
-from os import rename
-from os import path
 from callfileexceptions import *
+from os import path, chown, utime, fdopen, rename
 
 AST_CALLFILE_DIR = '/var/spool/asterisk/outgoing/'
 
@@ -152,7 +148,6 @@ class CallFile:
 		# Build the file from our settings, then write the file, and store the
 		# written file name.
 		fname = self.writefile(self.buildfile())
-		print fname
 
 		# If user is specified, chown the file to the appropriate user.
 		if self.user:
@@ -190,13 +185,4 @@ if __name__ == '__main__':
 	#callfile.extension = 's'
 	#callfile.priority = '1'
 
-	#print "\nCallFile:\n"
-	#print callfile.buildfile()
-	#print "\n"
-
 	callfile.run(datetime.now())
-
-#	try:
-#		raise NoTrunkTypeDefined
-#	except NoTrunkTypeDefined:
-#		print 'fuck'
