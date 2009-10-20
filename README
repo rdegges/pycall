@@ -8,8 +8,32 @@
 @author:	Randall Degges
 @email:		rdegges@gmail.com
 @date:		10-19-09
-@license:	GPLv3
+@license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 
 pycall is a flexible library for creating and using Asterisk callfiles. This
 library was built to work with Asterisk 1.6+ only. It may or may not work with
 previous versions of Asterisk.
+
+Installation
+============
+
+	python setup.py build
+	sudo python setup.py install
+
+Versioning
+==========
+
+pycall has been tested using python 2.6.x and Asterisk 1.6.x. It should be
+compatible with any python 2.4.x and 2.6.x releases, as well as any Asterisk
+1.6.x releases.
+
+Notes
+=====
+
+All development was done using vim. For the best coding experience, use the same
+settings that are defined in the .vimrc file included with the project.
+
+ChangeLog
+=========
+
+1.0	-	Initial release.

@@ -5,11 +5,10 @@
 # @author:	Randall Degges
 # @email:	rdegges@gmail.com
 # @date:	10-19-09
+# @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 #
 # This is the CallFile class which can be used to create / use / handle Asterisk
 # callfiles simply. The class automatically handles all file operations.
-#
-# This file is best viewed in vim. (See .vimrc for more information.)
 
 from time import mktime
 from pwd import getpwnam

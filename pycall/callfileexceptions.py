@@ -5,11 +5,10 @@
 # @author:	Randall Degges
 # @email:	rdegges@gmail.com
 # @date:	10-19-09
+# @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 #
 # This file contains all of the custom exceptions defined to help users deal
 # with errors in their code.
-#
-# This file is best viewed in vim. (See .vimrc for more information.)
 
 import exceptions
 

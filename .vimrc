@@ -3,11 +3,11 @@
 " @author:	Randall Degges
 " @email:	rdegges@gmail.com
 " @date:	7-22-09
+" @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 "
 " This vim configuration file contains my vim configs which are used in all of
 " my projects. These are sane, programmer settings which help view and modify
-" code quickly and easily. To view the code in this project best, use these
-" configs.
+" code quickly and easily.
 
 " search options
 set is		" set incremental search
