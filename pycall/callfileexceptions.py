@@ -48,3 +48,15 @@ class NoAsteriskPermission(exceptions.Exception):
 	def __str__(self):
 		print ': Unable to send the callfile to Asterisk!'
 
+class NoPermissionsException(exceptions.Exception):
+	"""Exception for use with the CallFile class."""
+
+	def __str__(self):
+		print ': No permissions to change ownership of the file!'
+
+class NoUserException(exceptions.Exception):
+	"""Exception for use with the CallFile class."""
+
+	def __str__(self):
+		print ': No user found! (You must choose a legitimate user on the system to change the callfile ownership to.)'
+
