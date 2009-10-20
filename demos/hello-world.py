@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# sample.py
+# hello-world.py
 #
 # @author:	Randall Degges
 # @email:	rdegges@gmail.com

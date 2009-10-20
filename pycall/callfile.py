@@ -22,9 +22,8 @@ AST_CALLFILE_DIR = '/var/spool/asterisk/outgoing/'
 class CallFile:
 	"""This class allows you to create and use Asterisk callfiles simply."""
 
-	def __init__(self, time='', trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False, user=''):
+	def __init__(self, trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False, user=''):
 
-		self.time = time
 		self.trunk_type = trunk_type
 		self.trunk_name = trunk_name
 		self.number = number
