@@ -107,7 +107,7 @@ class CallFile:
 
 		# If there are any variables to pass to Asterisk, add them.
 		for var, value in self.sets.iteritems():
-			callfile.append('Set: %s=%s' % (var, value))
+			callfile.append('Set: %s=%s' % (var, str(value)))
 
 		# Set AlwaysDelete appropriately.
 		if self.always_delete:
