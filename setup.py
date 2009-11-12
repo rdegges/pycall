@@ -13,7 +13,7 @@ from distutils.core import setup
 
 setup(
 	name = 'pycall',
-	version = '1.1',
+	version = '1.2',
 	packages = ['pycall'],
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
