@@ -76,7 +76,7 @@ class CallFile:
 		if self.callerid_name:
 			callerid += '"%s" ' % self.callerid_name
 		if self.callerid_num:
-			callerid += '<%s>' % se;f.callerid_num
+			callerid += '<%s>' % self.callerid_num
 		if callerid:
 			callfile.append('CallerID: %s' % callerid)
 
