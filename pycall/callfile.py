@@ -17,12 +17,13 @@ from datetime import datetime
 from callfileexceptions import *
 from os import path, chown, utime, fdopen, rename
 
-AST_CALLFILE_DIR = '/var/spool/asterisk/outgoing/'
-
 class CallFile:
 	"""This class allows you to create and use Asterisk callfiles simply."""
 
-	def __init__(self, trunk_type='', trunk_name='', number='', callerid_name='', callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='', extension='', priority='', application='', data='', sets={}, always_delete=False, archive=False, user=''):
+	def __init__(self, trunk_type='', trunk_name='', number='', callerid_name='',
+		callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='',
+		extension='', priority='', application='', data='', sets={}, always_delete=False,
+		archive=False, user='', dir='/var/spool/asterisk/outgoing/'):
 
 		self.trunk_type = trunk_type
 		self.trunk_name = trunk_name
@@ -42,6 +43,7 @@ class CallFile:
 		self.always_delete = always_delete
 		self.archive = archive
 		self.user = user
+		self.dir = dir
 
 	def add_set(self, var, val):
 		"""Add a variable / value definition to the callfile to pass to Asterisk."""
@@ -140,8 +142,6 @@ class CallFile:
 	def run(self, time=None):
 		"""Creates the callfile from memory, then schedules it to run at the optionally specified time (datetime), then passes it off to Asterisk to process."""
 
-		global AST_CALLFILE_DIR
-
 		# Build the file from our settings, then write the file, and store the
 		# written file name.
 		fname = self.writefile(self.buildfile())
@@ -171,7 +171,7 @@ class CallFile:
 
 		# Move the file to asterisk (hand over control).
 		try:
-			rename(fname, AST_CALLFILE_DIR + path.basename(fname))
+			rename(fname, self.dir + path.basename(fname))
 		except:
 			raise NoAsteriskPermission
 
