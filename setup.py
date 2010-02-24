@@ -17,7 +17,7 @@ setup(
 	packages = ['pycall'],
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
-	url = 'http://github.com/comradeb14ck/pycall',
+	url = 'http://pycall.org/',
 	license = 'http://www.gnu.org/licenses/gpl-3.0.txt',
 	description = 'A flexible python library for creating and using Asterisk callfiles.',
 )
