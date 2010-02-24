@@ -40,3 +40,4 @@ ChangeLog
 1.1 -	Fixed several bugs.
 		Added extra exception handling.
 1.2 -	Added demos and a bugfix.
+1.3 -	Added support for local trunks.
