@@ -71,7 +71,10 @@ class CallFile:
 		# Start building the callfile list. Each list element is a line in the
 		# callfile.
 		callfile = []
-		callfile.append('Channel: %s/%s/%s' % (self.trunk_type, self.trunk_name, self.number))
+		if self.trunk_type.lower() == 'local':
+			callfile.append('Channel: %s/%s@%s' % (self.trunk_type, self.number, self.trunk_name))
+		else:
+			callfile.append('Channel: %s/%s/%s' % (self.trunk_type, self.trunk_name, self.number))
 
 		# If CallerID was specified, then use it.
 		callerid = ''
