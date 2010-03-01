@@ -10,12 +10,13 @@
 # This is the CallFile class which can be used to create / use / handle Asterisk
 # callfiles simply. The class automatically handles all file operations.
 
+from shutil import move
 from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
 from datetime import datetime
 from callfileexceptions import *
-from os import path, chown, utime, fdopen, rename
+from os import path, chown, utime, fdopen
 
 class CallFile:
 	"""This class allows you to create and use Asterisk callfiles simply."""
@@ -174,7 +175,7 @@ class CallFile:
 
 		# Move the file to asterisk (hand over control).
 		try:
-			rename(fname, self.dir + path.basename(fname))
+			move(fname, self.dir + path.basename(fname))
 		except:
 			raise NoAsteriskPermission
 
