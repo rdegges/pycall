@@ -43,3 +43,4 @@ ChangeLog
 1.3 -	Added support for local trunks.
 1.4 -	Fixed an issue with cross-device callfile creation.
 1.5 -	Adding a tmpdir option to the CallFile class. Cleaning syntax.
+1.6 -	Huge bugfix from version 1.5. tmpdir attribute NOW WORKS.
