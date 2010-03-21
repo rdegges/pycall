@@ -1,14 +1,16 @@
 #!/usr/bin/python
-#
-# callfile.py
-#
-# @author:	Randall Degges
-# @email:	rdegges@gmail.com
-# @date:	10-19-09
-# @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
-#
-# This is the CallFile class which can be used to create / use / handle Asterisk
-# callfiles simply. The class automatically handles all file operations.
+
+"""
+callfile.py
+
+@author:	Randall Degges
+@email:		rdegges@gmail.com
+@date:		10-19-09
+@license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
+
+This is the CallFile class which can be used to create / use / handle Asterisk callfiles
+simply. The class automatically handles all file operations.
+"""
 
 from shutil import move
 from time import mktime
@@ -19,7 +21,9 @@ from callfileexceptions import *
 from os import path, chown, utime, fdopen
 
 class CallFile:
-	"""This class allows you to create and use Asterisk callfiles simply."""
+	"""
+	This class allows you to create and use Asterisk callfiles simply.
+	"""
 
 	def __init__(self, trunk_type='', trunk_name='', number='', callerid_name='',
 		callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='',
@@ -48,12 +52,16 @@ class CallFile:
 		self.dir = tmpdir
 
 	def add_set(self, var, val):
-		"""Add a variable / value definition to the callfile to pass to Asterisk."""
+		"""
+		Add a variable / value definition to the callfile to pass to Asterisk.
+		"""
 
 		self.sets[var] = val
 
 	def buildfile(self):
-		"""Use the settings in memory to build a callfile string."""
+		"""
+		Use the settings in memory to build a callfile string.
+		"""
 
 		# Make sure the user has defined a trunk type, trunk name, and number to
 		# call. This is required for every callfile.
@@ -131,7 +139,10 @@ class CallFile:
 		return callfile
 
 	def writefile(self, callfile):
-		"""Given a callfile list to write, writes the actual callfile and returns the absolute name of the file written. DOES NOT DELETE THE CREATED FILE."""
+		"""
+		Given a callfile list to write, writes the actual callfile and returns the absolute
+		name of the file written. DOES NOT DELETE THE CREATED FILE.
+		"""
 
 		# Securely request a .call file from the OS.
 		if self.tmpdir:
@@ -148,7 +159,9 @@ class CallFile:
 		return fname
 
 	def run(self, time=None):
-		"""Creates the callfile from memory, then schedules it to run at the optionally specified time (datetime), then passes it off to Asterisk to process."""
+		"""
+		Creates the callfile from memory, then schedules it to run at the optionally specified time (datetime), then passes it off to Asterisk to process.
+		"""
 
 		# Build the file from our settings, then write the file, and store the
 		# written file name.
