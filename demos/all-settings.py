@@ -1,15 +1,17 @@
 #!/usr/bin/python
-#
-# all-settings.py
-#
-# @author:	Randall Degges
-# @email:	rdegges@gmail.com
-# @date:	10-20-09
-# @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
-#
-# This sample program demonstrates how to create a callfile using ALL of the
-# options. It doens't do any error checking (so you may get errors if you put in
-# invalid information), but it does show all of the options and how to use them.
+
+"""
+all-settings.py
+
+@author:	Randall Degges
+@email:		rdegges@gmail.com
+@date:		10-20-09
+@license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
+
+This sample program demonstrates how to create a callfile using ALL of the options. It
+doens't do any error checking (so you may get errors if you put in invalid information), but
+it does show all of the options and how to use them.
+"""
 
 from pycall.callfile import *
 from pycall.callfileexceptions import *

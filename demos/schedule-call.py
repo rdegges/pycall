@@ -1,19 +1,21 @@
 #!/usr/bin/python
-#
-# schedule-call.py
-#
-# @author:	Randall Degges
-# @email:	rdegges@gmail.com
-# @date:	10-20-09
-# @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
-#
-# This sample program demonstrates how to schedule calls in the future using the
-# pycall library. It is easy and intuitive. This example schedules calls in the
-# future in several ways. Read the source for more information.
-#
-# Each call is placed to the number 1-555-444-3333 and goes out of the flowroute
-# SIP trunk. Once the call is answered it plays the hello-world soundfile and
-# hangs up (to keep the example simple).
+
+"""
+schedule-call.py
+
+@author:	Randall Degges
+@email:		rdegges@gmail.com
+@date:		10-20-09
+@license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
+
+This sample program demonstrates how to schedule calls in the future using the pycall
+library. It is easy and intuitive. This example schedules calls in the future in several
+ways. Read the source for more information.
+
+Each call is placed to the number 1-555-444-3333 and goes out of the flowroute SIP trunk.
+Once the call is answered it plays the hello-world soundfile and hangs up (to keep the
+example simple).
+"""
 
 from datetime import datetime
 from pycall.callfile import *

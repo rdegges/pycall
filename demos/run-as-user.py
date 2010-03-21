@@ -1,16 +1,18 @@
 #!/usr/bin/python
-#
-# run-as-user.py
-#
-# @author:	Randall Degges
-# @email:	rdegges@gmail.com
-# @date:	10-20-09
-# @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
-#
-# This sample program demonstrates how to force the callfile to run as another
-# user. This is useful on systems where Asterisk can only read callfiles that
-# are created by a particular user. This is the same as chown'ing a callfile to
-# a certain user before sending it off to Asterisk.
+
+"""
+run-as-user.py
+
+@author:	Randall Degges
+@email:		rdegges@gmail.com
+@date:		10-20-09
+@license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
+
+This sample program demonstrates how to force the callfile to run as another user. This is
+useful on systems where Asterisk can only read callfiles that are created by a particular
+user. This is the same as chown'ing a callfile to a certain user before sending it off to
+Asterisk.
+"""
 
 from pycall.callfile import *
 from pycall.callfileexceptions import *
