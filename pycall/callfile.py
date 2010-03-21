@@ -24,7 +24,7 @@ class CallFile:
 	def __init__(self, trunk_type='', trunk_name='', number='', callerid_name='',
 		callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='',
 		extension='', priority='', application='', data='', sets={}, always_delete=False,
-		archive=False, user='', dir='/var/spool/asterisk/outgoing/'):
+		archive=False, user='', dir='/var/spool/asterisk/outgoing/', tmpdir=None):
 
 		self.trunk_type = trunk_type
 		self.trunk_name = trunk_name
@@ -45,6 +45,7 @@ class CallFile:
 		self.archive = archive
 		self.user = user
 		self.dir = dir
+		self.dir = tmpdir
 
 	def add_set(self, var, val):
 		"""Add a variable / value definition to the callfile to pass to Asterisk."""
@@ -133,7 +134,10 @@ class CallFile:
 		"""Given a callfile list to write, writes the actual callfile and returns the absolute name of the file written. DOES NOT DELETE THE CREATED FILE."""
 
 		# Securely request a .call file from the OS.
-		file, fname = mkstemp('.call')
+		if self.tmpdir:
+			file, fname = mkstemp(suffix = '.call', dir = self.tmpdir)
+		else:
+			file, fname = mkstemp('.call')
 
 		# Open the file and write it, then close the file.
 		f = fdopen(file, 'w')
