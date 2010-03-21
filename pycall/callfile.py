@@ -49,7 +49,7 @@ class CallFile:
 		self.archive = archive
 		self.user = user
 		self.dir = dir
-		self.dir = tmpdir
+		self.tmpdir = tmpdir
 
 	def add_set(self, var, val):
 		"""
