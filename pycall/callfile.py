@@ -1,24 +1,23 @@
 #!/usr/bin/python
+##
+# @author	Randall Degges
+# @email	rdegges@gmail.com
+# @license	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
+#
+# This is the CallFile class which can be used to create / use / handle
+# Asterisk call files. This class automatically handles all file operations.
+##
 
-"""
-callfile.py
-
-@author:	Randall Degges
-@email:		rdegges@gmail.com
-@date:		10-19-09
-@license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
-
-This is the CallFile class which can be used to create / use / handle Asterisk callfiles
-simply. The class automatically handles all file operations.
-"""
 
 from shutil import move
 from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
 from datetime import datetime
-from callfileexceptions import *
 from os import path, chown, utime, fdopen
+
+from callfileexceptions import *
+
 
 class CallFile:
 	"""
