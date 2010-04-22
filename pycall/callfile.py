@@ -21,13 +21,14 @@ from callfileexceptions import *
 
 class CallFile:
 	"""
-	This class allows you to create and use Asterisk callfiles simply.
+	This class allows you to create and use Asterisk call files simply.
 	"""
 
-	def __init__(self, trunk_type='', trunk_name='', number='', callerid_name='',
-		callerid_num='', max_retries=0, retry_time=0, wait_time=0, account='', context='',
-		extension='', priority='', application='', data='', sets={}, always_delete=False,
-		archive=False, user='', dir='/var/spool/asterisk/outgoing/', tmpdir=None):
+	def __init__(self, trunk_type='', trunk_name='', number='',
+		callerid_name='', callerid_num='', max_retries=0, retry_time=0,
+		wait_time=0, account='', context='', extension='', priority='',
+		application='', data='', sets={}, always_delete=False, archive=False,
+		user='', dir='/var/spool/asterisk/outgoing/', tmpdir=None):
 
 		self.trunk_type = trunk_type
 		self.trunk_name = trunk_name
@@ -59,11 +60,11 @@ class CallFile:
 
 	def buildfile(self):
 		"""
-		Use the settings in memory to build a callfile string.
+		Use the settings in memory to build a call file string.
 		"""
 
-		# Make sure the user has defined a trunk type, trunk name, and number to
-		# call. This is required for every callfile.
+		# Make sure the user has defined a trunk type, trunk name, and number
+		# to call. This is required for every callfile.
 		if not self.trunk_type:
 			raise NoTrunkTypeDefined
 		if not self.trunk_name:
@@ -72,13 +73,13 @@ class CallFile:
 			raise NoNumberDefined
 
 		# Make sure the user has defined either an application or a context
-		# (some action to perform if the call is answered). This is required for
-		# every callfile.
+		# (some action to perform if the call is answered). This is required
+		# for every call file.
 		if (not self.application or not self.data) and (not self.context or not self.extension or not self.priority):
 			raise NoActionDefined
 
 		# Start building the callfile list. Each list element is a line in the
-		# callfile.
+		# call file.
 		callfile = []
 		if self.trunk_type.lower() == 'local':
 			callfile.append('Channel: %s/%s@%s' % (self.trunk_type, self.number, self.trunk_name))
