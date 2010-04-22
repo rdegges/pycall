@@ -7,7 +7,6 @@
 
 @author:	Randall Degges
 @email:		rdegges@gmail.com
-@date:		10-19-09
 @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 
 pycall is a flexible library for creating and using Asterisk callfiles. This
