@@ -8,7 +8,7 @@ pycall in a quick, simple manner.
 .. toctree::
 	:maxdepth: 2
 
-	foreward
+	foreword
 	installation
 	quickstart
 	tutorial
