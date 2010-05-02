@@ -8,15 +8,4 @@ there is also a more detailed :ref:`tutorial` that shows you how to create a
 complete (albeit small) application with pycall. If you want to dive into all
 the internal parts of pycall, checkout the :ref:`api` documentation.
 
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+.. include:: contents.rst.inc
