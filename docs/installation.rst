@@ -60,3 +60,23 @@ virtualenv::
 	$ easy_install pycall
 
 After pycall is installed, you are good to go.
+
+System Wide Installation
+------------------------
+
+If you'd like to install pycall globally on your system (so that all users can
+access it without doing anything special), simply run `easy_install` with root
+rights::
+
+	$ sudo easy_install pycall
+
+If (for some reason or another) you are unable to get `easy_install` working,
+you can install pycall from source. Simply download the latest release of
+pycall from our `Github project page
+<http://github.com/comradeb14ck/pycall/downloads>`_ and run the following::
+
+	$ tar zxvf pycall-<version>.tar.gz
+	$ cd pycall-<version>
+	$ sudo python setup.py install
+
+And you're ready to roll!
