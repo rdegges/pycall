@@ -39,6 +39,69 @@ Manager Interface (AMI).
 To learn more about call files, head over to the `VoIP Info call files page
 <http://www.voip-info.org/wiki/index.php?page_id=354>`_.
 
+Why Should I Use pycall?
+------------------------
+
+There are lots of reasons why you should use pycall. I could just be vague and
+leave it at that, but you want to *real* reasons right?
+
+*	**Simple**
+
+	pycall uses standard Asterisk call file syntax, and tries not to stray from
+	popular conventions.
+
+*	**Object Oriented**
+
+	pycall provides an intuitive object wrapper for Asterisk call files. It
+	helps organize call files logically in memory.
+
+	For example: say you are making a wake up call program which lets multiple
+	hotel guests schedule wake up calls at certain times. To store such a large
+	amount of calls and associate them with times, it only makes sense to use
+	objects.
+
+*	**Environmentally Friendly**
+
+	Although pycall can't fix the hole in the ozone layer, it can make it easy
+	for you to place calls from any environment.
+
+	*	Regardless of the user / group that Asterisk runs as on your server,
+		pycall can set call file permissions appropriately.
+
+	*	If you are running Asterisk in a customized environment (maybe your
+		spooling directory is not the default), pycall allows you to easily
+		override all directory dependent options.
+
+*	**Secure**
+
+	pycall securely allocates temporary file space by querying the target
+	operating system, ensuring that all call files are able to be created, even
+	in the most locked down production environments.
+
+*	**Efficient**
+
+	pycall creates call files when needed, and takes care of the clean up too.
+	It leaves no temporary files hanging around your operating system.
+
+*	**Thoughtless**
+
+	pycall makes call file creation and usage thoughtless. Why spend valuable
+	development time mucking around with boring text files and spooling?
+
+*	**Thread Safe**
+
+	pycall is thread safe. This is a handy feature as many times developers use
+	multiple threads in their applications to both stress test PBX systems and
+	make large amounts of calls quickly.
+
+*	**Well Documented**
+
+	pycall has great documentation (but you already know that by now, right?)
+	and good support. This website contains lots of valuable information, and
+	our mailing list is extremely active and helpful. And if those aren't
+	enough for you, we also have an IRC chatroom which you can join to get live
+	help.
+
 Target Audience
 ---------------
 
