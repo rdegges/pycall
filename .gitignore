@@ -1,6 +1,7 @@
 *.pyc
 *.swp
-build
 dist
+build
+_build
 MANIFEST
 MANIFEST.in
