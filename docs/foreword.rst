@@ -22,7 +22,7 @@ a wide variety of other purposes, all relating to telephony and communications.
 If you've never used Asterisk, head over to `the Asterisk website
 <http://www.asterisk.org/>`_ for more information.
 
-What are Call Files?
+What Are Call Files?
 --------------------
 
 Since pycall is a python library for "creating and using Asterisk call files",
