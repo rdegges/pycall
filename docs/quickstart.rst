@@ -75,6 +75,58 @@ Pretty simple right?
 Scheduling a Call in the Future
 -------------------------------
 
-Now that we've gotten a simple pycall program working, let's take our hello
-example a bit further, and schedule the call to run at some point in the
-future. 
+In addition to providing an extremely easy way to initiate call files (as we
+saw in the previous section, pycall also supports timed call file initiation.
+
+Put simply: pycall allows you to specify a time to run the call file. Let's
+take a look at a short example. In this example, we'll have pycall schedule our
+call file to launch precisely one hour from now: ::
+
+	import sys
+	from datetime import datetime
+	from datetime import timedelta
+	from pycall.callfile import CallFile
+
+	def call(number, time=None):
+		cf = CallFile(
+			trunk_type = 'Local',
+			trunk_name = 'from-internal',
+			number = number,
+			application = 'Playback',
+			data = 'hello-world'
+		)
+		cf.run(time)
+
+	if __name__ == '__main__':
+		call(sys.argv[1], datetime.now()+timedelta(hours=1))
+
+What did we change? Not much. The :meth:`~callfile.CallFile.run` method
+supports an optional datetime argument which can be used to specify at which
+time Asterisk should actually run the call file.
+
+What pycall actually does if the *time* argument is supplied is set the call
+file's modification time and access time so that the Asterisk spooling daemon
+will leave the call file in the Asterisk spooling directory until the system
+time reaches the modification time.
+
+Just for the heck of it, let's look at one more code snippet. This time we'll
+tell Asterisk to run the call file at exactly 1:00 AM on December 1, 2010. ::
+
+	import sys
+	from datetime import datetime
+	from pycall.callfile import CallFile
+
+	def call(number, time=None):
+		cf = CallFile(
+			trunk_type = 'Local',
+			trunk_name = 'from-internal',
+			number = number,
+			application = 'Playback',
+			data = 'hello-world'
+		)
+		cf.run(time)
+
+	if __name__ == '__main__':
+		call(sys.argv[1], datetime(2010, 12, 1, 1, 0, 0))
+
+Scheduling calls is a piece of cake!
