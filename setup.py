@@ -11,7 +11,7 @@ from distutils.core import setup
 
 setup(
 	name = 'pycall',
-	version = '1.6',
+	version = '2.0',
 	packages = ['pycall'],
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
