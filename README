@@ -25,21 +25,3 @@ Versioning
 pycall has been tested using python 2.6.x and Asterisk 1.6.x. It should be
 compatible with any python 2.4.x and 2.6.x releases, as well as any Asterisk
 1.6.x releases.
-
-Notes
-=====
-
-All development was done using vim. For the best coding experience, use the same
-settings that are defined in the .vimrc file included with the project.
-
-ChangeLog
-=========
-
-1.0	-	Initial release.
-1.1 -	Fixed several bugs.
-		Added extra exception handling.
-1.2 -	Added demos and a bugfix.
-1.3 -	Added support for local trunks.
-1.4 -	Fixed an issue with cross-device callfile creation.
-1.5 -	Adding a tmpdir option to the CallFile class. Cleaning syntax.
-1.6 -	Huge bugfix from version 1.5. tmpdir attribute NOW WORKS.
