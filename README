@@ -9,7 +9,7 @@
 @email:		rdegges@gmail.com
 @license:	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 
-pycall is a flexible library for creating and using Asterisk callfiles. This
+pycall is a flexible library for creating and using Asterisk call files. This
 library was built to work with Asterisk 1.6+ only. It may or may not work with
 previous versions of Asterisk.
 
