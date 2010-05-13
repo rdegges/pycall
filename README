@@ -30,10 +30,10 @@ compatible with any python 2.4.x and 2.6.x releases, as well as any Asterisk
 Details
 =======
 
-@author		Randall Degges
-@email		rdegges@gmail.com
-@license	BSD (see LICENSE for more information)
-@website	http://pycall.org/
+:author:	Randall Degges
+:email:		rdegges@gmail.com
+:license:	BSD (see LICENSE for more information)
+:website:	http://pycall.org/
 
 The best way to get started with pycall is to visit our `website
 <http://pycall.org/>`_.
