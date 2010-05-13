@@ -1,27 +1,56 @@
-                       _ _ 
- _ __  _   _  ___ __ _| | |
-| '_ \| | | |/ __/ _` | | |
-| |_) | |_| | (_| (_| | | |
-| .__/ \__, |\___\__,_|_|_|
-|_|    |___/               
+======
+pycall
+======
 
-@author:	Randall Degges
-@email:		rdegges@gmail.com
-@license:	BSD (see LICENSE for more information)
+pycall is a flexible python library for creating and using Asterisk call files.
+It is useful for developing telephony applications which make use of outbound
+calls. Typical usage often looks like this::
 
-pycall is a flexible library for creating and using Asterisk call files. This
-library was built to work with Asterisk 1.6+ only. It may or may not work with
-previous versions of Asterisk.
+	#!/usr/bin/python
 
-Installation
-============
+	from pycall.callfile import CallFile
 
-	python setup.py build
-	sudo python setup.py install
-
-Versioning
-==========
+	cf = CallFile(
+		trunk_type = 'Local',
+		trunk_name = 'outbound',
+		number = '18002223333',
+		application = 'Playback',
+		data = 'hello-world',
+		user = 'asterisk'
+	)
+	cf.run()
 
 pycall has been tested using python 2.6.x and Asterisk 1.6.x. It should be
 compatible with any python 2.4.x and 2.6.x releases, as well as any Asterisk
 1.6.x releases.
+
+
+Details
+=======
+
+@author		Randall Degges
+@email		rdegges@gmail.com
+@license	BSD (see LICENSE for more information)
+@website	http://pycall.org/
+
+The best way to get started with pycall is to visit our `website
+http://pycall.org/>`_.
+
+
+Installation
+============
+
+To install pycall from source, simply run::
+
+	python setup.py build
+	sudo python setup.py install
+
+If pycall is working, you should see something like this::
+
+	rdegges@solitude:~/Documents/code/pycall$ cd
+	rdegges@solitude:~$ python
+	Python 2.6.5 (r265:79063, Apr 16 2010, 13:57:41) 
+	[GCC 4.4.3] on linux2
+	Type "help", "copyright", "credits" or "license" for more information.
+	>>> import pycall
+	>>>
