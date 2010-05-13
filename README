@@ -1,10 +1,12 @@
 ======
 pycall
 ======
+---------------------------------------------------------------------
+A flexible python library for creating and using Asterisk call files.
+---------------------------------------------------------------------
 
-pycall is a flexible python library for creating and using Asterisk call files.
-It is useful for developing telephony applications which make use of outbound
-calls. Typical usage often looks like this::
+pycall is useful for developing telephony applications which make use of
+outbound calls. Typical usage often looks like this::
 
 	#!/usr/bin/python
 
@@ -34,7 +36,7 @@ Details
 @website	http://pycall.org/
 
 The best way to get started with pycall is to visit our `website
-http://pycall.org/>`_.
+<http://pycall.org/>`_.
 
 
 Installation
