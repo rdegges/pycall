@@ -1,6 +1,7 @@
 *.pyc
 *.swp
 dist
+env/*
 build
 _build
 MANIFEST
