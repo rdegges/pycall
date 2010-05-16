@@ -199,6 +199,7 @@ class CallFile:
 		except:
 			raise NoAsteriskPermission
 
-# Just incase someone runs this file as a standalone.
 if __name__ == '__main__':
-	print 'You have gotten the pycall library installed. Check the demos/ directory for help getting started with pycall!'
+
+	print 'You have pycall installed. Check out our website for more' \
+		'information, http://pycall.org/'
