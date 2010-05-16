@@ -16,8 +16,6 @@ from tempfile import mkstemp
 from datetime import datetime
 from os import path, chown, utime, fdopen
 
-from callfileexceptions import *
-
 
 class CallFile:
 	"""
