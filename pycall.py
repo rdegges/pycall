@@ -1,12 +1,13 @@
 #!/usr/bin/python
-##
-# @author	Randall Degges
-# @email	rdegges@gmail.com
-# @license	GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
-#
-# This is the CallFile class which can be used to create / use / handle
-# Asterisk call files. This class automatically handles all file operations.
-##
+"""
+	pycall
+	~~~~~~
+
+	A flexible python library for creating and using Asterisk call files.
+
+	:copyright: (c) 2010 by Randall Degges.
+	:license: BSD, see LICENSE for more details.
+"""
 
 
 from shutil import move
