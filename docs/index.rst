@@ -1,5 +1,5 @@
-Welcome to pycall
-=================
+Welcome to pycall's documentation!
+==================================
 
 Welcome to pycall's documentation. This documentation is divided into different
 parts. I would suggest to getting started with the :ref:`installation` docs,
@@ -9,3 +9,10 @@ complete (albeit small) application with pycall. If you want to dive into all
 the internal parts of pycall, checkout the :ref:`api` documentation.
 
 .. include:: contents.rst.inc
+
+Indices and Tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
