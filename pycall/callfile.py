@@ -21,7 +21,8 @@ from callfileexceptions import *
 
 class CallFile:
 	"""
-	This class allows you to create and use Asterisk call files simply.
+	The main class provided by pycall. Stores call file information and may be
+	used to hold specific call information and configuration options.
 	"""
 
 	def __init__(self, trunk_type='', trunk_name='', number='',
@@ -160,7 +161,10 @@ class CallFile:
 
 	def run(self, time=None):
 		"""
-		Creates the callfile from memory, then schedules it to run at the optionally specified time (datetime), then passes it off to Asterisk to process.
+		Uses the class attributes to 'launch' this :class:`~pycall.CallFile`.
+
+		:param time: the optional time (as a python datetime object) to run
+					 this :class:`~pycall.CallFile`.
 		"""
 
 		# Build the file from our settings, then write the file, and store the
