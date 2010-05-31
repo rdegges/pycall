@@ -30,26 +30,10 @@ class CallFile:
 		application='', data='', sets={}, always_delete=False, archive=False,
 		user='', dir='/var/spool/asterisk/outgoing/', tmpdir=None):
 
-		self.trunk_type = trunk_type
-		self.trunk_name = trunk_name
-		self.number = number
-		self.callerid_name = callerid_name
-		self.callerid_num = callerid_num
-		self.max_retries = max_retries
-		self.retry_time = retry_time
-		self.wait_time = wait_time
-		self.account = account
-		self.context = context
-		self.extension = extension
-		self.priority = priority
-		self.application = application
-		self.data = data
-		self.sets = sets
-		self.always_delete = always_delete
-		self.archive = archive
-		self.user = user
-		self.dir = dir
-		self.tmpdir = tmpdir
+		args = dict(locals())
+		args.pop('self')
+		for name, value in args.items():
+			setattr(self, name, value)
 
 	def add_set(self, var, val):
 		"""
