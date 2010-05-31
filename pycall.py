@@ -20,8 +20,8 @@ from os import path, chown, utime, fdopen
 
 class CallFile:
 	"""
-	The main class provided by pycall. Stores call file information and may be
-	used to hold specific call information and configuration options.
+	Stores and manipulates call file information. Also allows users to schedule
+	call files to be spooled.
 	"""
 
 	def __init__(self, trunk_type='', trunk_name='', number='',
