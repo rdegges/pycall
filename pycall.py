@@ -7,6 +7,8 @@
 
 	:copyright: (c) 2010 by Randall Degges.
 	:license: BSD, see LICENSE for more details.
+
+	This file contains the entire pycall library source code.
 """
 
 
