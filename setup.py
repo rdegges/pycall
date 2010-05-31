@@ -1,11 +1,16 @@
 #!/usr/bin/python
-##
-# @author	Randall Degges
-# @email	rdegges@gmail.com
-# @license	BSD (see LICENSE for more information)
-#
-# This file is used to build, install, and package pycall.
-##
+"""
+	pycall
+	~~~~~~
+
+	A flexible python library for creating and using Asterisk call files.
+
+	:author:	Randall Degges
+	:email:		rdegges@gmail.com
+	:license:	BSD, see LICENSE for more information.
+
+	This file is used to build, install, and package pycall.
+"""
 
 from distutils.core import setup
 
