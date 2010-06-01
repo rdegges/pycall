@@ -40,6 +40,13 @@ class CallFileCreationTestCase(unittest.TestCase):
 		self.channel_local = self.trunk_type_local+'/'+self.number+'@'+ \
 			self.trunk_name_local
 
+		self.context = 'test'
+		self.extension = 's'
+		self.priority = '1'
+
+		self.application = 'Playback'
+		self.data = 'hello-world'
+
 	def test_no_channel_and_no_trunk(self):
 		self.assertRaises(NoChannelDefinedError, CallFile().run())
 
@@ -56,6 +63,21 @@ class CallFileCreationTestCase(unittest.TestCase):
 	def test_no_action(self):
 		cf = CallFile(channel=self.channel)
 		self.assertRaises(NoActionDefinedError, cf.run())
+
+	def test_no_application(self):
+		self.assertTrue(CallFile(
+			channel = self.channel,
+			context = self.context,
+			extension = self.extension,
+			priority = self.priority
+		).run())
+
+	def test_no_context_extension_priority(self):
+		self.assertTrue(CallFile(
+			channel = self.channel,
+			application = self.application,
+			data = self.data
+		).run())
 
 
 def suite():
