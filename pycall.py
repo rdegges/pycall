@@ -114,14 +114,15 @@ class CallFile:
 		else:
 			raise UnknownError
 
-		# If CallerID was specified, then use it.
-		callerid = ''
-		if self.callerid_name:
-			callerid += '"%s" ' % self.callerid_name
-		if self.callerid_num:
-			callerid += '<%s>' % self.callerid_num
-		if callerid:
-			callfile.append('CallerID: %s' % callerid)
+		if self.callerid:
+			cf.append('Callerid: '+self.callerid)
+		elif self.callerid_name and self.callerid_num:
+			cf.append('Callerid: "%s" <%s>' % (self.callerid_name,
+				self.callerid_num))
+		elif self.callerid_name:
+			cf.append('Callerid: "%s"' % self.callerid_name)
+		elif self.callerid_num:
+			cf.append('Callerid: "" <%s>' % self.callerid_num
 
 		# If MaxRetries was specified, then use it.
 		if self.max_retries:
