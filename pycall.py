@@ -73,8 +73,8 @@ class CallFile:
 		:returns:	True if no problems. False if problems. May raise
 					exceptions if necessary.
 		"""
-		if not self.channel and not (self.trunk_type and self.trunk_name and \
-			self.number):
+		if not (self.channel or (self.trunk_type and self.trunk_name and \
+			self.number)):
 			raise NoChannelDefinedError
 
 		if not ((self.application and self.data) or \
