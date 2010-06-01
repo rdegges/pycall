@@ -57,6 +57,16 @@ class CallFile:
 
 		self.sets[var] = val
 
+	def __is_valid(self):
+		"""
+		Checks all current class attributes to ensure that there are no
+		lurking problems.
+
+		:returns:	True if no problems. False if problems. May raise
+					exceptions if necessary.
+		"""
+		pass
+
 	def __buildfile(self):
 		"""
 		Use the class attributes to build a call file string.
