@@ -52,9 +52,9 @@ class CallFileCreationTestCase(unittest.TestCase):
 
 	def test_no_channel(self):
 		self.assertTrue(CallFile(
-			trunk_type=self.trunk_type,
-			trunk_name=self.trunk_name,
-			number=self.number
+			trunk_type = self.trunk_type,
+			trunk_name = self.trunk_name,
+			number = self.number
 		).run())
 
 	def test_no_trunk(self):
