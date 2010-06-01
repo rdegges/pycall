@@ -17,7 +17,17 @@ from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
 from datetime import datetime
+from exceptions import Exception
 from os import path, chown, utime, fdopen
+
+
+class PycallError(Exception):
+	pass
+
+class NoChannelDefined(Exception):
+	def __str__(self):
+		return 'You must define either the `channel` attribute or the ' \
+			'`trunk_type`, `trunk_name`, and `number` attributes.'
 
 
 class CallFile:
