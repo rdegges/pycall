@@ -104,6 +104,16 @@ class CallFile:
 		else:
 			raise UnknownError
 
+		if self.application:
+			cf.append('Application: '+self.application)
+			cf.append('Data: '+self.data)
+		elif self.context and self.extension and self.priority:
+			cf.append('Context: '+self.context)
+			cf.append('Extension: '+self.extension)
+			cf.append('Priority: '+self.priority)
+		else:
+			raise UnknownError
+
 		# If CallerID was specified, then use it.
 		callerid = ''
 		if self.callerid_name:
@@ -128,15 +138,6 @@ class CallFile:
 		# If Account was specified, then use it.
 		if self.account:
 			callfile.append('Account: %s' % self.account)
-
-		# Add in the application / context depending on what was specified.
-		if self.application:
-			callfile.append('Application: %s' % self.application)
-			callfile.append('Data: %s' % self.data)
-		else:
-			callfile.append('Context: %s' % self.context)
-			callfile.append('Extension: %s' % self.extension)
-			callfile.append('Priority: %s' % self.priority)
 
 		# If there are any variables to pass to Asterisk, add them.
 		for var, value in self.sets.iteritems():
