@@ -85,7 +85,7 @@ class CallFile:
 		"""
 		Use the class attributes to build a call file string.
 
-		:return:	A call file string, ready to be spooled.
+		:return:	A call file string, ready to be written to a file.
 		"""
 		if not __is_valid():
 			raise UnknownError
