@@ -16,6 +16,7 @@
 import unittest
 
 from pycall import CallFile
+from pycall import NoActionDefinedError
 from pycall import NoChannelDefinedError
 
 
@@ -51,6 +52,10 @@ class CallFileCreationTestCase(unittest.TestCase):
 
 	def test_no_trunk(self):
 		self.assertTrue(CallFile(channel=self.channel).run())
+
+	def test_no_action(self):
+		cf = CallFile(channel=self.channel)
+		self.assertRaises(NoActionDefinedError, cf.run())
 
 
 def suite():
