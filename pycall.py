@@ -124,21 +124,17 @@ class CallFile:
 		elif self.callerid_num:
 			cf.append('Callerid: "" <%s>' % self.callerid_num
 
-		# If MaxRetries was specified, then use it.
-		if self.max_retries:
-			callfile.append('MaxRetries: %s' % self.max_retries)
-
-		# If RetryTime was specified, then use it.
-		if self.retry_time:
-			callfile.append('RetryTime: %s' % self.retry_time)
-
-		# If WaitTime was specified, then use it.
 		if self.wait_time:
-			callfile.append('WaitTime: %s' % self.wait_time)
+			cf.append('WaitTime: %s' % self.wait_time)
 
-		# If Account was specified, then use it.
+		if self.max_retries:
+			cf.append('Maxretries: %s' % self.max_retries)
+
+		if self.retry_time:
+			cf.append('RetryTime: %s' % self.retry_time)
+
 		if self.account:
-			callfile.append('Account: %s' % self.account)
+			cf.append('Account: %s' % self.account)
 
 		# If there are any variables to pass to Asterisk, add them.
 		for var, value in self.sets.iteritems():
