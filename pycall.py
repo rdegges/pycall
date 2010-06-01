@@ -76,6 +76,8 @@ class CallFile:
 
 		:return:	A call file string, ready to be spooled.
 		"""
+		if not __is_valid():
+			raise UnknownError
 
 		# Make sure the user has defined a trunk type, trunk name, and number
 		# to call. This is required for every callfile.
