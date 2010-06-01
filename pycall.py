@@ -24,7 +24,7 @@ from os import path, chown, utime, fdopen
 class PycallError(Exception):
 	pass
 
-class NoChannelDefined(Exception):
+class NoChannelDefined(PycallError):
 	def __str__(self):
 		return 'You must define either the `channel` attribute or the ' \
 			'`trunk_type`, `trunk_name`, and `number` attributes.'
