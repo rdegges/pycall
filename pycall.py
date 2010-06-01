@@ -210,6 +210,8 @@ class CallFile:
 		except:
 			raise NoAsteriskPermission
 
+		return True
+
 if __name__ == '__main__':
 
 	print 'You have pycall installed. Check out our website for more' \
