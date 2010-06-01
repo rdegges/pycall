@@ -150,7 +150,7 @@ class CallFile:
 
 		return callfile
 
-	def writefile(self, callfile):
+	def __writefile(self, callfile):
 		"""
 		Given a callfile list to write, writes the actual callfile and returns the absolute
 		name of the file written. DOES NOT DELETE THE CREATED FILE.
