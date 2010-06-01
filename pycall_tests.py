@@ -80,6 +80,13 @@ class CallFileCreationTestCase(unittest.TestCase):
 		).run())
 
 
+class CallFileBuildTestCase(unittest.TestCase):
+	"""
+	Test to make sure that `CallFile`s are properly built.
+	"""
+	pass
+
+
 def suite():
 
 	suite = unittest.TestSuite()
