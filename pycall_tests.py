@@ -56,7 +56,7 @@ class CallFileCreationTestCase(unittest.TestCase):
 def suite():
 
 	suite = unittest.TestSuite()
-	suite.addTest(unittest.makeSuite(CallFileTestCase))
+	suite.addTest(unittest.makeSuite(CallFileCreationTestCase))
 	return suite
 
 
