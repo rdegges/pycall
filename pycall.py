@@ -175,6 +175,7 @@ class CallFile:
 		:param time:	[optional] The time (as a python datetime object) to
 						submit this `CallFile` to the Asterisk spooling
 						directory.
+		:return:		True on success. False on failure.
 		"""
 
 		# Build the file from our settings, then write the file, and store the
