@@ -136,15 +136,12 @@ class CallFile:
 		if self.account:
 			cf.append('Account: %s' % self.account)
 
+		if self.archive:
+			callfile.append('Archive: yes')
+
 		# If there are any variables to pass to Asterisk, add them.
 		for var, value in self.sets.iteritems():
 			callfile.append('Set: %s=%s' % (var, str(value)))
-
-		# Set the Archive appropriately.
-		if self.archive:
-			callfile.append('Archive: Yes')
-		else:
-			callfile.append('Archive: No')
 
 		return callfile
 
