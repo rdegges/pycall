@@ -47,9 +47,11 @@ class CallFile:
 
 		self.sets[var] = val
 
-	def buildfile(self):
+	def __buildfile(self):
 		"""
-		Use the settings in memory to build a call file string.
+		Use the class attributes to build a call file string.
+
+		:return:	A call file string, ready to be spooled.
 		"""
 
 		# Make sure the user has defined a trunk type, trunk name, and number
