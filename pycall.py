@@ -68,7 +68,9 @@ class CallFile:
 		:returns:	True if no problems. False if problems. May raise
 					exceptions if necessary.
 		"""
-		pass
+		if not self.channel and not (self.trunk_type and self.trunk_name and \
+			self.number):
+			raise NoChannelDefinedError
 
 	def __buildfile(self):
 		"""
@@ -78,15 +80,6 @@ class CallFile:
 		"""
 		if not __is_valid():
 			raise UnknownError
-
-		# Make sure the user has defined a trunk type, trunk name, and number
-		# to call. This is required for every callfile.
-		if not self.trunk_type:
-			raise NoTrunkTypeDefined
-		if not self.trunk_name:
-			raise NoTrunkNameDefined
-		if not self.number:
-			raise NoNumberDefined
 
 		# Make sure the user has defined either an application or a context
 		# (some action to perform if the call is answered). This is required
