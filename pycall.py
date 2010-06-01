@@ -24,6 +24,9 @@ from os import path, chown, utime, fdopen
 class PycallError(Exception):
 	pass
 
+class UnknownError(PycallError):
+	def __str__(self): return 'Something must have gone horribly wrong.'
+
 class NoChannelDefinedError(PycallError):
 	def __str__(self):
 		return 'You must define either the `channel` attribute or the ' \
