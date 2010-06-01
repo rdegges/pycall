@@ -140,12 +140,6 @@ class CallFile:
 		for var, value in self.sets.iteritems():
 			callfile.append('Set: %s=%s' % (var, str(value)))
 
-		# Set AlwaysDelete appropriately.
-		if self.always_delete:
-			callfile.append('AlwaysDelete: Yes')
-		else:
-			callfile.append('AlwaysDelete: No')
-
 		# Set the Archive appropriately.
 		if self.archive:
 			callfile.append('Archive: Yes')
