@@ -32,6 +32,11 @@ class NoChannelDefinedError(PycallError):
 		return 'You must define either the `channel` attribute or the ' \
 			'`trunk_type`, `trunk_name`, and `number` attributes.'
 
+class NoActionDefinedError(PycallError):
+	def __str__(self):
+		return 'You must define either the `application` and `data` ' \
+			'attributes or the `context`, `extension`, and `priority` ' \
+			'attributes.'
 
 class CallFile:
 	"""
@@ -72,6 +77,10 @@ class CallFile:
 			self.number):
 			raise NoChannelDefinedError
 
+		if not ((self.application and self.data) or \
+			(self.context and self.extension and self.priority)):
+			raise NoActionDefinedError
+
 	def __buildfile(self):
 		"""
 		Use the class attributes to build a call file string.
@@ -80,12 +89,6 @@ class CallFile:
 		"""
 		if not __is_valid():
 			raise UnknownError
-
-		# Make sure the user has defined either an application or a context
-		# (some action to perform if the call is answered). This is required
-		# for every call file.
-		if (not self.application or not self.data) and (not self.context or not self.extension or not self.priority):
-			raise NoActionDefined
 
 		# Start building the callfile list. Each list element is a line in the
 		# call file.
