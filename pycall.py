@@ -115,7 +115,7 @@ class CallFile:
 			raise UnknownError
 
 		if self.callerid:
-			cf.append('Callerid: '+self.callerid)
+			cf.append('Callerid: %s' % self.callerid)
 		elif self.callerid_name and self.callerid_num:
 			cf.append('Callerid: "%s" <%s>' % (self.callerid_name,
 				self.callerid_num))
