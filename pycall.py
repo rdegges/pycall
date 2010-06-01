@@ -26,11 +26,14 @@ class CallFile:
 	call files to be spooled.
 	"""
 
-	def __init__(self, trunk_type='', trunk_name='', number='',
-		callerid_name='', callerid_num='', max_retries=0, retry_time=0,
-		wait_time=0, account='', context='', extension='', priority='',
-		application='', data='', sets={}, always_delete=False, archive=False,
-		user='', dir='/var/spool/asterisk/outgoing/', tmpdir=None):
+	def __init__(
+		self, channel=None, trunk_type=None, trunk_name=None, number=None,
+		callerid=None, callerid_name=None, callerid_num=None, wait_time=None,
+		max_retries=None, retry_time=None, account=None, application=None,
+		data=None, context=None, extension=None, priority=None, set_var=None,
+		archive=None, user=None, tmpdir=None,
+		spool_dir='/var/spool/asterisk/outgoing/'
+	):
 
 		args = dict(locals())
 		args.pop('self')
