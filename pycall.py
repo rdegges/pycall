@@ -90,13 +90,19 @@ class CallFile:
 		if not __is_valid():
 			raise UnknownError
 
-		# Start building the callfile list. Each list element is a line in the
-		# call file.
-		callfile = []
-		if self.trunk_type.lower() == 'local':
-			callfile.append('Channel: %s/%s@%s' % (self.trunk_type, self.number, self.trunk_name))
+		cf = []
+
+		if self.channel:
+			cf.append('Channel: '+self.channel)
+		elif self.trunk_type and self.trunk_name and self.number:
+			if self.trunk_type.lower() == 'local':
+				cf.append('Channel: %s/%s@%s' % (self.trunk_type, self.number,
+					self.trunk_name))
+			else:
+				cf.append('Channel: %s/%s/%s' % (self.trunk_type,
+					self.trunk_name, self.number))
 		else:
-			callfile.append('Channel: %s/%s/%s' % (self.trunk_type, self.trunk_name, self.number))
+			raise UnknownError
 
 		# If CallerID was specified, then use it.
 		callerid = ''
