@@ -149,10 +149,12 @@ class CallFile:
 
 	def run(self, time=None):
 		"""
-		Uses the class attributes to 'launch' this :class:`~pycall.CallFile`.
+		Uses the class attributes to submit this `CallFile` to the Asterisk
+		spooling directory.
 
-		:param time: the optional time (as a python datetime object) to run
-					 this :class:`~pycall.CallFile`.
+		:param time:	[optional] The time (as a python datetime object) to
+						submit this `CallFile` to the Asterisk spooling
+						directory.
 		"""
 
 		# Build the file from our settings, then write the file, and store the
