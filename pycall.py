@@ -43,6 +43,11 @@ class NoPermissionError(PycallError):
 		return 'You do not have the appropriate permissions to change ' \
 			'ownership of the call file.'
 
+class NoUserError(PycallError):
+	def __str__(self):
+		return 'No user found. You must specify an actual user in the ' \
+			'`user` attribute to change call file ownership to.'
+
 class CallFile:
 	"""
 	Stores and manipulates call file information. Also allows users to schedule
@@ -172,10 +177,8 @@ class CallFile:
 						directory.
 		:return:		True on success. False on failure.
 		"""
-
 		fname = self.__writefile(self.__buildfile())
 
-		# If user is specified, chown the file to the appropriate user.
 		if self.user:
 			try:
 				pwd = getpwnam(self.user)
@@ -187,7 +190,7 @@ class CallFile:
 				except:
 					raise NoPermissionError
 			except:
-				raise NoUserException
+				raise NoUserError
 
 		# Change the modification time on the file (access time too) so that
 		# Asterisk knows when to place the call. If none is specified, then we
