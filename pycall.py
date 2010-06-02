@@ -205,7 +205,7 @@ class CallFile:
 			time = mktime(time.timetuple())
 			utime(fname, (time, time))
 		except:
-			utime(fname, None)
+			pass
 
 		try:
 			move(fname, self.dir+path.basename(fname))
