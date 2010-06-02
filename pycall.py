@@ -183,7 +183,7 @@ class CallFile:
 						directory.
 		:return:		True on success. False on failure.
 		"""
-		fname = self.__writefile(self.__buildfile())
+		fname = __writefile(__buildfile())
 
 		if self.user:
 			try:
