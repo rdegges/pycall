@@ -48,6 +48,12 @@ class NoUserError(PycallError):
 		return 'No user found. You must specify an actual user in the ' \
 			'`user` attribute to change call file ownership to.'
 
+class NoSpoolPermissionError(PycallError):
+	def __str__(self):
+		return 'You do not have the appropriate permissions to spool the ' \
+			'call file.'
+
+
 class CallFile:
 	"""
 	Stores and manipulates call file information. Also allows users to schedule
@@ -202,9 +208,9 @@ class CallFile:
 			utime(fname, None)
 
 		try:
-			move(fname, self.dir + path.basename(fname))
+			move(fname, self.dir+path.basename(fname))
 		except:
-			raise NoAsteriskPermission
+			raise NoSpoolPermissionError
 
 		return True
 
