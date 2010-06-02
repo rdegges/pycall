@@ -60,7 +60,7 @@ class CallFileCreationTestCase(unittest.TestCase):
 
 	def test_no_action(self):
 		cf = CallFile(channel=self.channel)
-		self.assertRaises(NoActionDefinedError, cf.run())
+		self.assertRaises(NoActionDefinedError, lambda: cf.run())
 
 	def test_no_application(self):
 		self.assertTrue(CallFile(
