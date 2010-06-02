@@ -114,6 +114,9 @@ class CallFile:
 		else:
 			raise UnknownError
 
+		for var, value in self.set_var.items():
+			cf.append('Set: %s=%s' % (var, value))
+
 		if self.callerid:
 			cf.append('Callerid: %s' % self.callerid)
 		elif self.callerid_name and self.callerid_num:
@@ -137,13 +140,9 @@ class CallFile:
 			cf.append('Account: %s' % self.account)
 
 		if self.archive:
-			callfile.append('Archive: yes')
+			cf.append('Archive: yes')
 
-		# If there are any variables to pass to Asterisk, add them.
-		for var, value in self.sets.iteritems():
-			callfile.append('Set: %s=%s' % (var, str(value)))
-
-		return callfile
+		return cf
 
 	def __writefile(self, callfile):
 		"""
