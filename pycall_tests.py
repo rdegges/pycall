@@ -13,14 +13,12 @@
 	expected.
 """
 
-import unittest
+import unittest import TestCase
 
-from pycall import CallFile
-from pycall import NoActionDefinedError
-from pycall import NoChannelDefinedError
+from pycall import *
 
 
-class CallFileCreationTestCase(unittest.TestCase):
+class CallFileCreationTestCase(TestCase):
 	"""
 	Test to make sure that `CallFile`s are created properly. When not created
 	properly, we test that the appropriate exceptions are raised.
@@ -80,7 +78,7 @@ class CallFileCreationTestCase(unittest.TestCase):
 		).run())
 
 
-class CallFileBuildTestCase(unittest.TestCase):
+class CallFileBuildTestCase(TestCase):
 	"""
 	Test to make sure that `CallFile`s are properly built.
 	"""
