@@ -13,12 +13,12 @@
 	expected.
 """
 
-from unittest import TestCase
+import unittest
 
 from pycall import *
 
 
-class CallFileCreationTestCase(TestCase):
+class CallFileCreationTestCase(unittest.TestCase):
 	"""
 	Test to make sure that `CallFile`s are created properly. When not created
 	properly, we test that the appropriate exceptions are raised.
@@ -78,7 +78,7 @@ class CallFileCreationTestCase(TestCase):
 		).run())
 
 
-class CallFileBuildTestCase(TestCase):
+class CallFileBuildTestCase(unittest.TestCase):
 	"""
 	Test to make sure that `CallFile`s are properly built.
 	"""
