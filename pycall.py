@@ -140,8 +140,9 @@ class CallFile:
 
 	def __writefile(self, cf):
 		"""
-		Write a temporary call file, give a list of call file directives.
+		Write a temporary call file.
 
+		:param cf:	List of call file directives.
 		:return:	Absolute path name (as a string) to the temporary call
 					file.
 		"""
