@@ -135,7 +135,7 @@ class CallFile:
 		elif self.callerid_name:
 			cf.append('Callerid: "%s"' % self.callerid_name)
 		elif self.callerid_num:
-			cf.append('Callerid: "" <%s>' % self.callerid_num
+			cf.append('Callerid: "" <%s>' % self.callerid_num)
 
 		if self.wait_time:
 			cf.append('WaitTime: %s' % self.wait_time)
