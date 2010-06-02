@@ -38,6 +38,11 @@ class NoActionDefinedError(PycallError):
 			'attributes or the `context`, `extension`, and `priority` ' \
 			'attributes.'
 
+class NoPermissionError(PycallError):
+	def __str__(self):
+		return 'You do not have the appropriate permissions to change ' \
+			'ownership of the call file.'
+
 class CallFile:
 	"""
 	Stores and manipulates call file information. Also allows users to schedule
@@ -168,9 +173,7 @@ class CallFile:
 		:return:		True on success. False on failure.
 		"""
 
-		# Build the file from our settings, then write the file, and store the
-		# written file name.
-		fname = self.writefile(self.buildfile())
+		fname = self.__writefile(self.__buildfile())
 
 		# If user is specified, chown the file to the appropriate user.
 		if self.user:
@@ -182,7 +185,7 @@ class CallFile:
 				try:
 					chown(fname, uid, gid)
 				except:
-					NoPermissionException
+					raise NoPermissionError
 			except:
 				raise NoUserException
 
