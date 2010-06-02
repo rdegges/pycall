@@ -140,8 +140,10 @@ class CallFile:
 
 	def __writefile(self, callfile):
 		"""
-		Given a callfile list to write, writes the actual callfile and returns the absolute
-		name of the file written. DOES NOT DELETE THE CREATED FILE.
+		Write a temporary call file, give a list of call file directives.
+
+		:return:	Absolute path name (as a string) to the temporary call
+					file.
 		"""
 
 		# Securely request a .call file from the OS.
