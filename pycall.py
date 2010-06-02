@@ -74,7 +74,7 @@ class CallFile:
 		for name, value in args.items():
 			setattr(self, name, value)
 
-	def __is_valid(self):
+	def _is_valid(self):
 		"""
 		Checks all current class attributes to ensure that there are no
 		lurking problems.
@@ -90,14 +90,14 @@ class CallFile:
 			(self.context and self.extension and self.priority)):
 			raise NoActionDefinedError
 
-	def __buildfile(self):
+	def _buildfile(self):
 		"""
 		Use the class attributes to build a call file string.
 
 		:return:	A list which contains one call file directive in each
 					element. These can be written to a file.
 		"""
-		if not __is_valid():
+		if not self._is_valid():
 			raise UnknownError
 
 		cf = []
@@ -154,7 +154,7 @@ class CallFile:
 
 		return cf
 
-	def __writefile(self, cf):
+	def _writefile(self, cf):
 		"""
 		Write a temporary call file.
 
@@ -183,7 +183,7 @@ class CallFile:
 						directory.
 		:return:		True on success. False on failure.
 		"""
-		fname = __writefile(__buildfile())
+		fname = self._writefile(self._buildfile())
 
 		if self.user:
 			try:
