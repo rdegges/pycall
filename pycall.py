@@ -192,16 +192,15 @@ class CallFile:
 			except:
 				raise NoUserError
 
-		# Change the modification time on the file (access time too) so that
-		# Asterisk knows when to place the call. If none is specified, then we
-		# place the call immediately.
+		# Change the modification and access time on the file so that Asterisk
+		# knows when to place the call. If time is not specified, then we place
+		# the call immediately.
 		try:
 			time = mktime(time.timetuple())
 			utime(fname, (time, time))
 		except:
 			utime(fname, None)
 
-		# Move the file to asterisk (hand over control).
 		try:
 			move(fname, self.dir + path.basename(fname))
 		except:
