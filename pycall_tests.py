@@ -13,7 +13,7 @@
 	expected.
 """
 
-import unittest import TestCase
+from unittest import TestCase
 
 from pycall import *
 
@@ -46,7 +46,7 @@ class CallFileCreationTestCase(TestCase):
 		self.data = 'hello-world'
 
 	def test_no_channel_and_no_trunk(self):
-		self.assertRaises(NoChannelDefinedError, CallFile().run())
+		self.assertRaises(NoChannelDefinedError, lambda: CallFile().run())
 
 	def test_no_channel(self):
 		self.assertTrue(CallFile(
