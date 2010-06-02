@@ -138,25 +138,21 @@ class CallFile:
 
 		return cf
 
-	def __writefile(self, callfile):
+	def __writefile(self, cf):
 		"""
 		Write a temporary call file, give a list of call file directives.
 
 		:return:	Absolute path name (as a string) to the temporary call
 					file.
 		"""
-
-		# Securely request a .call file from the OS.
 		if self.tmpdir:
-			file, fname = mkstemp(suffix = '.call', dir = self.tmpdir)
+			file, fname = mkstemp(suffix='.call', dir=self.tmpdir)
 		else:
 			file, fname = mkstemp('.call')
 
-		# Open the file and write it, then close the file.
-		f = fdopen(file, 'w')
-		for line in callfile:
-			f.write(line + '\n')
-		f.close()
+		with fdopen(file, 'w') as f:
+			for line in cf:
+				f.write(line+'\n')
 
 		return fname
 
