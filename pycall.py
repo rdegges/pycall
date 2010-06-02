@@ -63,7 +63,7 @@ class CallFile:
 		Checks all current class attributes to ensure that there are no
 		lurking problems.
 
-		:returns:	True if no problems. False if problems. May raise
+		:return:	True if no problems. False if problems. May raise
 					exceptions if necessary.
 		"""
 		if not (self.channel or (self.trunk_type and self.trunk_name and \
