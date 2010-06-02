@@ -58,13 +58,6 @@ class CallFile:
 		for name, value in args.items():
 			setattr(self, name, value)
 
-	def add_set(self, var, val):
-		"""
-		Add a variable / value definition to the callfile to pass to Asterisk.
-		"""
-
-		self.sets[var] = val
-
 	def __is_valid(self):
 		"""
 		Checks all current class attributes to ensure that there are no
