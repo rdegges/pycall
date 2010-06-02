@@ -38,7 +38,7 @@ class NoActionDefinedError(PycallError):
 			'attributes or the `context`, `extension`, and `priority` ' \
 			'attributes.'
 
-class NoPermissionError(PycallError):
+class NoUserPermissionError(PycallError):
 	def __str__(self):
 		return 'You do not have the appropriate permissions to change ' \
 			'ownership of the call file.'
@@ -194,7 +194,7 @@ class CallFile:
 				try:
 					chown(fname, uid, gid)
 				except:
-					raise NoPermissionError
+					raise NoUserPermissionError
 			except:
 				raise NoUserError
 
