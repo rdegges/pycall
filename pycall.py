@@ -90,6 +90,8 @@ class CallFile:
 			(self.context and self.extension and self.priority)):
 			raise NoActionDefinedError
 
+		return True
+
 	def _buildfile(self):
 		"""
 		Use the class attributes to build a call file string.
