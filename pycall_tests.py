@@ -55,11 +55,18 @@ class CallFileCreationTestCase(unittest.TestCase):
 		"""
 		self.assertRaises(NoChannelDefinedError, lambda: CallFile().run())
 
-	def test_no_channel(self):
+	def test_trunk(self):
+		"""
+		Make sure that we can create a new `CallFile` by specifying the
+		`trunk_type`, `trunk_name`, and `number` attributes only.
+		"""
 		self.assertTrue(CallFile(
 			trunk_type = self.trunk_type,
 			trunk_name = self.trunk_name,
-			number = self.number
+			number = self.number,
+			application = self.application,
+			data = self.data,
+			spool_dir = self.spool_dir
 		).run())
 
 	def test_no_trunk(self):
