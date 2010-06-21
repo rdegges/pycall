@@ -126,8 +126,9 @@ class CallFile:
 		else:
 			raise UnknownError
 
-		for var, value in self.set_var.items():
-			cf.append('Set: %s=%s' % (var, value))
+		if self.set_var:
+			for var, value in self.set_var.items():
+				cf.append('Set: %s=%s' % (var, value))
 
 		if self.callerid:
 			cf.append('Callerid: %s' % self.callerid)
