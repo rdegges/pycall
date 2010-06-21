@@ -211,7 +211,7 @@ class CallFile:
 			pass
 
 		try:
-			move(fname, self.dir+path.basename(fname))
+			move(fname, self.spool_dir+path.basename(fname))
 		except:
 			raise NoSpoolPermissionError
 
