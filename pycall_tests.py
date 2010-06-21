@@ -45,6 +45,8 @@ class CallFileCreationTestCase(unittest.TestCase):
 		self.application = 'Playback'
 		self.data = 'hello-world'
 
+		self.spool_dir = ''
+
 	def test_no_channel_and_no_trunk(self):
 		self.assertRaises(NoChannelDefinedError, lambda: CallFile().run())
 
@@ -71,7 +73,8 @@ class CallFileCreationTestCase(unittest.TestCase):
 			channel = self.channel,
 			context = self.context,
 			extension = self.extension,
-			priority = self.priority
+			priority = self.priority,
+			spool_dir = self.spool_dir
 		).run())
 
 	def test_no_context_extension_priority(self):
