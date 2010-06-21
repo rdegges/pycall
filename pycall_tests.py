@@ -69,8 +69,17 @@ class CallFileCreationTestCase(unittest.TestCase):
 			spool_dir = self.spool_dir
 		).run())
 
-	def test_no_trunk(self):
-		self.assertTrue(CallFile(channel=self.channel).run())
+	def test_channel(self):
+		"""
+		Make sure that we can create a new `CallFile` by specifying the
+		`channel` attribute only.
+		"""
+		self.assertTrue(CallFile(
+			channel = self.channel,
+			application = self.application,
+			data = self.data,
+			spool_dir = self.spool_dir
+		).run())
 
 	def test_no_action(self):
 		"""
