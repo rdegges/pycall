@@ -62,7 +62,11 @@ class CallFileCreationTestCase(unittest.TestCase):
 		cf = CallFile(channel=self.channel)
 		self.assertRaises(NoActionDefinedError, lambda: cf.run())
 
-	def test_no_application(self):
+	def test_context_extension_priority(self):
+		"""
+		Make sure that we can create a new `CallFile` by specifying an action
+		using the `context`, `extension`, and `priority` attributes only.
+		"""
 		self.assertTrue(CallFile(
 			channel = self.channel,
 			context = self.context,
