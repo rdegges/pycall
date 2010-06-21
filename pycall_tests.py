@@ -77,11 +77,16 @@ class CallFileCreationTestCase(unittest.TestCase):
 			spool_dir = self.spool_dir
 		).run())
 
-	def test_no_context_extension_priority(self):
+	def test_application_data(self):
+		"""
+		Make sure that we can create a new `CallFile` by specifying an action
+		using the `application` and `data` attributes only.
+		"""
 		self.assertTrue(CallFile(
 			channel = self.channel,
 			application = self.application,
-			data = self.data
+			data = self.data,
+			spool_dir = self.spool_dir
 		).run())
 
 
