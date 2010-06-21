@@ -61,6 +61,10 @@ class CallFileCreationTestCase(unittest.TestCase):
 		self.assertTrue(CallFile(channel=self.channel).run())
 
 	def test_no_action(self):
+		"""
+		Make sure that when we don't specify an action we get a
+		`NoActionDefinedError` exception.
+		"""
 		cf = CallFile(channel=self.channel)
 		self.assertRaises(NoActionDefinedError, lambda: cf.run())
 
