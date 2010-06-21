@@ -1,5 +1,6 @@
 *.pyc
 *.swp
+*.call
 dist
 env/*
 build
