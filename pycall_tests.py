@@ -48,6 +48,11 @@ class CallFileCreationTestCase(unittest.TestCase):
 		self.spool_dir = ''
 
 	def test_no_channel_and_no_trunk(self):
+		"""
+		Make sure that when we don't specify either the `channel` or the
+		`trunk_type`, `trunk_name`, and `number` attributes that we get a
+		`NoChannelDefinedError` exception.
+		"""
 		self.assertRaises(NoChannelDefinedError, lambda: CallFile().run())
 
 	def test_no_channel(self):
