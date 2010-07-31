@@ -35,3 +35,7 @@ usage.
 
 >>> from pycall import CallFile
 >>> from datetime import datetime
+
+Create an empty `CallFile` object.
+
+>>> cf = CallFile()
