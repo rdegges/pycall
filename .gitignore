@@ -6,5 +6,4 @@ env/*
 build
 _build
 MANIFEST
-MANIFEST.in
 _mailinglist/*
