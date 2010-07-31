@@ -1,0 +1,8 @@
+include Makefile CHANGES LICENSE AUTHORS
+recursive-include docs *
+recursive-exclude docs *.pyc
+recursice-include tests *
+recursive-exclude tests *.pyc
+recursive-include examples *
+recursive-exclude examples *.pyc
+prune docs/_build
