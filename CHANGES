@@ -1,10 +1,63 @@
-v1.0, 2009-10-20 --	Initial release.
-v1.1, 2009-10-21 --	Fixed several bugs.
-					Adding exception handling.
-v1.2, 2009-11-11 --	Adding demos and a bugfix.
-v1.3, 2010-02-23 --	Adding support for local trunks.
-v1.4, 2010-03-01 --	Fixed an issue with cross-device call file creation.
-v1.5, 2010-03-21 --	Adding a tmpdir option to the CallFile class.
-					Cleaning syntax.
-v1.6, 2010-03-21 --	Huge bugfix from version 1.5.
-					tmpdir attribute NOW WORKS.
+pycall Changelog
+================
+
+Here you can see the full list of changes between each pycall release.
+
+
+Version 1.6
+-----------
+
+Released on March 21, 2010.
+
+- Fixing major bug from previous release. `tmpdir` attribute now works.
+
+
+Version 1.5
+-----------
+
+Released on March 21, 2010.
+
+- Adding a `tmpdir` option to :class:`callfile.CallFile` class.
+- Cleaning up syntax (PEP-8).
+
+
+Version 1.4
+-----------
+
+Released on March 1, 2010.
+
+- Fixing an issue with cross-device call file creation.
+
+
+Version 1.3
+-----------
+
+Released on February 23, 2010.
+
+- Adding support for 'Local' trunks.
+
+
+Version 1.2
+-----------
+
+Released on November 11, 2009.
+
+- Various bugfixes.
+- Adding some simple demos.
+
+
+Version 1.1
+-----------
+
+Released on October 21, 2009.
+
+- Various bugfixes.
+- Added exception handling.
+
+
+Version 1.0
+-----------
+
+Released on October 20, 2009.
+
+First public release!
