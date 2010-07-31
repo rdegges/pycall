@@ -24,6 +24,8 @@ them to:
   manually yourself.
 * Write call files to various directories, on either a local device, or a
   remotely mounted device.
+* Associate any additional `CallFile` attributes your `CallFile` needs (for
+  pragmatic purposes) directly with your `CallFile` object.
 
 The rest of this file contains python doctest code to demonstrate and test
 these basic functionalities. This is the initial testing code, which is helping
@@ -39,3 +41,12 @@ usage.
 Create an empty `CallFile` object.
 
 >>> cf = CallFile()
+
+Attempt to spool an empty `CallFile` object. We should see an exception.
+
+>>> cf.spool()	# doctest:+ELLIPSIS
+Traceback (most recent call last):
+NoChannelDefinedError: "No `channel` attribute specified."
+
+Every call file must have either the `channel` attribute or `trunk_type`,
+`trunk_name`, and `number` attributes specified.
