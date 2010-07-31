@@ -1,14 +1,13 @@
 #!/usr/bin/python
 """
-	pycall
-	~~~~~~
+	pycall.callfile
+	~~~~~~~~~~~~~~~
 
-	A flexible python library for creating and using Asterisk call files.
+	Implements a `CallFile` class for creating, editing, and spooling Asterisk
+	call files.
 
 	:copyright: (c) 2010 by Randall Degges.
 	:license: BSD, see LICENSE for more details.
-
-	This file contains the entire pycall library source code.
 """
 
 
