@@ -16,41 +16,7 @@ from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
 from datetime import datetime
-from exceptions import Exception
 from os import path, chown, utime, fdopen
-
-
-class PycallError(Exception):
-	pass
-
-class UnknownError(PycallError):
-	def __str__(self): return 'Something must have gone horribly wrong.'
-
-class NoChannelDefinedError(PycallError):
-	def __str__(self):
-		return 'You must define either the `channel` attribute or the ' \
-			'`trunk_type`, `trunk_name`, and `number` attributes.'
-
-class NoActionDefinedError(PycallError):
-	def __str__(self):
-		return 'You must define either the `application` and `data` ' \
-			'attributes or the `context`, `extension`, and `priority` ' \
-			'attributes.'
-
-class NoUserPermissionError(PycallError):
-	def __str__(self):
-		return 'You do not have the appropriate permissions to change ' \
-			'ownership of the call file.'
-
-class NoUserError(PycallError):
-	def __str__(self):
-		return 'No user found. You must specify an actual user in the ' \
-			'`user` attribute to change call file ownership to.'
-
-class NoSpoolPermissionError(PycallError):
-	def __str__(self):
-		return 'You do not have the appropriate permissions to spool the ' \
-			'call file.'
 
 
 class CallFile:
