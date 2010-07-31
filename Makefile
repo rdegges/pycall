@@ -3,7 +3,7 @@
 all: clean-tmp test
 
 test:
-	echo "Should run some tests now..."
+	nosetests --with-doctest --doctest-extension=txt -v
 
 clean-tmp:
 	find . -name '*.pyc' -exec rm -f {} +
