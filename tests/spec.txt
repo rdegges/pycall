@@ -6,3 +6,32 @@
 
 	:copyright: (c) 2010 by Randall Degges.
 	:license: BSD, see LICENSE for more details.
+
+
+pycall is a flexible python library for creating and using Asterisk call files.
+pycall provides python developers with a powerful, but simple API which allows
+them to:
+
+* Create Asterisk call files out of python objects.
+* Perform basic error checking on `CallFile` attributes, to ensure that the
+  call file you're creating has legitimate syntax.
+* Write the call files objects to the disk in valid call file format.
+* Spool call files with Asterisk so they are executed.
+* Set pre-defined date/times to spool your call files with Asterisk.
+* Make use of any and all call file attributes / options, utilizing the full
+  power of Asterisk call files.
+* Choose to either randomly generate the call file names, or specify them
+  manually yourself.
+* Write call files to various directories, on either a local device, or a
+  remotely mounted device.
+
+The rest of this file contains python doctest code to demonstrate and test
+these basic functionalities. This is the initial testing code, which is helping
+to drive the development and design of the pycall library.
+
+
+Import dependencies and make sure that the `CallFile` class is available for
+usage.
+
+>>> from pycall import CallFile
+>>> from datetime import datetime
