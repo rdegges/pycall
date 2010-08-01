@@ -29,6 +29,7 @@ setup(
 	author_email = 'rdegges@gmail.com',
 	license = 'BSD',
 	url = 'http://pycall.org/',
+	download_url = 'fillmein',
 	keywords = 'asterisk callfile call file telephony voip',
 	description = 'A flexible python library for creating and using Asterisk call files.',
 	long_description = open('README').read()
