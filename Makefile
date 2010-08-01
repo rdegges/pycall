@@ -3,7 +3,7 @@
 all: clean-tmp test
 
 test:
-	nosetests --with-doctest --doctest-extension=txt -v --with-coverage --cover-erase
+	python setup.py nosetests
 
 clean-tmp:
 	find . -name '*.pyc' -exec rm -f {} +
