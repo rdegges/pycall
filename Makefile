@@ -12,4 +12,4 @@ clean-tmp:
 	find . -name '*~' -exec rm -f {} +
 
 release:
-	python setyp.py release sdist upload
+	python setyp.py register
