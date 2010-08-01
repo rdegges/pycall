@@ -1,4 +1,4 @@
-include Makefile CHANGES LICENSE AUTHORS
+include Makefile CHANGES LICENSE AUTHORS README
 recursive-include docs *
 recursive-exclude docs *.pyc
 recursice-include tests *
