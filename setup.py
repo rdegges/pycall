@@ -21,6 +21,9 @@ setup(
 	version = '2.0',
 	packages = find_packages(),
 
+	# Packaging options.
+	include_package_data = True,
+
 	# Metadata for PyPI.
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
