@@ -15,13 +15,19 @@ from setuptools import find_packages
 
 
 setup(
+
+	# Basic package information.
 	name = 'pycall',
 	version = '2.0',
+	packages = find_packages(),
+
+	# Metadata for PyPI.
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
-	packages = find_packages(),
+	license = 'BSD',
 	url = 'http://pycall.org/',
-	license = 'LICENSE',
+	keywords = 'asterisk callfile call file telephony voip',
 	description = 'A flexible python library for creating and using Asterisk call files.',
 	long_description = open('README').read()
+
 )
