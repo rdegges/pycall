@@ -1,18 +1,17 @@
 #!/usr/bin/python
 """
-	pycall
-	~~~~~~
+	pycall setup
+	~~~~~~~~~~~~
 
-	A flexible python library for creating and using Asterisk call files.
+	Handles the packaging, distribution, and testing of the pycall library.
 
-	:author:	Randall Degges
-	:email:		rdegges@gmail.com
-	:license:	BSD, see LICENSE for more information.
-
-	This file is used to build, install, and package pycall.
+	:copyright: (c) 2010 by Randall Degges.
+	:license: BSD, see LICENSE for more details.
 """
 
+
 from distutils.core import setup
+
 
 setup(
 	name = 'pycall',
