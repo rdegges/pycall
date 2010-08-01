@@ -19,7 +19,7 @@ setup(
 	version = '2.0',
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
-	packages = ['pycall'],
+	packages = find_packages(),
 	url = 'http://pycall.org/',
 	license = 'LICENSE',
 	description = 'A flexible python library for creating and using Asterisk call files.',
