@@ -24,6 +24,9 @@ setup(
 	# Packaging options.
 	include_package_data = True,
 
+	# Package dependencies.
+	install_requires = ['coverage>=3.3.1', 'nose>=0.11.4', 'docutils>=0.7'],
+
 	# Metadata for PyPI.
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
