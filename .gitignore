@@ -8,3 +8,4 @@ build
 _build
 MANIFEST
 _mailinglist/*
+pycall.egg-info/*
