@@ -28,7 +28,8 @@ setup(
 	include_package_data = True,
 
 	# Package dependencies.
-	install_requires = ['coverage>=3.3.1', 'nose>=0.11.4', 'docutils>=0.7'],
+	install_requires = 'docutils>=0.7',
+	tests_require = ['coverage>=3.3.1', 'nose>=0.11.4'],
 
 	# Metadata for PyPI.
 	author = 'Randall Degges',
