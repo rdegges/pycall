@@ -27,7 +27,7 @@ setup(
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
 	license = 'UNLICENSE',
-	url = 'http://pycall.org/',
+	url = 'http://pycall.owlyy.org/',
 	keywords = 'asterisk callfile call file telephony voip',
 	description = 'A flexible python library for creating and using Asterisk' \
 			' call files.',
