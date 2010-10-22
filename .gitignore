@@ -1,11 +1,14 @@
+# Temporary files.
 *.pyc
 *.swp
-*.call
+*~
 .coverage
+
+# Build remnants.
 dist
-env/*
 build
 _build
+pycall.egg-info
+
+# Auto-generated files.
 MANIFEST
-_mailinglist/*
-pycall.egg-info/*
