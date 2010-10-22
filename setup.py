@@ -1,12 +1,4 @@
-"""
-	pycall setup
-	~~~~~~~~~~~~
-
-	Handles the packaging, distribution, and testing of the pycall library.
-
-	:copyright: (c) 2010 by Randall Degges.
-	:license: BSD, see LICENSE for more details.
-"""
+""" Handles packaging, distribution, and testing. """
 
 
 import ez_setup
