@@ -16,6 +16,7 @@ setup(
 	packages = find_packages(),
 
 	# Packaging options.
+	zip_safe = False,
 	include_package_data = True,
 
 	# Package dependencies.
