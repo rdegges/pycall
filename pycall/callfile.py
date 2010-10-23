@@ -15,6 +15,8 @@ from os import path, chown, utime, fdopen
 class CallFile:
 	""" Stores and manipulates Asterisk call files. """
 
+	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
+
 	def __init__(
 		self, channel=None, trunk_type=None, trunk_name=None, number=None,
 		callerid=None, callerid_name=None, callerid_num=None, wait_time=None,
@@ -25,7 +27,7 @@ class CallFile:
 	):
 
 		if not spool_dir:
-			spool_dir = '/var/spool/asterisk/outgoing'
+			spool_dir = self.DEFAULT_SPOOL_DIR
 
 		args = dict(locals())
 		args.pop('self')
