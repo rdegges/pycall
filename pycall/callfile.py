@@ -11,6 +11,8 @@ from tempfile import mkstemp
 from datetime import datetime
 from os import path, chown, utime, fdopen
 
+from errors import *
+
 
 class CallFile:
 	""" Stores and manipulates Asterisk call files. """
@@ -137,7 +139,7 @@ class CallFile:
 		return fname
 
 	def spool(self):
-		pass
+		raise NoChannelDefinedError
 
 	def run(self, time=None):
 		"""
