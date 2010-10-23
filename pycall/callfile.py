@@ -13,10 +13,7 @@ from os import path, chown, utime, fdopen
 
 
 class CallFile:
-	"""
-	Stores and manipulates call file information. Also allows users to schedule
-	call files to be spooled.
-	"""
+	""" Stores and manipulates Asterisk call files. """
 
 	def __init__(
 		self, channel=None, trunk_type=None, trunk_name=None, number=None,
