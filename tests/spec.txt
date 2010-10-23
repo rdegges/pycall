@@ -42,7 +42,8 @@ Attempt to spool an empty `CallFile` object. We should see an exception.
 
 >>> cf.spool()	# doctest:+ELLIPSIS
 Traceback (most recent call last):
-NoChannelDefinedError: "No `channel` attribute specified."
+	...
+NoChannelDefinedError: ...
 
 Every call file must have either the `channel` attribute or `trunk_type`,
 `trunk_name`, and `number` attributes specified.
