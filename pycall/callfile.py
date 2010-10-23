@@ -1,12 +1,6 @@
 """
-	pycall.callfile
-	~~~~~~~~~~~~~~~
-
 	Implements a `CallFile` class for creating, editing, and spooling Asterisk
 	call files.
-
-	:copyright: (c) 2010 by Randall Degges.
-	:license: BSD, see LICENSE for more details.
 """
 
 
