@@ -24,8 +24,11 @@ class CallFile:
 		max_retries=None, retry_time=None, account=None, application=None,
 		data=None, context=None, extension=None, priority=None, set_var=None,
 		archive=None, user=None, tmpdir=None, file_name=None,
-		spool_dir='/var/spool/asterisk/outgoing/'
+		spool_dir=None
 	):
+
+		if not spool_dir:
+			spool_dir = '/var/spool/asterisk/outgoing'
 
 		args = dict(locals())
 		args.pop('self')
