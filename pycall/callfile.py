@@ -139,6 +139,8 @@ class CallFile:
 		return fname
 
 	def spool(self):
+		""" Spool the callfile with Asterisk. """
+
 		raise NoChannelDefinedError
 
 	def run(self, time=None):
