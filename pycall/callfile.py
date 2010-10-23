@@ -134,6 +134,9 @@ class CallFile:
 
 		return fname
 
+	def spool(self):
+		pass
+
 	def run(self, time=None):
 		"""
 		Uses the class attributes to submit this `CallFile` to the Asterisk
