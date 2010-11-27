@@ -180,8 +180,3 @@ class CallFile:
 			raise NoSpoolPermissionError
 
 		return True
-
-
-if __name__ == '__main__':
-	print 'You have successfully installed pycall. Check out our website ' \
-		'for more information: http://pycall.org/'
