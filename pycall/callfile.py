@@ -12,7 +12,7 @@ from errors import *
 
 
 class CallFile:
-	""" Stores and manipulates Asterisk call files. """
+	"""Stores and manipulates Asterisk call files."""
 
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
