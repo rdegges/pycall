@@ -1,7 +1,4 @@
-"""
-	Implements a `CallFile` class for creating, editing, and spooling Asterisk
-	call files.
-"""
+"""A simple wrapper for Asterisk call files."""
 
 
 from shutil import move
