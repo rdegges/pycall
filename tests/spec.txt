@@ -20,11 +20,9 @@ The rest of this file contains doctest code to show how pycall works in a
 simple way.
 
 
-Import dependencies and make sure that the `CallFile` class is available for
-usage.
+Make sure the `CallFile` class is available for usage:
 
 >>> from pycall import CallFile
->>> from datetime import datetime
 
 Create an empty `CallFile` object.
 
