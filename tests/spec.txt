@@ -24,7 +24,8 @@ Make sure the `CallFile` class is available for usage:
 
 >>> from pycall import CallFile
 
-Create an empty `CallFile` object.
+
+Make sure we can create an empty `CallFile` object:
 
 >>> cf = CallFile()
 
