@@ -22,6 +22,30 @@ class CallFile(object):
 			data=None, context=None, extension=None, priority=None,
 			set_var=None, archive=None, user=None, tmpdir=None, file_name=None,
 			spool_dir=None):
+		"""
+		Create a new `CallFile` obeject.
+
+		:param str channel:		The number(s) to call. Specified as an \
+								Asterisk dial string.
+		:param str callerid:	The caller ID to use when making the call.
+		:param int wait_time:	Amount of time to wait (in seconds) between \
+								retry attempts.
+		:param int max_retries:	Maximum amount of times to retry the call if \
+								it isn't answered.
+		:param int retry_time:	Amount of seconds to wait between retries.
+		:param str account:		Account code associated with the call.
+		:param str application:	Asterisk application to run upon answer.
+		:param str data:		Arguments to application.
+		:param str context:		Asterisk context to jump to upon answer.
+		:param str extension:	Asterisk extension to jump to upon answer.
+		:param str priority:	Asterisk priority to jump to upon answer.
+		:param dict set_var:	Variables to pass to Asterisk upon answer.
+		:param bool archive:	Should Asterisk archive the call file?
+		:param str user:		Username to spool the call file as.
+		:param str tmpdir:		Directory to store the temporary call file.
+		:param str file_name:	Call file name.
+		:param str spool_dir:	Directory to spool the call file to.
+		"""
 
 		if not spool_dir:
 			spool_dir = self.DEFAULT_SPOOL_DIR
