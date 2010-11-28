@@ -124,6 +124,16 @@ class CallFile(object):
 
 		return cf
 
+	@property
+	def contents(self):
+		"""
+		Get the contents of this call file.
+
+		:returns:	Call file contents.
+		:rtype:		String.
+		"""
+		return '\n'.join(self._buildfile())
+
 	def _writefile(self, cf):
 		"""
 		Write a temporary call file.
