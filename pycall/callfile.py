@@ -11,7 +11,7 @@ from os import path, chown, utime, fdopen
 from errors import *
 
 
-class CallFile:
+class CallFile(object):
 	"""Stores and manipulates Asterisk call files."""
 
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
