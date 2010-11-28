@@ -17,12 +17,11 @@ class CallFile(object):
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
 	def __init__(
-		self, channel=None, trunk_type=None, trunk_name=None, number=None,
-		callerid=None, callerid_name=None, callerid_num=None, wait_time=None,
-		max_retries=None, retry_time=None, account=None, application=None,
-		data=None, context=None, extension=None, priority=None, set_var=None,
-		archive=None, user=None, tmpdir=None, file_name=None,
-		spool_dir=None
+		self, channel=None, callerid=None, callerid_name=None,
+		callerid_num=None, wait_time=None, max_retries=None, retry_time=None,
+		account=None, application=None, data=None, context=None,
+		extension=None, priority=None, set_var=None, archive=None, user=None,
+		tmpdir=None, file_name=None, spool_dir=None
 	):
 
 		if not spool_dir:
@@ -41,8 +40,7 @@ class CallFile(object):
 		:return:	True if no problems. False if problems. May raise
 					exceptions if necessary.
 		"""
-		if not (self.channel or (self.trunk_type and self.trunk_name and \
-			self.number)):
+		if not self.channel:
 			raise NoChannelDefinedError
 
 		if not ((self.application and self.data) or \
@@ -62,18 +60,7 @@ class CallFile(object):
 			raise UnknownError
 
 		cf = []
-
-		if self.channel:
-			cf.append('Channel: '+self.channel)
-		elif self.trunk_type and self.trunk_name and self.number:
-			if self.trunk_type.lower() == 'local':
-				cf.append('Channel: %s/%s@%s' % (self.trunk_type, self.number,
-					self.trunk_name))
-			else:
-				cf.append('Channel: %s/%s/%s' % (self.trunk_type,
-					self.trunk_name, self.number))
-		else:
-			raise UnknownError
+		cf.append('Channel: '+self.channel)
 
 		if self.application:
 			cf.append('Application: '+self.application)
