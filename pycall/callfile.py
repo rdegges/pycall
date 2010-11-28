@@ -14,6 +14,7 @@ from errors import *
 class CallFile(object):
 	"""Stores and manipulates Asterisk call files."""
 
+	#: The default spooling directory (should be OK for most systems).
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
 	def __init__(self, channel, callerid=None, wait_time=None,
