@@ -16,7 +16,7 @@ class CallFile(object):
 
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
-	def __init__(self, channel=None, callerid=None, wait_time=None,
+	def __init__(self, channel, callerid=None, wait_time=None,
 			max_retries=None, retry_time=None, account=None, application=None,
 			data=None, context=None, extension=None, priority=None,
 			set_var=None, archive=None, user=None, tmpdir=None, file_name=None,
