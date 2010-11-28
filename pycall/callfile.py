@@ -54,6 +54,8 @@ class CallFile(object):
 		"""
 		Use the class attributes to build a call file string.
 
+		:raises:	`UnknownError` if there were problems validating the call \
+					file attributes.
 		:returns:	A list consisting of all call file directives.
 		:rtype:		List of strings.
 		"""
