@@ -36,8 +36,7 @@ class CallFile(object):
 		Checks all current class attributes to ensure that there are no
 		lurking problems.
 
-		:return:	True if no problems. False if problems. May raise
-					exceptions if necessary.
+		:rtype:		Boolean.
 		"""
 		if not self.channel:
 			raise NoChannelDefinedError
