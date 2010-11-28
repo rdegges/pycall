@@ -30,12 +30,19 @@ Make sure we can create an empty `CallFile` object:
 >>> cf = CallFile()
 
 
-Make sure that spooling an empty `CallFile` object fails:
+Make sure spooling an empty `CallFile` object fails:
 
 >>> cf.spool() # doctest:+ELLIPSIS
 Traceback (most recent call last):
 	...
 NoChannelDefinedError: ...
+
+
+Make sure we can set the `CallFile.channel` attribute:
+
+>>> cf.channel = 'Local/18002223333@outgoing'
+>>> cf.channel
+'Local/18002223333@outgoing'
 
 
 Every call file must have either the `channel` attribute or `trunk_type`,
