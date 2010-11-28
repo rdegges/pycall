@@ -36,6 +36,9 @@ class CallFile(object):
 		Checks all current class attributes to ensure that there are no
 		lurking problems.
 
+		:raises:	NoChannelDefinedError if no channel attribute has been \
+					specified. Raises NoActionDefinedError if no actions have \
+					been specified.
 		:rtype:		Boolean.
 		"""
 		if not self.channel:
