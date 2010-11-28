@@ -29,12 +29,14 @@ Make sure we can create an empty `CallFile` object:
 
 >>> cf = CallFile()
 
-Attempt to spool an empty `CallFile` object. We should see an exception.
 
->>> cf.spool()	# doctest:+ELLIPSIS
+Make sure that spooling an empty `CallFile` object fails:
+
+>>> cf.spool() # doctest:+ELLIPSIS
 Traceback (most recent call last):
 	...
 NoChannelDefinedError: ...
+
 
 Every call file must have either the `channel` attribute or `trunk_type`,
 `trunk_name`, and `number` attributes specified.
