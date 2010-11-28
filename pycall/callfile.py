@@ -16,12 +16,11 @@ class CallFile(object):
 
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
-	def __init__(
-		self, channel=None, callerid=None, wait_time=None, max_retries=None,
-		retry_time=None, account=None, application=None, data=None,
-		context=None, extension=None, priority=None, set_var=None,
-		archive=None, user=None, tmpdir=None, file_name=None, spool_dir=None
-	):
+	def __init__(self, channel=None, callerid=None, wait_time=None,
+			max_retries=None, retry_time=None, account=None, application=None,
+			data=None, context=None, extension=None, priority=None,
+			set_var=None, archive=None, user=None, tmpdir=None, file_name=None,
+			spool_dir=None):
 
 		if not spool_dir:
 			spool_dir = self.DEFAULT_SPOOL_DIR
