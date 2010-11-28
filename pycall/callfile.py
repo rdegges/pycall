@@ -54,8 +54,8 @@ class CallFile(object):
 		"""
 		Use the class attributes to build a call file string.
 
-		:return:	A list which contains one call file directive in each
-					element. These can be written to a file.
+		:returns:	A list consisting of all call file directives.
+		:rtype:		List of strings.
 		"""
 		if not self._is_valid():
 			raise UnknownError
