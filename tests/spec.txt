@@ -6,13 +6,12 @@ pycall provides python developers with a simple API that allows them to:
 
 * Create Asterisk call files out of python objects.
 * Perform error checking on call files before they are spooled.
-* Easily spool call files objects with Asterisk either immediately, or at a
-  specific date and time.
-* Make use of any and all call file attributes / options, utilizing the full
-  power of Asterisk call files.
-* Fully handles all file operations, so you don't have to worry about any file
-  access.
-* Write call files to either local or remotely mounted devices.
+* Spool call file objects with Asterisk immediately.
+* Spool call file obejcts with Asterisk at a specific date and time.
+* Use any call file attributes that Asterisk allows.
+* Transparently perform all file operations.
+* Perform all necessary permission checks and changes.
+* Spool call files to local or mounted devices.
 * Associate any additional `CallFile` attributes your `CallFile` needs (for
   pragmatic purposes) directly with your `CallFile` object.
 
