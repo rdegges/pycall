@@ -45,6 +45,7 @@ class CallFile(object):
 		:param str tmpdir:		Directory to store the temporary call file.
 		:param str file_name:	Call file name.
 		:param str spool_dir:	Directory to spool the call file to.
+		:rtype:					`CallFile` object.
 		"""
 
 		if not spool_dir:
