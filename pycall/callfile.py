@@ -17,11 +17,10 @@ class CallFile(object):
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
 	def __init__(
-		self, channel=None, callerid=None, callerid_name=None,
-		callerid_num=None, wait_time=None, max_retries=None, retry_time=None,
-		account=None, application=None, data=None, context=None,
-		extension=None, priority=None, set_var=None, archive=None, user=None,
-		tmpdir=None, file_name=None, spool_dir=None
+		self, channel=None, callerid=None, wait_time=None, max_retries=None,
+		retry_time=None, account=None, application=None, data=None,
+		context=None, extension=None, priority=None, set_var=None,
+		archive=None, user=None, tmpdir=None, file_name=None, spool_dir=None
 	):
 
 		if not spool_dir:
@@ -78,13 +77,6 @@ class CallFile(object):
 
 		if self.callerid:
 			cf.append('Callerid: %s' % self.callerid)
-		elif self.callerid_name and self.callerid_num:
-			cf.append('Callerid: "%s" <%s>' % (self.callerid_name,
-				self.callerid_num))
-		elif self.callerid_name:
-			cf.append('Callerid: "%s"' % self.callerid_name)
-		elif self.callerid_num:
-			cf.append('Callerid: "" <%s>' % self.callerid_num)
 
 		if self.wait_time:
 			cf.append('WaitTime: %s' % self.wait_time)
