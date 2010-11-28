@@ -55,7 +55,7 @@ class CallFile(object):
 		Use the class attributes to build a call file string.
 
 		:raises:	`UnknownError` if there were problems validating the call \
-					file attributes.
+					file.
 		:returns:	A list consisting of all call file directives.
 		:rtype:		List of strings.
 		"""
@@ -104,8 +104,8 @@ class CallFile(object):
 		Write a temporary call file.
 
 		:param cf:	List of call file directives.
-		:return:	Absolute path name (as a string) to the temporary call
-					file.
+		:returns:	Absolute path name of the temporary call file.
+		:rtype:		String.
 		"""
 		if self.tmpdir:
 			file, fname = mkstemp(suffix='.call', dir=self.tmpdir)
