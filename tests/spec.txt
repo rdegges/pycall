@@ -15,12 +15,9 @@ pycall provides python developers with a simple API that allows them to:
 * Associate any additional `CallFile` attributes your `CallFile` needs (for
   pragmatic purposes) directly with your `CallFile` object.
 
-The rest of this file contains python doctest code to demonstrate and test
-these basic functionalities. This is the initial testing code, which is helping
-to drive the development and design of the pycall library. If you're interested
-in seeing how pycall works on a high-level basis, you may also use the doctest
-code below as self documentation, as it demonstrates basic pycall
-functionality.
+
+The rest of this file contains doctest code to show how pycall works in a
+simple way.
 
 
 Import dependencies and make sure that the `CallFile` class is available for
