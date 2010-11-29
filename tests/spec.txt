@@ -30,7 +30,7 @@ Make sure we can create a `CallFile` object:
 >>> cf = CallFile('Local/18002223333@outgoing')
 
 
-Make sure spooling a `CallFile` object with only the channel attribute fails:
+Make sure each call file contains a valid action:
 
 >>> cf.spool() # doctest:+ELLIPSIS
 Traceback (most recent call last):
