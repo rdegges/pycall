@@ -25,12 +25,12 @@ Make sure the `CallFile` class is available for usage:
 >>> from pycall import CallFile
 
 
-Make sure we can create an empty `CallFile` object:
+Make sure we can create a `CallFile` object:
 
->>> cf = CallFile()
+>>> cf = CallFile('Local/18002223333@outgoing')
 
 
-Make sure spooling an empty `CallFile` object fails:
+Make sure spooling a `CallFile` object with only the channel attribute fails:
 
 >>> cf.spool() # doctest:+ELLIPSIS
 Traceback (most recent call last):
