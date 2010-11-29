@@ -38,14 +38,6 @@ Traceback (most recent call last):
 NoActionDefinedError: ...
 
 
-Assign the `channel` attribute to our `CallFile` object, then try to spool it
-again. We should see another exception.
-
->>> cf.channel = 'Local/18002223333@outgoing'
->>> cf.spool()	# doctest:+ELLIPSIS
-Traceback (most recent call last):
-NoActionDefinedError: "No `application` or `extension` specified."
-
 Every call file must contain at least one valid action. Assign either an
 `application` or `extension` attribute to your `CallFile` object.
 
