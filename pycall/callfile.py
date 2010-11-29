@@ -156,7 +156,7 @@ class CallFile(object):
 	def spool(self):
 		"""Spool the call file with Asterisk."""
 
-		raise NoChannelDefinedError
+		raise NoActionDefinedError
 
 	def run(self, time=None):
 		"""
