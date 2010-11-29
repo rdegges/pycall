@@ -63,3 +63,17 @@ Make sure we can spool a call file using the `context` action:
 >>> cf.extension = 's'
 >>> cf.priority = '1'
 >>> cf.spool()
+
+
+Add back the `application` action:
+
+>>> cf.application = 'Playback'
+>>> cf.data = 'tt-monkeys'
+
+
+Make sure that it is not allowed to specify both types of actions:
+
+>>> cf.spool() # doctest:+ELLIPSIS
+Traceback (most recent call last):
+	...
+MultipleActionsDefinedError: ...

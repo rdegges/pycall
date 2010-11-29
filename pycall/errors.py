@@ -30,6 +30,11 @@ class NoActionDefinedError(PycallError):
 			'attributes or the `context`, `extension`, and `priority` ' \
 			'attributes.'
 
+class MultipleActionsDefinedError(PycallError):
+	def __str__(self):
+		return 'You cannot have both `application` and `context` defined. ' \
+				'Choose one.'
+
 class NoUserPermissionError(PycallError):
 	def __str__(self):
 		return 'You do not have the appropriate permissions to change ' \
