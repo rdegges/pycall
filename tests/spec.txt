@@ -38,9 +38,6 @@ Traceback (most recent call last):
 NoActionDefinedError: ...
 
 
-Every call file must have either the `channel` attribute or `trunk_type`,
-`trunk_name`, and `number` attributes specified.
-
 Assign the `channel` attribute to our `CallFile` object, then try to spool it
 again. We should see another exception.
 
