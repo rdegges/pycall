@@ -71,7 +71,7 @@ Add back the `application` action:
 >>> cf.data = 'tt-monkeys'
 
 
-Make sure that it is not allowed to specify both types of actions:
+Make sure that we are not allowed to specify both types of actions:
 
 >>> cf.spool() # doctest:+ELLIPSIS
 Traceback (most recent call last):
