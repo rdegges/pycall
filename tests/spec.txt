@@ -38,8 +38,10 @@ Traceback (most recent call last):
 NoActionDefinedError: ...
 
 
-Every call file must contain at least one valid action. Assign either an
-`application` or `extension` attribute to your `CallFile` object.
+Every call file must contain at least one valid action. There are two types of
+actions allowed: applications and contexts. To use applications, you must
+specify `application` and `data`. To use contexts, you must specify `context`,
+`extension`, and `priority`.
 
 Now let's try assigning an `application` attribute to our `CallFile` object,
 then spooling it again.
