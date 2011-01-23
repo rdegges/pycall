@@ -36,3 +36,23 @@ class Call(object):
 		if self.max_retries and type(self.max_retries) != int:
 			return False
 		return True
+
+	def __str__(self):
+		"""Render this call as call file directives.
+
+		:rtype: List of strings.
+		"""
+		c = ['Channel: ' + self.channel]
+
+		if self.callerid:
+			c.append('Callerid: ' + self.callerid)
+		if self.account:
+			c.append('Account: ' + self.account)
+		if self.wait_time:
+			c.append('WaitTime: ' + self.wait_time)
+		if self.retry_time:
+			c.append('RetryTime: ' + self.retry_time)
+		if self.max_retries:
+			c.append('Maxretries: ' + self.max_retries)
+
+		return c
