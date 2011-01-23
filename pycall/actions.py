@@ -12,3 +12,8 @@ class Application(object):
 		"""
 		self.application = application
 		self.data = data
+
+
+class Context(object):
+	"""Stores and manipulates Asterisk contexts, extensions, and priorities."""
+	pass
