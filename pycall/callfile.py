@@ -20,14 +20,14 @@ class CallFile(object):
 	#: The default spooling directory (should be OK for most systems).
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
-	def __init__(self, call, action, set_var=None, archive=None, user=None,
+	def __init__(self, call, action, variables=None, archive=None, user=None,
 			tmpdir=None, file_name=None, spool_dir=None):
 		"""Create a new `CallFile` obeject.
 
 		:param obj call: A `pycall.Call` instance.
 		:param obj action: Either a `pycall.actions.Application` instance
 			or a `pycall.actions.Context` instance.
-		:param dict set_var: Variables to pass to Asterisk upon answer.
+		:param dict variables: Variables to pass to Asterisk upon answer.
 		:param bool archive: Should Asterisk archive the call file?
 		:param str user: Username to spool the call file as.
 		:param str tmpdir: Directory to store the temporary call file.
@@ -37,7 +37,7 @@ class CallFile(object):
 		"""
 		self.call = call
 		self.action = action
-		self.set_var = set_var
+		self.variables = variables
 		self.archive = archive
 		self.user = user
 		self.tmpdir = tmpdir
@@ -58,8 +58,8 @@ class CallFile(object):
 		if not isinstance(self.action, Action):
 			return False
 
-		# Fail if `set_var` was specified, but isn't a dictionary.
-		if self.set_var and not isinstance(self.set_var, dict):
+		# Fail if `variables` was specified, but isn't a dictionary.
+		if self.variables and not isinstance(self.variables, dict):
 			return False
 
 		# Fail if `tmpdir` was specified, but isn't a real directory.
