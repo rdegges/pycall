@@ -45,12 +45,8 @@ class CallFile(object):
 		self.spool_dir = spool_dir or DEFAULT_SPOOL_DIR
 
 	def _is_valid(self):
-		"""
-		Checks class attributes to ensure they are valid.
+		"""Check to see if all `CallFile` attributes are valid.
 
-		:raises: `NoChannelDefinedError` if no `channel` attribute has been
-			specified.
-		:raises: `NoActionDefinedError` if no action has been specified.
 		:rtype: Boolean.
 		"""
 		return True
