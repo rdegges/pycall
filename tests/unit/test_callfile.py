@@ -86,6 +86,11 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, spool_dir='spool_dir')
 		assert_false(c.is_valid())
 
+	def test_buildfile_is_valid(self):
+		"""Ensure `buildfile` works with well-formed attributes."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_(c.buildfile())
+
 	@raises(ValidationError)
 	def test_buildfile_raises_validation_error(self):
 		"""Ensure `buildfile` raises `ValidationError` if the `CallFile` can't
