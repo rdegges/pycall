@@ -91,8 +91,8 @@ class CallFile(object):
 		cf.append('Channel: ' + self.call.channel)
 		cf += self.action.__str__()
 
-		if self.set_var:
-			for var, value in self.set_var.items():
+		if self.variables:
+			for var, value in self.variables.items():
 				cf.append('Set: %s=%s' % (var, value))
 
 		if self.callerid:
