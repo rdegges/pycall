@@ -2,13 +2,19 @@
 
 from unittest import TestCase
 
-from nose.tools import eq_, raises
+from nose.tools import eq_, ok_, raises
 
-from pycall import CallFile
+from pycall import Application, Call, CallFile
 
 
 class TestCallFile(TestCase):
 	"""Run tests on the `CallFile` class."""
+
+	def setUp(self):
+		"""Setup some default variables for test usage."""
+		self.call = Call('local/18882223333@outgoing')
+		self.action = Application('Playback', 'hello-world')
+		self.spool_dir = '/'
 
 	@raises(TypeError)
 	def test_create_callfile(self):
