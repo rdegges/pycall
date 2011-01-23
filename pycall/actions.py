@@ -23,7 +23,7 @@ class Application(Action):
 
 		:rtype: Tuple of strings.
 		"""
-		return ['Application: ' + self.application, 'Data: ' + self.data]
+		return ('Application: ' + self.application, 'Data: ' + self.data)
 
 
 class Context(Action):
@@ -45,5 +45,5 @@ class Context(Action):
 
 		:rtype: Tuple of strings.
 		"""
-		return ['Context: ' + self.context, 'Extension: ' + self.extension,
-				'Priority: ' + self.priority]
+		return ('Context: ' + self.context, 'Extension: ' + self.extension,
+				'Priority: ' + self.priority)
