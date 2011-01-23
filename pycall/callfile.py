@@ -7,6 +7,8 @@ from pwd import getpwnam
 from tempfile import mkstemp
 from os import path, chown, utime, fdopen
 
+from .call import Call
+from .actions import Application, Context
 from .errors import *
 
 
