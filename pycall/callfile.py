@@ -44,8 +44,7 @@ class CallFile(object):
 
 	def _is_valid(self):
 		"""
-		Checks all current class attributes to ensure that there are no
-		lurking problems.
+		Checks class attributes to ensure they are valid.
 
 		:raises: `NoChannelDefinedError` if no `channel` attribute has been
 			specified.
