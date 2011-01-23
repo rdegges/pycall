@@ -19,5 +19,5 @@ class Call(object):
 		self.channel = channel
 		self.callerid = callerid
 		self.account = account
-		self.wait_time = int(wait_time)
-		self.max_retries = int(max_retries)
+		self.wait_time = wait_time
+		self.max_retries = max_retries
