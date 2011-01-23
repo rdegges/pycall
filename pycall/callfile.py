@@ -49,7 +49,7 @@ class CallFile(object):
 
 		:rtype: Boolean.
 		"""
-		return True
+		return self.call.is_valid()
 
 	def _buildfile(self):
 		"""
