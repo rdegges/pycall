@@ -77,12 +77,11 @@ class CallFile(object):
 		return True
 
 	def buildfile(self):
-		"""
-		Use the class attributes to build a call file string.
+		"""Use all attributes to build a call file in memory.
 
-		:raises: `UnknownError` if there were problems validating the call
-			file.
-		:returns: A list consisting of all call file directives.
+		:raises: `ValidationError` if the `CallFile` could not be validated.
+		:returns: A list of all call file directives as they will be written to
+			the disk.
 		:rtype: List of strings.
 		"""
 		if not self._is_valid():
