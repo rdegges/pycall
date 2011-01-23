@@ -16,4 +16,12 @@ class Application(object):
 
 class Context(object):
 	"""Stores and manipulates Asterisk contexts, extensions, and priorities."""
-	pass
+
+	def __init__(self, context, extension, priority):
+		"""Create a new `Context` object.
+
+		:param str context: Asterisk context to run.
+		:param str extension: Asterisk extension to run.
+		:param str priority: Asterisk priority to run.
+		"""
+		pass
