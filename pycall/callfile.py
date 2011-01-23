@@ -21,8 +21,8 @@ class CallFile(object):
 		"""Create a new `CallFile` obeject.
 
 		:param obj call: A `pycall.Call` instance.
-		:param obj action:	Either a `pycall.actions.Application` instance
-							or a `pycall.actions.Context` instance.
+		:param obj action: Either a `pycall.actions.Application` instance
+			or a `pycall.actions.Context` instance.
 		:param dict set_var: Variables to pass to Asterisk upon answer.
 		:param bool archive: Should Asterisk archive the call file?
 		:param str user: Username to spool the call file as.
@@ -45,10 +45,10 @@ class CallFile(object):
 		Checks all current class attributes to ensure that there are no
 		lurking problems.
 
-		:raises:	`NoChannelDefinedError` if no `channel` attribute has \
-					been specified.
-		:raises:	`NoActionDefinedError` if no action has been specified.
-		:rtype:		Boolean.
+		:raises: `NoChannelDefinedError` if no `channel` attribute has been
+			specified.
+		:raises: `NoActionDefinedError` if no action has been specified.
+		:rtype: Boolean.
 		"""
 		if not self.channel:
 			raise NoChannelDefinedError
@@ -63,10 +63,10 @@ class CallFile(object):
 		"""
 		Use the class attributes to build a call file string.
 
-		:raises:	`UnknownError` if there were problems validating the call \
-					file.
-		:returns:	A list consisting of all call file directives.
-		:rtype:		List of strings.
+		:raises: `UnknownError` if there were problems validating the call
+			file.
+		:returns: A list consisting of all call file directives.
+		:rtype: List of strings.
 		"""
 		if not self._is_valid():
 			raise UnknownError
@@ -113,8 +113,8 @@ class CallFile(object):
 		"""
 		Get the contents of this call file.
 
-		:returns:	Call file contents.
-		:rtype:		String.
+		:returns: Call file contents.
+		:rtype: String.
 		"""
 		return '\n'.join(self._buildfile())
 
@@ -122,9 +122,9 @@ class CallFile(object):
 		"""
 		Write a temporary call file.
 
-		:param cf:	List of call file directives.
-		:returns:	Absolute path name of the temporary call file.
-		:rtype:		String.
+		:param cf: List of call file directives.
+		:returns: Absolute path name of the temporary call file.
+		:rtype: String.
 		"""
 		if self.tmpdir:
 			file, fname = mkstemp(suffix='.call', dir=self.tmpdir)
@@ -147,9 +147,9 @@ class CallFile(object):
 		Uses the class attributes to submit this `CallFile` to the Asterisk
 		spooling directory.
 
-		:param datetime time:	[optional] The date and time to spool this \
-								call file.
-		:rtype:					Boolean.
+		:param datetime time: [optional] The date and time to spool this \
+			call file.
+		:rtype: Boolean.
 		"""
 		fname = self._writefile(self._buildfile())
 
