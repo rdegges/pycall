@@ -31,6 +31,8 @@ class Call(object):
 		"""
 		if self.wait_time and type(self.wait_time) != int:
 			return False
+		if self.retry_time and type(self.retry_time) != int:
+			return False
 		if self.max_retries and type(self.max_retries) != int:
 			return False
 		return True
