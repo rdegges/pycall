@@ -5,7 +5,6 @@ from shutil import move
 from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
-from datetime import datetime
 from os import path, chown, utime, fdopen
 
 from .errors import *
