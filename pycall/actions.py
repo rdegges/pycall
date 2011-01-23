@@ -1,7 +1,12 @@
 """A simple wrapper for Asterisk call file actions."""
 
 
-class Application(object):
+class Action(object):
+	"""A generic Asterisk action."""
+	pass
+
+
+class Application(Action):
 	"""Stores and manipulates Asterisk applications and data."""
 
 	def __init__(self, application, data):
@@ -14,7 +19,7 @@ class Application(object):
 		self.data = data
 
 
-class Context(object):
+class Context(Action):
 	"""Stores and manipulates Asterisk contexts, extensions, and priorities."""
 
 	def __init__(self, context, extension, priority):
