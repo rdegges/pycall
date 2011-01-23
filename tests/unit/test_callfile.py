@@ -77,4 +77,3 @@ class TestCallFile(TestCase):
 		"""Ensure `is_valid` fails with an invalid `spool_dir` attribute."""
 		c = CallFile(self.call, self.action, spool_dir='spool_dir')
 		assert_false(c.is_valid())
-
