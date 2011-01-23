@@ -5,7 +5,7 @@ from unittest import TestCase
 
 from nose.tools import raises
 
-from pycall.actions import Application, Context
+from pycall import Application, Context
 
 
 class TestApplication(TestCase):
