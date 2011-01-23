@@ -88,27 +88,12 @@ class CallFile(object):
 			raise ValidationError
 
 		cf = []
-		cf.append('Channel: ' + self.call.channel)
+		cf += self.call.__str__()
 		cf += self.action.__str__()
 
 		if self.variables:
 			for var, value in self.variables.items():
 				cf.append('Set: %s=%s' % (var, value))
-
-		if self.callerid:
-			cf.append('Callerid: %s' % self.callerid)
-
-		if self.wait_time:
-			cf.append('WaitTime: %s' % self.wait_time)
-
-		if self.max_retries:
-			cf.append('Maxretries: %s' % self.max_retries)
-
-		if self.retry_time:
-			cf.append('RetryTime: %s' % self.retry_time)
-
-		if self.account:
-			cf.append('Account: %s' % self.account)
 
 		if self.archive:
 			cf.append('Archive: yes')
