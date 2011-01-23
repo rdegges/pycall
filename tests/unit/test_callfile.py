@@ -4,7 +4,7 @@ from unittest import TestCase
 
 from nose.tools import assert_false, eq_, ok_, raises
 
-from pycall import Application, Call, CallFile
+from pycall import Application, Call, CallFile, ValidationError
 
 
 class TestCallFile(TestCase):
@@ -85,3 +85,10 @@ class TestCallFile(TestCase):
 		"""Ensure `is_valid` fails with an invalid `spool_dir` attribute."""
 		c = CallFile(self.call, self.action, spool_dir='spool_dir')
 		assert_false(c.is_valid())
+
+	@raises(ValidationError)
+	def test_buildfile_raises_validation_error(self):
+		"""Ensure `buildfile` raises `ValidationError` if the `CallFile` can't
+		be validated.
+		"""
+		CallFile(self.call, self.action, tmpdir='tmpdir').buildfile()
