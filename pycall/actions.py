@@ -1,4 +1,4 @@
-"""A simple wrapper for Asterisk applications."""
+"""A simple wrapper for Asterisk call file actions."""
 
 
 class Application(object):
