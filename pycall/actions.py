@@ -18,6 +18,13 @@ class Application(Action):
 		self.application = application
 		self.data = data
 
+	def __str__(self):
+		"""Render this action as call file directives.
+
+		:rtype: Tuple of strings.
+		"""
+		return ['Application: ' + self.application, 'Data: ' + self.data]
+
 
 class Context(Action):
 	"""Stores and manipulates Asterisk contexts, extensions, and priorities."""
@@ -32,3 +39,11 @@ class Context(Action):
 		self.context = context
 		self.extension = extension
 		self.priority = priority
+
+	def __str__(self):
+		"""Render this action as call file directives.
+
+		:rtype: Tuple of strings.
+		"""
+		return ['Context: ' + self.context, 'Extension: ' + self.extension,
+				'Priority: ' + self.priority]
