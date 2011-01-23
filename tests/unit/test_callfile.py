@@ -47,3 +47,15 @@ class TestCallFile(TestCase):
 		"""Ensure `is_valid` fails with an invalid `action` attribute."""
 		c = CallFile(self.call, 'action', spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
+
+	def test_is_valid_valid_set_var(self):
+		"""Ensure `is_valid` works with a well-formed `set_var` attribute."""
+		c = CallFile(self.call, self.action, set_var={'a': 'b'},
+				spool_dir=self.spool_dir)
+		ok_(c.is_valid())
+
+	def test_is_valid_invalid_set_var(self):
+		"""Ensure `is_valid` fails with an invalid `set_var` attribute."""
+		c = CallFile(self.call, self.action, set_var='set_var',
+				spool_dir=self.spool_dir)
+		assert_false(c.is_valid())
