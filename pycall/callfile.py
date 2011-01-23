@@ -84,8 +84,8 @@ class CallFile(object):
 			the disk.
 		:rtype: List of strings.
 		"""
-		if not self._is_valid():
-			raise UnknownError
+		if not self.is_valid():
+			raise ValidationError
 
 		cf = []
 		cf.append('Channel: '+self.channel)
