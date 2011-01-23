@@ -44,7 +44,7 @@ class CallFile(object):
 		self.file_name = file_name
 		self.spool_dir = spool_dir or DEFAULT_SPOOL_DIR
 
-	def _is_valid(self):
+	def is_valid(self):
 		"""Check to see if all `CallFile` attributes are valid.
 
 		:rtype: Boolean.
