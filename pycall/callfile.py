@@ -49,7 +49,32 @@ class CallFile(object):
 
 		:rtype: Boolean.
 		"""
-		return self.call.is_valid()
+
+		# Fail if `call` isn't a `Call` object.
+		if not isinstance(Call, self.call):
+			return False
+
+		# Fail if `action` isn't an `Action` subclass.
+		if not isinstance(Action, self.action):
+			return False
+
+		# Fail if `set_var` was specified, but isn't a dictionary.
+		if self.set_var and not isinstance(dict, self.set_var):
+			return False
+
+		# Fail if `tmpdir` was specified, but isn't a real directory.
+		if self.tmpdir and not path(self.tmpdir).isdir():
+			return False
+
+		# Fail if `call` isn't a valid `Call` object.
+		if not self.call.is_valid():
+			return False
+
+		# Fail if `spool_dir` was specified, but isn't a real directory.
+		if self.spool_dir and not path(self.spool_dir).isdir():
+			return False
+
+		return True
 
 	def _buildfile(self):
 		"""
