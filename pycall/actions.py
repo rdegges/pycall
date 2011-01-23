@@ -24,4 +24,6 @@ class Context(object):
 		:param str extension: Asterisk extension to run.
 		:param str priority: Asterisk priority to run.
 		"""
-		pass
+		self.context = context
+		self.extension = extension
+		self.priority = priority
