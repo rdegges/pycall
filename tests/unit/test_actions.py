@@ -3,7 +3,7 @@
 
 from unittest import TestCase
 
-from nose.tools import eq_, raises
+from nose.tools import eq_, ok_, raises
 
 from pycall import Application, Context
 
@@ -22,6 +22,12 @@ class TestApplication(TestCase):
 		eq_(a.application, 'Playback')
 		eq_(a.data, 'hello-world')
 
+	def test_application_str(self):
+		"""Ensure the `__str__` method works."""
+		a = Application('Playback', 'hello-world')
+		ok_('Playback' in ''.join(a.__str__()) and
+				'hello-world' in ''.join(a.__str__()))
+
 
 class TestContext(TestCase):
 	"""Test the `pycall.actions.Context` class."""
@@ -37,3 +43,9 @@ class TestContext(TestCase):
 		eq_(c.context, 'Callout')
 		eq_(c.extension, 's')
 		eq_(c.priority, '1')
+
+	def test_context_str(self):
+		"""Ensure the `__str__` method works."""
+		c = Context('Callout', 's', '1')
+		ok_('Callout' in ''.join(c.__str__()) and
+				's' in ''.join(c.__str__()) and '1' in ''.join(c.__str__()))
