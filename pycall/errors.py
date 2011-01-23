@@ -16,6 +16,9 @@ from exceptions import Exception
 class PycallError(Exception):
 	pass
 
+class ValidationError(PycallError):
+	def __str__(self): return 'CallFile could not be validated.'
+
 class UnknownError(PycallError):
 	def __str__(self): return 'Something must have gone horribly wrong.'
 
