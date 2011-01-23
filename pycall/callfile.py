@@ -31,14 +31,14 @@ class CallFile(object):
 		:param str spool_dir: Directory to spool the call file to.
 		:rtype: `CallFile` object.
 		"""
-
-		if not spool_dir:
-			spool_dir = self.DEFAULT_SPOOL_DIR
-
-		args = dict(locals())
-		args.pop('self')
-		for name, value in args.items():
-			setattr(self, name, value)
+		self.call = call
+		self.action = action
+		self.set_var = set_var
+		self.archive = archive
+		self.user = user
+		self.tmpdir = tmpdir
+		self.file_name = file_name
+		self.spool_dir = spool_dir or DEFAULT_SPOOL_DIR
 
 	def _is_valid(self):
 		"""
