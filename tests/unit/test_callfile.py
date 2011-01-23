@@ -37,3 +37,8 @@ class TestCallFile(TestCase):
 		"""Ensure `is_valid` works with a well-formed `call` attribute."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		ok_(c.is_valid())
+
+	def test_is_valid_invalid_call(self):
+		"""Ensure `is_valid` fails with an invalid `call` attribute."""
+		c = CallFile('call', self.action, spool_dir=self.spool_dir)
+		assert_false(c.is_valid())
