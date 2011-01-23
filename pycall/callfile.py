@@ -16,8 +16,8 @@ class CallFile(object):
 	#: The default spooling directory (should be OK for most systems).
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
-	def __init__(self, call=None, action=None, set_var=None, archive=None,
-			user=None, tmpdir=None, file_name=None, spool_dir=None):
+	def __init__(self, call, action, set_var=None, archive=None, user=None,
+			tmpdir=None, file_name=None, spool_dir=None):
 		"""Create a new `CallFile` obeject.
 
 		:param obj call: A `pycall.Call` instance.
