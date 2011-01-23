@@ -88,17 +88,8 @@ class CallFile(object):
 			raise ValidationError
 
 		cf = []
-		cf.append('Channel: '+self.channel)
-
-		if self.application:
-			cf.append('Application: '+self.application)
-			cf.append('Data: '+self.data)
-		elif self.context and self.extension and self.priority:
-			cf.append('Context: '+self.context)
-			cf.append('Extension: '+self.extension)
-			cf.append('Priority: '+self.priority)
-		else:
-			raise UnknownError
+		cf.append('Channel: ' + self.call.channel)
+		cf += self.action.__str__()
 
 		if self.set_var:
 			for var, value in self.set_var.items():
