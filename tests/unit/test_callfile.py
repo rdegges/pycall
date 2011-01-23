@@ -32,3 +32,8 @@ class TestCallFile(TestCase):
 		eq_(c.tmpdir, 5)
 		eq_(c.file_name, 6)
 		eq_(c.spool_dir, 7)
+
+	def test_is_valid_valid_call(self):
+		"""Ensure `is_valid` works with a well-formed `call` attribute."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_(c.is_valid())
