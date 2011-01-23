@@ -1,4 +1,4 @@
-"""Unit tests for `pycall`."""
+"""Unit tests for `pycall.callfile`."""
 
 from unittest import TestCase
 
