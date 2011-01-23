@@ -21,3 +21,14 @@ class Call(object):
 		self.account = account
 		self.wait_time = wait_time
 		self.max_retries = max_retries
+
+	def is_valid(self):
+		"""Check to see if the `Call` attributes are valid.
+
+		:rtype: Boolean.
+		"""
+		if self.wait_time and type(self.wait_time) != int:
+			return False
+		if self.max_retries and type(self.max_retries) != int:
+			return False
+		return True
