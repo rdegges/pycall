@@ -18,8 +18,7 @@ class CallFile(object):
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
 	def __init__(self, channel, callerid=None, wait_time=None,
-			max_retries=None, retry_time=None, account=None, application=None,
-			data=None, context=None, extension=None, priority=None,
+			max_retries=None, retry_time=None, account=None, action=None,
 			set_var=None, archive=None, user=None, tmpdir=None, file_name=None,
 			spool_dir=None):
 		"""
@@ -34,11 +33,8 @@ class CallFile(object):
 								it isn't answered.
 		:param int retry_time:	Amount of seconds to wait between retries.
 		:param str account:		Account code associated with the call.
-		:param str application:	Asterisk application to run upon answer.
-		:param str data:		Arguments to application.
-		:param str context:		Asterisk context to jump to upon answer.
-		:param str extension:	Asterisk extension to jump to upon answer.
-		:param str priority:	Asterisk priority to jump to upon answer.
+		:param obj action:	Either a `pycall.actions.Application` instance or a
+							`pycall.actions.Context` instance.
 		:param dict set_var:	Variables to pass to Asterisk upon answer.
 		:param bool archive:	Should Asterisk archive the call file?
 		:param str user:		Username to spool the call file as.
