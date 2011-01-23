@@ -56,3 +56,35 @@ class TestCall(TestCase):
 		"""
 		c = Call('local/18882223333@outgoing', max_retries='10')
 		assert_false(c.is_valid())
+
+	def test_str_no_attrs(self):
+		"""Ensure `__str__` works with no optional attributes specified."""
+		c = Call('local/18882223333@outgoing')
+		ok_('Channel: local/18882223333@outgoing' in ''.join(c.__str__()))
+
+	def test_str_valid_callerid(self):
+		"""Ensure `__str__` works with a well-formed `callerid` attribute."""
+		c = Call('local/18882223333@outgoing', callerid='"hi"')
+		ok_('"hi"' in ''.join(c.__str__()))
+
+	def test_str_valid_account(self):
+		"""Ensure `__str__` works with a well-formed `account` attribute."""
+		c = Call('local/18882223333@outgoing', account='rdegges')
+		ok_('rdegges' in ''.join(c.__str__()))
+
+	def test_str_valid_wait_time(self):
+		"""Ensure `__str__` works with a well-formed `wait_time` attribute."""
+		c = Call('local/18882223333@outgoing', wait_time=10)
+		ok_('10' in ''.join(c.__str__()))
+
+	def test_str_valid_retry_time(self):
+		"""Ensure `__str__` works with a well-formed `retry_time` attribute."""
+		c = Call('local/18882223333@outgoing', retry_time=15)
+		ok_('15' in ''.join(c.__str__()))
+
+	def test_str_valid_max_retries(self):
+		"""Ensure `__str__` works with a well-formed `max_retries`
+		attribute.
+		"""
+		c = Call('local/18882223333@outgoing', max_retries=20)
+		ok_('20' in ''.join(c.__str__()))
