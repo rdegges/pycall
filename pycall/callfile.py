@@ -10,7 +10,7 @@ from os import path, chown, utime, fdopen
 from path import path
 
 from .call import Call
-from .actions import Application, Context
+from .actions import Action
 from .errors import *
 
 
@@ -42,7 +42,7 @@ class CallFile(object):
 		self.user = user
 		self.tmpdir = tmpdir
 		self.file_name = file_name
-		self.spool_dir = spool_dir or DEFAULT_SPOOL_DIR
+		self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
 	def is_valid(self):
 		"""Check to see if all `CallFile` attributes are valid.
@@ -51,15 +51,15 @@ class CallFile(object):
 		"""
 
 		# Fail if `call` isn't a `Call` object.
-		if not isinstance(Call, self.call):
+		if not isinstance(self.call, Call):
 			return False
 
 		# Fail if `action` isn't an `Action` subclass.
-		if not isinstance(Action, self.action):
+		if not isinstance(self.action, Action):
 			return False
 
 		# Fail if `set_var` was specified, but isn't a dictionary.
-		if self.set_var and not isinstance(dict, self.set_var):
+		if self.set_var and not isinstance(self.set_var, dict):
 			return False
 
 		# Fail if `tmpdir` was specified, but isn't a real directory.
