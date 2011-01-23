@@ -21,8 +21,7 @@ class CallFile(object):
 			max_retries=None, retry_time=None, account=None, action=None,
 			set_var=None, archive=None, user=None, tmpdir=None, file_name=None,
 			spool_dir=None):
-		"""
-		Create a new `CallFile` obeject.
+		"""Create a new `CallFile` obeject.
 
 		:param str channel:		The number(s) to call. Specified as an \
 								Asterisk dial string.
