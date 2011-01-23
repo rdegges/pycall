@@ -76,7 +76,7 @@ class CallFile(object):
 
 		return True
 
-	def _buildfile(self):
+	def buildfile(self):
 		"""
 		Use the class attributes to build a call file string.
 
