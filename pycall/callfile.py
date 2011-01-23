@@ -23,24 +23,24 @@ class CallFile(object):
 			spool_dir=None):
 		"""Create a new `CallFile` obeject.
 
-		:param str channel:		The number(s) to call. Specified as an Asterisk
-								dial string.
-		:param str callerid:	The caller ID to use when making the call.
+		:param str channel:	The number(s) to call. Specified as an Asterisk
+							dial string.
+		:param str callerid: The caller ID to use when making the call.
 		:param int wait_time:	Amount of time to wait (in seconds) between
 								retry attempts.
 		:param int max_retries:	Maximum amount of times to retry the call if it
 								isn't answered.
-		:param int retry_time:	Amount of seconds to wait between retries.
-		:param str account:		Account code associated with the call.
-		:param obj action:		Either a `pycall.actions.Application` instance
-								or a `pycall.actions.Context` instance.
-		:param dict set_var:	Variables to pass to Asterisk upon answer.
-		:param bool archive:	Should Asterisk archive the call file?
-		:param str user:		Username to spool the call file as.
-		:param str tmpdir:		Directory to store the temporary call file.
-		:param str file_name:	Call file name.
-		:param str spool_dir:	Directory to spool the call file to.
-		:rtype:					`CallFile` object.
+		:param int retry_time: Amount of seconds to wait between retries.
+		:param str account: Account code associated with the call.
+		:param obj action:	Either a `pycall.actions.Application` instance
+							or a `pycall.actions.Context` instance.
+		:param dict set_var: Variables to pass to Asterisk upon answer.
+		:param bool archive: Should Asterisk archive the call file?
+		:param str user: Username to spool the call file as.
+		:param str tmpdir: Directory to store the temporary call file.
+		:param str file_name: Call file name.
+		:param str spool_dir: Directory to spool the call file to.
+		:rtype: `CallFile` object.
 		"""
 
 		if not spool_dir:
