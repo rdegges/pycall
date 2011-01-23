@@ -19,11 +19,12 @@ class TestCall(TestCase):
 	def test_call_attrs(self):
 		"""Ensure that all `Call` attributes stick."""
 		c = Call('local/18882223333@outgoing', '"Randall Degges" <666>',
-				'rdegges', 10, 20)
+				'rdegges', 10, 15, 20)
 		eq_(c.channel, 'local/18882223333@outgoing')
 		eq_(c.callerid, '"Randall Degges" <666>')
 		eq_(c.account, 'rdegges')
 		eq_(c.wait_time, 10)
+		eq_(c.retry_time, 15)
 		eq_(c.max_retries, 20)
 
 	def test_is_valid_no_wait_time_and_no_max_retries(self):
