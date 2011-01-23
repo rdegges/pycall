@@ -105,3 +105,11 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, variables={'hi': 'there'},
 				spool_dir=self.spool_dir)
 		ok_('hi=there' in ''.join(c.buildfile()))
+
+	def test_buildfile_valid_archive(self):
+		"""Ensure that `buildfile` works with a well-formed `archive`
+		attribute.
+		"""
+		c = CallFile(self.call, self.action, archive=True,
+				spool_dir=self.spool_dir)
+		ok_('Archive: yes' in ''.join(c.buildfile()))
