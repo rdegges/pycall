@@ -26,7 +26,7 @@ class TestCallFile(TestCase):
 		c = CallFile(0, 1, 2, 3, 4, 5, 6, 7)
 		eq_(c.call, 0)
 		eq_(c.action, 1)
-		eq_(c.set_var, 2)
+		eq_(c.variables, 2)
 		eq_(c.archive, 3)
 		eq_(c.user, 4)
 		eq_(c.tmpdir, 5)
@@ -57,15 +57,15 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, 'action', spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
-	def test_is_valid_valid_set_var(self):
-		"""Ensure `is_valid` works with a well-formed `set_var` attribute."""
-		c = CallFile(self.call, self.action, set_var={'a': 'b'},
+	def test_is_valid_valid_variables(self):
+		"""Ensure `is_valid` works with a well-formed `variables` attribute."""
+		c = CallFile(self.call, self.action, variables={'a': 'b'},
 				spool_dir=self.spool_dir)
 		ok_(c.is_valid())
 
-	def test_is_valid_invalid_set_var(self):
-		"""Ensure `is_valid` fails with an invalid `set_var` attribute."""
-		c = CallFile(self.call, self.action, set_var='set_var',
+	def test_is_valid_invalid_variables(self):
+		"""Ensure `is_valid` fails with an invalid `variables` attribute."""
+		c = CallFile(self.call, self.action, variables='variables',
 				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
