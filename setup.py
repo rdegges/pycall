@@ -1,4 +1,4 @@
-""" Handles packaging, distribution, and testing. """
+"""Handles packaging, distribution, and testing."""
 
 
 import ez_setup
