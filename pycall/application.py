@@ -10,4 +10,5 @@ class Application(object):
 		:param str application: Asterisk application.
 		:param str data: Asterisk application data.
 		"""
-		pass
+		self.application = application
+		self.data = data
