@@ -2,7 +2,7 @@
 
 from unittest import TestCase
 
-from nose.tools import eq_, ok_, raises
+from nose.tools import assert_false, eq_, ok_, raises
 
 from pycall import Application, Call, CallFile
 
@@ -33,7 +33,7 @@ class TestCallFile(TestCase):
 		eq_(c.file_name, 6)
 		eq_(c.spool_dir, 7)
 
-	def test_is_valid_valid_call(self):
+	def test_is_valid_valid_call_and_valid_action(self):
 		"""Ensure `is_valid` works with a well-formed `call` attribute."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		ok_(c.is_valid())
