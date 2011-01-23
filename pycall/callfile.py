@@ -51,9 +51,6 @@ class CallFile(object):
 		:raises: `NoActionDefinedError` if no action has been specified.
 		:rtype: Boolean.
 		"""
-		if not self.channel:
-			raise NoChannelDefinedError
-
 		if not ((self.application and self.data) or \
 			(self.context and self.extension and self.priority)):
 			raise NoActionDefinedError
