@@ -8,12 +8,12 @@ class Call(object):
 			max_retries=None):
 		"""Create a new `Call` object.
 
-		:param str channel:	The Asterisk channel to call. Should be in standard
-							Asterisk format.
+		:param str channel: The Asterisk channel to call. Should be in standard
+			Asterisk format.
 		:param str callerid: CallerID to use.
 		:param str account: Account code to associate with this call.
-		:param int wait_time:	Amount of time to wait (in seconds) between
-								retry attempts.
+		:param int wait_time: Amount of time to wait (in seconds) between
+			retry attempts.
 		:param int max_retries: Maximum amount of retry attempts.
 		"""
 		self.channel = channel
