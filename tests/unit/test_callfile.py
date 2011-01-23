@@ -97,3 +97,11 @@ class TestCallFile(TestCase):
 		be validated.
 		"""
 		CallFile(self.call, self.action, tmpdir='tmpdir').buildfile()
+
+	def test_buildfile_valid_variables(self):
+		"""Ensure that `buildfile` works with a well-formed `variables`
+		attribute.
+		"""
+		c = CallFile(self.call, self.action, variables={'hi': 'there'},
+				spool_dir=self.spool_dir)
+		ok_('hi=there' in ''.join(c.buildfile()))
