@@ -149,8 +149,8 @@ class CallFile(object):
 		Uses the class attributes to submit this `CallFile` to the Asterisk
 		spooling directory.
 
-		:param datetime time: [optional] The date and time to spool this \
-			call file.
+		:param datetime time: [optional] The date and time to spool this call
+			file.
 		:rtype: Boolean.
 		"""
 		fname = self._writefile(self._buildfile())
