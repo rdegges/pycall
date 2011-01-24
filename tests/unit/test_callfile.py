@@ -138,4 +138,4 @@ class TestCallFile(TestCase):
 		"""
 		c = CallFile(self.call, self.action, _filename='/woot.call',
 				spool_dir=self.spool_dir)
-		eq_(c.filename, '/woot.call')
+		eq_(c.filename, 'woot.call')
