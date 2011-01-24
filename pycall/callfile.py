@@ -11,7 +11,7 @@ from path import path
 
 from .call import Call
 from .actions import Action
-from .errors import *
+from .errors import ValidationError
 
 
 class CallFile(object):
