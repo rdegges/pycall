@@ -139,3 +139,18 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, _filename='/woot.call',
 				spool_dir=self.spool_dir)
 		eq_(c.filename, 'woot.call')
+
+	def test_filename_no__filename_and_no_tmpdir(self):
+		"""Ensure that the `filename` property works without any `_filename` or
+		`tmpdir` attributes specified.
+		"""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_(c.filename)
+
+	def test_filename_no__filename_with_tmpdir(self):
+		"""Ensure that the `filename` property works without the `filename`
+		attribute, but with the `tmpdir` attribute.
+		"""
+		c = CallFile(self.call, self.action, tmpdir='.',
+				spool_dir=self.spool_dir)
+		ok_(c.filename)
