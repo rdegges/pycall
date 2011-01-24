@@ -37,12 +37,12 @@ class TestCallFile(TestCase):
 		c = CallFile('call', self.action, spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
-	def test_is_valid_invalid_call_validation(self):
+	def test_is_valid_invalid_call_attributes(self):
 		"""Ensure that the `call` attribute's `is_valid` method fails if the
 		`Call` object is invalid.
 		"""
-		c = CallFile(Call('local/18882223333@outgoing', wait_time='wait_time'),
-				self.action, spool_dir=self.spool_dir)
+		c = CallFile(Call('channel', wait_time='wait_time'), self.action,
+				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
 	def test_is_valid_invalid_action(self):
