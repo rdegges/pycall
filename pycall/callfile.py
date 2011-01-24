@@ -132,7 +132,7 @@ class CallFile(object):
 		except AttributeError:
 			if self.tmpdir:
 				self.f = mkstemp(suffix='.call',
-						dir=path(self.tmpdir).abspath().dirname())
+						dir=path(self.tmpdir).abspath())
 			else:
 				self.f = mkstemp(suffix='.call')
 
