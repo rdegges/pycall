@@ -108,7 +108,7 @@ class CallFile(object):
 		:returns: Call file contents.
 		:rtype: String.
 		"""
-		return '\n'.join(self._buildfile())
+		return '\n'.join(self.buildfile())
 
 	def _writefile(self, cf):
 		"""
