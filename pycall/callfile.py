@@ -110,7 +110,7 @@ class CallFile(object):
 		"""
 		return '\n'.join(self.buildfile())
 
-	def _writefile(self, cf):
+	def writefile(self):
 		"""
 		Write a temporary call file.
 
