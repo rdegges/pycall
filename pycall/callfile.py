@@ -63,7 +63,8 @@ class CallFile(object):
 			return False
 
 		# Fail if `tmpdir` was specified, but isn't a real directory.
-		if self.tmpdir and not path(self.tmpdir).isdir():
+		if self.tmpdir and not path(self.tmpdir).abspath().isdir():
+			return False
 			return False
 
 		# Fail if `spool_dir` was specified, but isn't a real directory.
