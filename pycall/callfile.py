@@ -136,7 +136,7 @@ class CallFile(object):
 			else:
 				self.f = mkstemp(suffix='.call')
 
-		return self.f[1]
+		return path(self.f[1]).abspath().basename()
 
 	def writefile(self):
 		"""
