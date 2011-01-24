@@ -30,7 +30,7 @@ class TestCallFile(TestCase):
 		eq_(c.archive, 3)
 		eq_(c.user, 4)
 		eq_(c.tmpdir, 5)
-		eq_(c.file_name, 6)
+		eq_(c._filename, 6)
 		eq_(c.spool_dir, 7)
 
 	def test_is_valid_valid_call_and_valid_action_and_valid_spool_dir(self):
@@ -81,15 +81,15 @@ class TestCallFile(TestCase):
 				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
-	def test_is_valid_valid_file_name(self):
-		"""Ensure `is_valid` works with a well-formed `file_name` attribute."""
-		c = CallFile(self.call, self.action, file_name='/test.call',
+	def test_is_valid_valid__filename(self):
+		"""Ensure `is_valid` works with a well-formed `_filename` attribute."""
+		c = CallFile(self.call, self.action, _filename='/test.call',
 				spool_dir=self.spool_dir)
 		ok_(c.is_valid())
 
-	def test_is_valid_invalid_file_name(self):
-		"""Ensure `is_valid` fails with an invalid `file_name` attribute."""
-		c = CallFile(self.call, self.action, file_name='/woot/lol/hi.txt',
+	def test_is_valid_invalid__filename(self):
+		"""Ensure `is_valid` fails with an invalid `_filename` attribute."""
+		c = CallFile(self.call, self.action, _filename='/woot/lol/hi.txt',
 				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
