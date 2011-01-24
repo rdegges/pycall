@@ -114,7 +114,6 @@ class CallFile(object):
 		"""
 		Write a temporary call file to disk.
 
-		:param cf: List of call file directives.
 		:returns: Absolute path name of the temporary call file.
 		:rtype: String.
 		"""
