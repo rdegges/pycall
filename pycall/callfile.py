@@ -46,12 +46,9 @@ class CallFile(object):
 		:returns: True if the call file is valid, False otherwise.
 		:rtype: Boolean.
 		"""
-
-		# Fail if `call` isn't a `Call` object.
 		if not isinstance(self.call, Call):
 			return False
 
-		# Fail if `action` isn't an `Action` subclass.
 		if not isinstance(self.action, Action):
 			return False
 
