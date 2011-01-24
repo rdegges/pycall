@@ -4,13 +4,14 @@
 class Call(object):
 	"""Stores and manipulates Asterisk calls."""
 
-	def __init__(self, channel, callerid=None, account=None, wait_time=None,
-			retry_time=None, max_retries=None):
+	def __init__(self, channel, callerid=None, variables=None, account=None,
+			wait_time=None, retry_time=None, max_retries=None):
 		"""Create a new `Call` object.
 
 		:param str channel: The Asterisk channel to call. Should be in standard
 			Asterisk format.
 		:param str callerid: CallerID to use.
+		:param dict variables: Variables to pass to Asterisk upon answer.
 		:param str account: Account code to associate with this call.
 		:param int wait_time: Amount of time to wait for answer (in seconds).
 		:param int retry_time: Amount of time to wait (in seconds) between
@@ -19,6 +20,7 @@ class Call(object):
 		"""
 		self.channel = channel
 		self.callerid = callerid
+		self.variables = variables
 		self.account = account
 		self.wait_time = wait_time
 		self.retry_time = retry_time
@@ -27,8 +29,11 @@ class Call(object):
 	def is_valid(self):
 		"""Check to see if the `Call` attributes are valid.
 
+		:returns: True if all attributes are valid, False otherwise.
 		:rtype: Boolean.
 		"""
+		if self.variables and not isinstance(self.variables, dict):
+			return False
 		if self.wait_time and type(self.wait_time) != int:
 			return False
 		if self.retry_time and type(self.retry_time) != int:
@@ -46,6 +51,9 @@ class Call(object):
 
 		if self.callerid:
 			c.append('Callerid: ' + self.callerid)
+		if self.variables:
+			for var, value in self.variables.items():
+				c.append('Set: %s=%s' % (var, value))
 		if self.account:
 			c.append('Account: ' + self.account)
 		if self.wait_time:
