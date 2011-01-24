@@ -39,6 +39,12 @@ class TestCall(TestCase):
 		c = Call('local/18882223333@outgoing', wait_time=15)
 		ok_(c.is_valid())
 
+	def test_is_valid_proper_retry_time(self):
+		"""Ensure a valid `retry_time` attribute passes the `is_valid` check.
+		"""
+		c = Call('local/18882223333@outgoing', retry_time=17)
+		ok_(c.is_valid())
+
 	def test_is_valid_proper_max_retries(self):
 		"""Ensure a valid `max_retries` attribute passes the `is_valid` check.
 		"""
@@ -49,6 +55,12 @@ class TestCall(TestCase):
 		"""Ensure a non-int `wait_time` attribute fails the `is_valid` check.
 		"""
 		c = Call('local/18882223333@outgoing', wait_time='15')
+		assert_false(c.is_valid())
+
+	def test_is_valid_bad_retry_time(self):
+		"""Ensure a non-int `retry_time` attribute fails the `is_valid` check.
+		"""
+		c = Call('local/18882223333@outgoing', retry_time='17')
 		assert_false(c.is_valid())
 
 	def test_is_valid_bad_max_retries(self):
