@@ -17,11 +17,6 @@ class TestCallFile(TestCase):
 		self.action = Application('Playback', 'hello-world')
 		self.spool_dir = '/'
 
-	@raises(TypeError)
-	def test_create_callfile(self):
-		"""Ensure creating an empty `CallFile` object fails."""
-		CallFile()
-
 	def test_callfile_attrs(self):
 		"""Ensure `CallFile` attributes stick."""
 		c = CallFile(0, 1, 2, 3, 4, 5)
