@@ -113,3 +113,9 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, archive=True,
 				spool_dir=self.spool_dir)
 		ok_('Archive: yes' in ''.join(c.buildfile()))
+
+	def test_contents(self):
+		"""Ensure that the `contents` property works."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_('local/18882223333@outgoing' in c.contents and
+				'Playback' in c.contents and 'hello-world' in c.contents)
