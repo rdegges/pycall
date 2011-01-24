@@ -124,11 +124,11 @@ class CallFile(object):
 		:rtype: String.
 		"""
 		if self.tmpdir:
-			file, fname = mkstemp(suffix='.call', dir=self.tmpdir)
+			f, fname = mkstemp(suffix='.call', dir=self.tmpdir)
 		else:
-			file, fname = mkstemp('.call')
+			f, fname = mkstemp('.call')
 
-		with fdopen(file, 'w') as f:
+		with fdopen(f, 'w') as f:
 			for line in cf:
 				f.write(line+'\n')
 
