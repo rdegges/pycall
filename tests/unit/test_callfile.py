@@ -24,13 +24,12 @@ class TestCallFile(TestCase):
 
 	def test_callfile_attrs(self):
 		"""Ensure `CallFile` attributes stick."""
-		c = CallFile(0, 1, 2, 3, 4, 5, 6)
+		c = CallFile(0, 1, 2, 3, 4, 5)
 		eq_(c.call, 0)
 		eq_(c.action, 1)
 		eq_(c.variables, 2)
 		eq_(c.archive, 3)
 		eq_(c.user, 4)
-		eq_(c._filename, 5)
 		eq_(c.spool_dir, 6)
 
 	def test_is_valid_valid_call_and_valid_action_and_valid_spool_dir(self):
