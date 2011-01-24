@@ -43,7 +43,7 @@ class CallFile(object):
 	def is_valid(self):
 		"""Check to see if all attributes are valid.
 
-		:returns: True if the call file is valid, False otherwise.
+		:returns: True if all attributes are valid, False otherwise.
 		:rtype: Boolean.
 		"""
 		if not isinstance(self.call, Call):
