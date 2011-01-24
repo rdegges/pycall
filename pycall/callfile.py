@@ -52,15 +52,12 @@ class CallFile(object):
 		if not isinstance(self.action, Action):
 			return False
 
-		# Fail if `variables` was specified, but isn't a dictionary.
 		if self.variables and not isinstance(self.variables, dict):
 			return False
 
-		# Fail if `spool_dir` was specified, but isn't a real directory.
 		if self.spool_dir and not path(self.spool_dir).abspath().isdir():
 			return False
 
-		# Fail if `call` isn't a valid `Call` object.
 		if not self.call.is_valid():
 			return False
 
