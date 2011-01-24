@@ -2,6 +2,7 @@
 
 from unittest import TestCase
 
+from path import path
 from nose.tools import assert_false, eq_, ok_, raises
 
 from pycall import Application, Call, CallFile, ValidationError
@@ -23,15 +24,14 @@ class TestCallFile(TestCase):
 
 	def test_callfile_attrs(self):
 		"""Ensure `CallFile` attributes stick."""
-		c = CallFile(0, 1, 2, 3, 4, 5, 6, 7)
+		c = CallFile(0, 1, 2, 3, 4, 5, 6)
 		eq_(c.call, 0)
 		eq_(c.action, 1)
 		eq_(c.variables, 2)
 		eq_(c.archive, 3)
 		eq_(c.user, 4)
-		eq_(c.tmpdir, 5)
-		eq_(c._filename, 6)
-		eq_(c.spool_dir, 7)
+		eq_(c._filename, 5)
+		eq_(c.spool_dir, 6)
 
 	def test_is_valid_valid_call_and_valid_action_and_valid_spool_dir(self):
 		"""Ensure `is_valid` works with well-formed `call`, `action`, and
@@ -66,18 +66,6 @@ class TestCallFile(TestCase):
 	def test_is_valid_invalid_variables(self):
 		"""Ensure `is_valid` fails with an invalid `variables` attribute."""
 		c = CallFile(self.call, self.action, variables='variables',
-				spool_dir=self.spool_dir)
-		assert_false(c.is_valid())
-
-	def test_is_valid_valid_tmpdir(self):
-		"""Ensure `is_valid` works with a well-formed `tmpdir` attribute."""
-		c = CallFile(self.call, self.action, tmpdir='/',
-				spool_dir=self.spool_dir)
-		ok_(c.is_valid())
-
-	def test_is_valid_invalid_tmpdir(self):
-		"""Ensure `is_valid` fails with an invalid `tmpdir` attribute."""
-		c = CallFile(self.call, self.action, tmpdir='tmpdir',
 				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
@@ -140,17 +128,8 @@ class TestCallFile(TestCase):
 				spool_dir=self.spool_dir)
 		eq_(c.filename, 'woot.call')
 
-	def test_filename_no__filename_and_no_tmpdir(self):
-		"""Ensure that the `filename` property works without any `_filename` or
-		`tmpdir` attributes specified.
+	def test_writefile_creates_file(self):
+		"""Ensure that `writefile` actually generates a call file on the disk.
 		"""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
-		ok_(c.filename)
-
-	def test_filename_no__filename_with_tmpdir(self):
-		"""Ensure that the `filename` property works without the `filename`
-		attribute, but with the `tmpdir` attribute.
-		"""
-		c = CallFile(self.call, self.action, tmpdir='.',
-				spool_dir=self.spool_dir)
-		ok_(c.filename)
+		ok_(path(c.writefile()).abspath().exists())
