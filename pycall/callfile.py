@@ -115,6 +115,15 @@ class CallFile(object):
 		"""
 		return '\n'.join(self.buildfile())
 
+	@property
+	def filename(self):
+		"""Get the absolute path of our call file.
+
+		:returns: Absolute path of this call file.
+		:rtype: String.
+		"""
+		pass
+
 	def writefile(self):
 		"""
 		Write a temporary call file to disk.
