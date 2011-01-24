@@ -15,6 +15,7 @@ class TestCallFile(TestCase):
 		"""Setup some default variables for test usage."""
 		self.call = Call('local/18882223333@outgoing')
 		self.action = Application('Playback', 'hello-world')
+		self.variables = {'a': 'b', 'c': 'd'}
 		self.spool_dir = '/'
 
 	def test_callfile_attrs(self):
@@ -27,44 +28,57 @@ class TestCallFile(TestCase):
 		eq_(c.user, 4)
 		eq_(c.spool_dir, 5)
 
-	def test_is_valid_all_defaults(self):
-		"""Ensure `is_valid` works using valid class attributes."""
+	def test_is_valid_valid_call(self):
+		"""Ensure `is_valid` works using a valid `call` attribute."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_(c.is_valid())
+
+	def test_is_valid_valid_action(self):
+		"""Ensure `is_valid` works using a valid `action` attribute."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_(c.is_valid())
+
+	def test_is_valid_valid_variables(self):
+		"""Ensure `is_valid` works using a valid `variables` attribute."""
+		c = CallFile(self.call, self.action, variables=self.variables,
+				spool_dir=self.spool_dir)
+		ok_(c.is_valid())
+
+	def test_is_valid_valid_spool_dir(self):
+		"""Ensure `is_valid` works using a valid `spool_dir` attribute."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_(c.is_valid())
+
+	def test_is_valid_valid_call_is_valid(self):
+		"""Ensure `is_valid` works when `call.is_valid()` works."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		ok_(c.is_valid())
 
 	def test_is_valid_invalid_call(self):
-		"""Ensure `is_valid` fails using an invalid `call` attribute."""
+		"""Ensure `is_valid` fails given an invalid `call` attribute."""
 		c = CallFile('call', self.action, spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
 	def test_is_valid_invalid_action(self):
-		"""Ensure `is_valid` fails with an invalid `action` attribute."""
+		"""Ensure `is_valid` fails given an invalid `action` attribute."""
 		c = CallFile(self.call, 'action', spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
-	def test_is_valid_invalid_call_attributes(self):
-		"""Ensure the `call` attribute's `is_valid` method fails if the `Call`
-		object is invalid.
-		"""
-		c = CallFile(Call('channel', wait_time='wait_time'), self.action,
-				spool_dir=self.spool_dir)
-		assert_false(c.is_valid())
-
-	def test_is_valid_valid_variables(self):
-		"""Ensure `is_valid` works with a well-formed `variables` attribute."""
-		c = CallFile(self.call, self.action, variables={'a': 'b'},
-				spool_dir=self.spool_dir)
-		ok_(c.is_valid())
-
 	def test_is_valid_invalid_variables(self):
-		"""Ensure `is_valid` fails with an invalid `variables` attribute."""
+		"""Ensure `is_valid` fails given an invalid `variables` attribute."""
 		c = CallFile(self.call, self.action, variables='variables',
 				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
 	def test_is_valid_invalid_spool_dir(self):
-		"""Ensure `is_valid` fails with an invalid `spool_dir` attribute."""
-		c = CallFile(self.call, self.action, spool_dir='spool_dir')
+		"""Ensure `is_valid` fails given an invalid `spool_dir` attribute."""
+		c = CallFile(self.call, self.action, spool_dir='/woot')
+		assert_false(c.is_valid())
+
+	def test_is_valid_invalid_call_is_valid(self):
+		"""Ensure `is_valid` fails when `call.is_valid()` fails."""
+		c = CallFile(Call('channel', wait_time='10'), self.action,
+				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
 	def test_buildfile_is_valid(self):
