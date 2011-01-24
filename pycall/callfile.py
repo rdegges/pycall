@@ -122,7 +122,8 @@ class CallFile(object):
 		:returns: Absolute path of this call file.
 		:rtype: String.
 		"""
-		pass
+		if self._filename:
+			return path(self._filename).abspath()
 
 	def writefile(self):
 		"""
