@@ -18,8 +18,8 @@ class TestCallFile(TestCase):
 		self.variables = {'a': 'b', 'c': 'd'}
 		self.spool_dir = '/'
 
-	def test_callfile_attrs(self):
-		"""Ensure `CallFile` attributes stick."""
+	def test_attrs_stick(self):
+		"""Ensure attributes stick."""
 		c = CallFile(0, 1, 2, 3, 4, 5)
 		eq_(c.call, 0)
 		eq_(c.action, 1)
