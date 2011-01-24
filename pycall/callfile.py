@@ -21,7 +21,7 @@ class CallFile(object):
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
 	def __init__(self, call, action, variables=None, archive=None, user=None,
-			tmpdir=None, file_name=None, spool_dir=None):
+			tmpdir=None, _filename=None, spool_dir=None):
 		"""Create a new `CallFile` obeject.
 
 		:param obj call: A `pycall.Call` instance.
@@ -31,7 +31,7 @@ class CallFile(object):
 		:param bool archive: Should Asterisk archive the call file?
 		:param str user: Username to spool the call file as.
 		:param str tmpdir: Directory to store the temporary call file.
-		:param str file_name: Call file name.
+		:param str _filename: Call file name.
 		:param str spool_dir: Directory to spool the call file to.
 		:rtype: `CallFile` object.
 		"""
@@ -41,7 +41,7 @@ class CallFile(object):
 		self.archive = archive
 		self.user = user
 		self.tmpdir = tmpdir
-		self.file_name = file_name
+		self._filename = _filename
 		self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
 	def is_valid(self):
@@ -66,10 +66,10 @@ class CallFile(object):
 		if self.tmpdir and not path(self.tmpdir).abspath().isdir():
 			return False
 
-		# Fail if `file_name` was specified, but doesn't exist in a real
+		# Fail if `_filename` was specified, but doesn't exist in a real
 		# directory.
-		if self.file_name and not \
-				path(self.file_name).abspath().dirname().isdir():
+		if self._filename and not \
+				path(self._filename).abspath().dirname().isdir():
 			return False
 
 		# Fail if `spool_dir` was specified, but isn't a real directory.
