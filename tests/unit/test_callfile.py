@@ -68,12 +68,6 @@ class TestCallFile(TestCase):
 				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
-	def test_is_valid_valid__filename(self):
-		"""Ensure `is_valid` works with a well-formed `_filename` attribute."""
-		c = CallFile(self.call, self.action, _filename='/test.call',
-				spool_dir=self.spool_dir)
-		ok_(c.is_valid())
-
 	def test_is_valid_invalid_spool_dir(self):
 		"""Ensure `is_valid` fails with an invalid `spool_dir` attribute."""
 		c = CallFile(self.call, self.action, spool_dir='spool_dir')
