@@ -129,8 +129,7 @@ class CallFile(object):
 			f, fname = mkstemp('.call')
 
 		with fdopen(f, 'w') as f:
-			for line in cf:
-				f.write(line+'\n')
+			f.write(self.contents)
 
 		return fname
 
