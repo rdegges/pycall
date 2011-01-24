@@ -96,7 +96,7 @@ class TestCallFile(TestCase):
 		"""Ensure `buildfile` raises `ValidationError` if the `CallFile` can't
 		be validated.
 		"""
-		CallFile(self.call, self.action, tmpdir='tmpdir').buildfile()
+		CallFile(self.call, self.action, spool_dir='/woot').buildfile()
 
 	def test_buildfile_valid_variables(self):
 		"""Ensure that `buildfile` works with a well-formed `variables`
