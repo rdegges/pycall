@@ -64,11 +64,11 @@ class CallFile(object):
 		return True
 
 	def buildfile(self):
-		"""Use all attributes to build a call file in memory.
+		"""Build a call file in memory.
 
-		:raises: `ValidationError` if the `CallFile` could not be validated.
-		:returns: A list of all call file directives as they will be written to
-			the disk.
+		:raises: `ValidationError` if this call file can not be validated.
+		:returns: A list of call file directives as they will be written to the
+			disk.
 		:rtype: List of strings.
 		"""
 		if not self.is_valid():
