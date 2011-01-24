@@ -11,11 +11,6 @@ from pycall import Call
 class TestCall(TestCase):
 	"""Test the `pycall.call.Call` class."""
 
-	@raises(TypeError)
-	def test_create_call(self):
-		"""Ensure creating an empty `Call` object fails."""
-		Call()
-
 	def test_call_attrs(self):
 		"""Ensure that all `Call` attributes stick."""
 		c = Call('local/18882223333@outgoing', '"Randall Degges" <666>',
