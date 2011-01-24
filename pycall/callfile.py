@@ -108,8 +108,7 @@ class CallFile(object):
 
 	@property
 	def contents(self):
-		"""
-		Get the contents of this call file.
+		"""Get the contents of this call file.
 
 		:returns: Call file contents.
 		:rtype: String.
