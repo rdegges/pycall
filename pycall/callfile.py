@@ -119,6 +119,9 @@ class CallFile(object):
 	def filename(self):
 		"""Get the name of our call file.
 
+		WARNING: This method will CREATE a temporary call file. It must do this
+		in order to reserve a unique name for the call file.
+
 		:returns: Name of this call file.
 		:rtype: String.
 		"""
