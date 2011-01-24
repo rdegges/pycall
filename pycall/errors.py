@@ -22,22 +22,6 @@ class ValidationError(PycallError):
 class UnknownError(PycallError):
 	def __str__(self): return 'Something must have gone horribly wrong.'
 
-class NoChannelDefinedError(PycallError):
-	def __str__(self):
-		return 'You must define either the `channel` attribute or the ' \
-			'`trunk_type`, `trunk_name`, and `number` attributes.'
-
-class NoActionDefinedError(PycallError):
-	def __str__(self):
-		return 'You must define either the `application` and `data` ' \
-			'attributes or the `context`, `extension`, and `priority` ' \
-			'attributes.'
-
-class MultipleActionsDefinedError(PycallError):
-	def __str__(self):
-		return 'You cannot have both `application` and `context` defined. ' \
-				'Choose one.'
-
 class NoUserPermissionError(PycallError):
 	def __str__(self):
 		return 'You do not have the appropriate permissions to change ' \
