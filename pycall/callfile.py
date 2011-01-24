@@ -117,9 +117,9 @@ class CallFile(object):
 
 	@property
 	def filename(self):
-		"""Get the absolute path of our call file.
+		"""Get the name of our call file.
 
-		:returns: Absolute path of this call file.
+		:returns: Name of this call file.
 		:rtype: String.
 		"""
 		if self._filename:
