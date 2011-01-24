@@ -49,10 +49,10 @@ class Call(object):
 		if self.account:
 			c.append('Account: ' + self.account)
 		if self.wait_time:
-			c.append('WaitTime: ' + self.wait_time)
+			c.append('WaitTime: %d' % self.wait_time)
 		if self.retry_time:
-			c.append('RetryTime: ' + self.retry_time)
+			c.append('RetryTime: %d' % self.retry_time)
 		if self.max_retries:
-			c.append('Maxretries: ' + self.max_retries)
+			c.append('Maxretries: %d' % self.max_retries)
 
 		return c
