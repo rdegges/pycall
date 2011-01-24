@@ -27,9 +27,9 @@ class TestCall(TestCase):
 		eq_(c.retry_time, 15)
 		eq_(c.max_retries, 20)
 
-	def test_is_valid_no_wait_time_and_no_max_retries(self):
+	def test_is_valid_no_wait_time_and_no_retry_time_and_no_max_retries(self):
 		"""Make sure we can pass `is_valid` checks with no `wait_time` or
-		`max_retries` attributes specified.
+		`retry_time` or `max_retries` attributes specified.
 		"""
 		c = Call('local/18882223333@outgoing')
 		ok_(c.is_valid())
