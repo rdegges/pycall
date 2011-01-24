@@ -21,7 +21,7 @@ class CallFile(object):
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
 	def __init__(self, call, action, variables=None, archive=None, user=None,
-			tmpdir=None, _filename=None, spool_dir=None):
+			spool_dir=None):
 		"""Create a new `CallFile` obeject.
 
 		:param obj call: A `pycall.Call` instance.
@@ -30,8 +30,6 @@ class CallFile(object):
 		:param dict variables: Variables to pass to Asterisk upon answer.
 		:param bool archive: Should Asterisk archive the call file?
 		:param str user: Username to spool the call file as.
-		:param str tmpdir: Directory to store the temporary call file.
-		:param str _filename: Call file name.
 		:param str spool_dir: Directory to spool the call file to.
 		:rtype: `CallFile` object.
 		"""
@@ -40,8 +38,6 @@ class CallFile(object):
 		self.variables = variables
 		self.archive = archive
 		self.user = user
-		self.tmpdir = tmpdir
-		self._filename = _filename
 		self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
 	def is_valid(self):
@@ -60,16 +56,6 @@ class CallFile(object):
 
 		# Fail if `variables` was specified, but isn't a dictionary.
 		if self.variables and not isinstance(self.variables, dict):
-			return False
-
-		# Fail if `tmpdir` was specified, but isn't a real directory.
-		if self.tmpdir and not path(self.tmpdir).abspath().isdir():
-			return False
-
-		# Fail if `_filename` was specified, but doesn't exist in a real
-		# directory.
-		if self._filename and not \
-				path(self._filename).abspath().dirname().isdir():
 			return False
 
 		# Fail if `spool_dir` was specified, but isn't a real directory.
@@ -125,19 +111,13 @@ class CallFile(object):
 		:returns: Name of this call file.
 		:rtype: String.
 		"""
-		if self._filename:
-			return path(self._filename).abspath().basename()
 
 		# If we've already reserved a unique filename, then return it.
 		# Otherwise, reserve a unique filename and return that.
 		try:
 			return self.f[1]
 		except AttributeError:
-			if self.tmpdir:
-				self.f = mkstemp(suffix='.call',
-						dir=path(self.tmpdir).abspath())
-			else:
-				self.f = mkstemp(suffix='.call')
+			self.f = mkstemp(suffix='.call')
 
 		return path(self.f[1]).abspath().basename()
 
@@ -148,15 +128,14 @@ class CallFile(object):
 		:returns: Absolute path name of the temporary call file.
 		:rtype: String.
 		"""
-		if self.tmpdir:
-			f, fname = mkstemp(suffix='.call', dir=self.tmpdir)
-		else:
-			f, fname = mkstemp('.call')
+		try:
+			self.f[0]
+		except AttributeError:
+			self.filename
 
-		with fdopen(f, 'w') as f:
+		with fdopen(self.f[0], 'w') as f:
 			f.write(self.contents)
-
-		return fname
+		return self.f[1]
 
 	def spool(self):
 		"""Spool the call file with Asterisk."""
