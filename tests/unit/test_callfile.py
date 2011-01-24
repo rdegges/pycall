@@ -30,7 +30,7 @@ class TestCallFile(TestCase):
 		eq_(c.variables, 2)
 		eq_(c.archive, 3)
 		eq_(c.user, 4)
-		eq_(c.spool_dir, 6)
+		eq_(c.spool_dir, 5)
 
 	def test_is_valid_valid_call_and_valid_action_and_valid_spool_dir(self):
 		"""Ensure `is_valid` works with well-formed `call`, `action`, and
