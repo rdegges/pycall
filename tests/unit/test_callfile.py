@@ -119,14 +119,6 @@ class TestCallFile(TestCase):
 		ok_('local/18882223333@outgoing' in c.contents and
 				'Playback' in c.contents and 'hello-world' in c.contents)
 
-	def test_filename(self):
-		"""Ensure that the `filename` property works with a well-formed
-		`_filename` attribute.
-		"""
-		c = CallFile(self.call, self.action, _filename='/woot.call',
-				spool_dir=self.spool_dir)
-		eq_(c.filename, 'woot.call')
-
 	def test_writefile_creates_file(self):
 		"""Ensure that `writefile` actually generates a call file on the disk.
 		"""
