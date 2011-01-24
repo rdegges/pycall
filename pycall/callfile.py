@@ -111,15 +111,8 @@ class CallFile(object):
 		:returns: Name of this call file.
 		:rtype: String.
 		"""
-
-		# If we've already reserved a unique filename, then return it.
-		# Otherwise, reserve a unique filename and return that.
-		try:
-			return self.f[1]
-		except AttributeError:
-			self.f = mkstemp(suffix='.call')
-
-		return path(self.f[1]).abspath().basename()
+		self._fd, self._fname = mkstemp(suffix='.call')
+		return path(self._fname).abspath().basename()
 
 	def writefile(self):
 		"""
