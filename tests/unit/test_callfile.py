@@ -28,6 +28,11 @@ class TestCallFile(TestCase):
 		eq_(c.user, 4)
 		eq_(c.spool_dir, 5)
 
+	def test_attrs_default_spool_dir(self):
+		"""Ensure default `spool_dir` attribute works."""
+		c = CallFile(self.call, self.action)
+		eq_(c.spool_dir, CallFile.DEFAULT_SPOOL_DIR)
+
 	def test_is_valid_valid_call(self):
 		"""Ensure `is_valid` works using a valid `call` attribute."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
