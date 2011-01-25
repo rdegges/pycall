@@ -84,14 +84,6 @@ class TestCallFile(TestCase):
 		"""
 		CallFile(self.call, self.action, spool_dir='/woot').buildfile()
 
-	def test_buildfile_valid_variables(self):
-		"""Ensure that `buildfile` works with a well-formed `variables`
-		attribute.
-		"""
-		c = CallFile(self.call, self.action, variables={'hi': 'there'},
-				spool_dir=self.spool_dir)
-		ok_('hi=there' in ''.join(c.buildfile()))
-
 	def test_buildfile_valid_archive(self):
 		"""Ensure that `buildfile` works with a well-formed `archive`
 		attribute.
