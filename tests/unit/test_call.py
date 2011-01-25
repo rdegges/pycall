@@ -84,18 +84,18 @@ class TestCall(TestCase):
 
 	def test_str_valid_wait_time(self):
 		"""Ensure `__str__` works using a valid `wait_time` attribute."""
-		c = Call('channel', wait_time=0)
-		ok_('0' in ''.join(c.__str__()))
+		c = Call('channel', wait_time=1)
+		ok_('1' in ''.join(c.__str__()))
 
 	def test_str_valid_retry_time(self):
 		"""Ensure `__str__` works using a valid `retry_time` attribute."""
-		c = Call('channel', retry_time=1)
-		ok_('1' in ''.join(c.__str__()))
+		c = Call('channel', retry_time=2)
+		ok_('2' in ''.join(c.__str__()))
 
 	def test_str_valid_max_retries(self):
 		"""Ensure `__str__` works using a valid `max_retries` attribute."""
-		c = Call('channel', max_retries=2)
-		ok_('2' in ''.join(c.__str__()))
+		c = Call('channel', max_retries=3)
+		ok_('3' in ''.join(c.__str__()))
 
 	def test_str_no_attrs(self):
 		"""Ensure `__str__` works with no optional attributes specified."""
