@@ -11,11 +11,11 @@ from pycall import Application, Context
 class TestApplication(TestCase):
 	"""Run tests on the `Application` class."""
 
-	def test_application_attrs(self):
-		"""Ensure that all `Application` attributes stick."""
-		a = Application('Playback', 'hello-world')
-		eq_(a.application, 'Playback')
-		eq_(a.data, 'hello-world')
+	def test_attrs_stick(self):
+		"""Ensure attributes stick."""
+		a = Application('application', 'data')
+		eq_(a.application, 'application')
+		eq_(a.data, 'data')
 
 	def test_application_str(self):
 		"""Ensure the `__str__` method works."""
