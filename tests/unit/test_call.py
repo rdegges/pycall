@@ -13,9 +13,10 @@ class TestCall(TestCase):
 
 	def test_attrs_stick(self):
 		"""Ensure attributes stick."""
-		c = Call('channel', 'callerid', 'account', 0, 1, 2)
+		c = Call('channel', 'callerid', 'variables', 'account', 0, 1, 2)
 		eq_(c.channel, 'channel')
 		eq_(c.callerid, 'callerid')
+		eq_(c.variables, 'variables')
 		eq_(c.account, 'account')
 		eq_(c.wait_time, 0)
 		eq_(c.retry_time, 1)
