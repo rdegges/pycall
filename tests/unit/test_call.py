@@ -62,6 +62,41 @@ class TestCall(TestCase):
 		c = Call('channel', max_retries='2')
 		assert_false(c.is_valid())
 
+	def test_str_valid_channel(self):
+		"""Ensure `__str__` works using a valid `channel` attribute."""
+		c = Call('channel')
+		ok_('channel' in ''.join(c.__str__()))
+
+	def test_str_valid_callerid(self):
+		"""Ensure `__str__` works using a valid `callerid` attribute."""
+		c = Call('channel', callerid='callerid')
+		ok_('callerid' in ''.join(c.__str__()))
+
+	def test_str_valid_variables(self):
+		"""Ensure `__str__` works using a valid `variables` attribute."""
+		c = Call('channel', variables={'a': 'b'})
+		ok_('a=b' in ''.join(c.__str__()))
+
+	def test_str_valid_account(self):
+		"""Ensure `__str__` works using a valid `account` attribute."""
+		c = Call('channel', account='account')
+		ok_('account' in ''.join(c.__str__()))
+
+	def test_str_valid_wait_time(self):
+		"""Ensure `__str__` works using a valid `wait_time` attribute."""
+		c = Call('channel', wait_time=0)
+		ok_('0' in ''.join(c.__str__()))
+
+	def test_str_valid_retry_time(self):
+		"""Ensure `__str__` works using a valid `retry_time` attribute."""
+		c = Call('channel', retry_time=1)
+		ok_('1' in ''.join(c.__str__()))
+
+	def test_str_valid_max_retries(self):
+		"""Ensure `__str__` works using a valid `max_retries` attribute."""
+		c = Call('channel', max_retries=2)
+		ok_('2' in ''.join(c.__str__()))
+
 	def test_str_no_attrs(self):
 		"""Ensure `__str__` works with no optional attributes specified."""
 		c = Call('local/18882223333@outgoing')
