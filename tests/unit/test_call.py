@@ -13,13 +13,13 @@ class TestCall(TestCase):
 
 	def test_attrs_stick(self):
 		"""Ensure attributes stick."""
-		c = Call('channel', 'callerid', 'account', 1, 5, 10)
+		c = Call('channel', 'callerid', 'account', 0, 1, 2)
 		eq_(c.channel, 'channel')
 		eq_(c.callerid, 'callerid')
 		eq_(c.account, 'account')
-		eq_(c.wait_time, 1)
-		eq_(c.retry_time, 5)
-		eq_(c.max_retries, 10)
+		eq_(c.wait_time, 0)
+		eq_(c.retry_time, 1)
+		eq_(c.max_retries, 2)
 
 	def test_is_valid_no_wait_time_and_no_retry_time_and_no_max_retries(self):
 		"""Make sure we can pass `is_valid` checks with no `wait_time` or
