@@ -34,11 +34,11 @@ class Call(object):
 		"""
 		if self.variables and not isinstance(self.variables, dict):
 			return False
-		if self.wait_time and type(self.wait_time) != int:
+		if self.wait_time != None and type(self.wait_time) != int:
 			return False
-		if self.retry_time and type(self.retry_time) != int:
+		if self.retry_time != None and type(self.retry_time) != int:
 			return False
-		if self.max_retries and type(self.max_retries) != int:
+		if self.max_retries != None and type(self.max_retries) != int:
 			return False
 		return True
 
@@ -56,11 +56,11 @@ class Call(object):
 				c.append('Set: %s=%s' % (var, value))
 		if self.account:
 			c.append('Account: ' + self.account)
-		if self.wait_time:
+		if self.wait_time != None:
 			c.append('WaitTime: %d' % self.wait_time)
-		if self.retry_time:
+		if self.retry_time != None:
 			c.append('RetryTime: %d' % self.retry_time)
-		if self.max_retries:
+		if self.max_retries != None:
 			c.append('Maxretries: %d' % self.max_retries)
 
 		return c
