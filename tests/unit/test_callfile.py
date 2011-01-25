@@ -15,7 +15,6 @@ class TestCallFile(TestCase):
 		"""Setup some default variables for test usage."""
 		self.call = Call('local/18882223333@outgoing')
 		self.action = Application('Playback', 'hello-world')
-		self.variables = {'a': 'b', 'c': 'd'}
 		self.spool_dir = '/'
 
 	def test_attrs_stick(self):
