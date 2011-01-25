@@ -9,12 +9,7 @@ from pycall import Application, Context
 
 
 class TestApplication(TestCase):
-	"""Test the `pycall.actions.Application` class."""
-
-	@raises(TypeError)
-	def test_create_application(self):
-		"""Ensure creating an empty `Application` object fails."""
-		Application()
+	"""Run tests on the `Application` class."""
 
 	def test_application_attrs(self):
 		"""Ensure that all `Application` attributes stick."""
