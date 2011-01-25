@@ -42,12 +42,6 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		ok_(c.is_valid())
 
-	def test_is_valid_valid_variables(self):
-		"""Ensure `is_valid` works using a valid `variables` attribute."""
-		c = CallFile(self.call, self.action, variables=self.variables,
-				spool_dir=self.spool_dir)
-		ok_(c.is_valid())
-
 	def test_is_valid_valid_spool_dir(self):
 		"""Ensure `is_valid` works using a valid `spool_dir` attribute."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
@@ -66,12 +60,6 @@ class TestCallFile(TestCase):
 	def test_is_valid_invalid_action(self):
 		"""Ensure `is_valid` fails given an invalid `action` attribute."""
 		c = CallFile(self.call, 'action', spool_dir=self.spool_dir)
-		assert_false(c.is_valid())
-
-	def test_is_valid_invalid_variables(self):
-		"""Ensure `is_valid` fails given an invalid `variables` attribute."""
-		c = CallFile(self.call, self.action, variables='variables',
-				spool_dir=self.spool_dir)
 		assert_false(c.is_valid())
 
 	def test_is_valid_invalid_spool_dir(self):

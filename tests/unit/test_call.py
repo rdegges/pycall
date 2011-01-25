@@ -21,46 +21,44 @@ class TestCall(TestCase):
 		eq_(c.retry_time, 1)
 		eq_(c.max_retries, 2)
 
-	def test_is_valid_no_wait_time_and_no_retry_time_and_no_max_retries(self):
-		"""Make sure we can pass `is_valid` checks with no `wait_time` or
-		`retry_time` or `max_retries` attributes specified.
-		"""
-		c = Call('local/18882223333@outgoing')
+	def test_is_valid_valid_variables(self):
+		"""Ensure `is_valid` works using a valid `variables` attribute."""
+		c = Call('channel', variables={'a': 'b'})
 		ok_(c.is_valid())
 
-	def test_is_valid_proper_wait_time(self):
-		"""Ensure a valid `wait_time` attribute passes the `is_valid` check."""
-		c = Call('local/18882223333@outgoing', wait_time=15)
+	def test_is_valid_valid_wait_time(self):
+		"""Ensure `is_valid` works using a valid `wait_time` attribute."""
+		c = Call('channel', wait_time=0)
 		ok_(c.is_valid())
 
-	def test_is_valid_proper_retry_time(self):
-		"""Ensure a valid `retry_time` attribute passes the `is_valid` check.
-		"""
-		c = Call('local/18882223333@outgoing', retry_time=17)
+	def test_is_valid_valid_retry_time(self):
+		"""Ensure `is_valid` works using a valid `retry_time` attribute."""
+		c = Call('channel', retry_time=1)
 		ok_(c.is_valid())
 
-	def test_is_valid_proper_max_retries(self):
-		"""Ensure a valid `max_retries` attribute passes the `is_valid` check.
-		"""
-		c = Call('local/18882223333@outgoing', max_retries=10)
+	def test_is_valid_valid_max_retries(self):
+		"""Ensure `is_valid` works using a valid `max_retries` attribute."""
+		c = Call('channel', max_retries=2)
 		ok_(c.is_valid())
 
-	def test_is_valid_bad_wait_time(self):
-		"""Ensure a non-int `wait_time` attribute fails the `is_valid` check.
-		"""
-		c = Call('local/18882223333@outgoing', wait_time='15')
+	def test_is_valid_invalid_variables(self):
+		"""Ensure `is_valid` fails given an invalid `variables` attribute."""
+		c = Call('channel', variables='ab')
 		assert_false(c.is_valid())
 
-	def test_is_valid_bad_retry_time(self):
-		"""Ensure a non-int `retry_time` attribute fails the `is_valid` check.
-		"""
-		c = Call('local/18882223333@outgoing', retry_time='17')
+	def test_is_valid_invalid_wait_time(self):
+		"""Ensure `is_valid` fails given an invalid `wait_time` attribute."""
+		c = Call('channel', wait_time='0')
 		assert_false(c.is_valid())
 
-	def test_is_valid_bad_max_retries(self):
-		"""Ensure a non-int `max_retries` attribute fails the `is_valid` check.
-		"""
-		c = Call('local/18882223333@outgoing', max_retries='10')
+	def test_is_valid_invalid_retry_time(self):
+		"""Ensure `is_valid` fails given an invalid `retry_time` attribute."""
+		c = Call('channel', retry_time='1')
+		assert_false(c.is_valid())
+
+	def test_is_valid_invalid_max_retries(self):
+		"""Ensure `is_valid` fails given an invalid `max_retries` attribute."""
+		c = Call('channel', max_retries='2')
 		assert_false(c.is_valid())
 
 	def test_str_no_attrs(self):
