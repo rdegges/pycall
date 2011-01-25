@@ -9,7 +9,7 @@ from pycall import Call
 
 
 class TestCall(TestCase):
-	"""Tests the `Call` class."""
+	"""Run tests on the `Call` class."""
 
 	def test_attrs_stick(self):
 		"""Ensure attributes stick."""
