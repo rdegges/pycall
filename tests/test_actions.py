@@ -3,7 +3,7 @@
 
 from unittest import TestCase
 
-from nose.tools import eq_, ok_, raises
+from nose.tools import eq_, ok_
 
 from pycall import Application, Context
 
