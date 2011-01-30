@@ -33,8 +33,8 @@ class TestContext(TestCase):
 		"""Setup some default variables for test usage."""
 		self.c = Context('context', 'extension', 'priority')
 
-	def test_context_attrs(self):
-		"""Ensure that all `Context` attributes stick."""
+	def test_attrs_stick(self):
+		"""Ensure attributes stick."""
 		c = Context('Callout', 's', '1')
 		eq_(c.context, 'Callout')
 		eq_(c.extension, 's')
