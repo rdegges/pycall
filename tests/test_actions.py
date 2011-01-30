@@ -29,6 +29,10 @@ class TestApplication(TestCase):
 class TestContext(TestCase):
 	"""Test the `pycall.actions.Context` class."""
 
+	def setUp(self):
+		"""Setup some default variables for test usage."""
+		self.c = Context('context', 'extension', 'priority')
+
 	@raises(TypeError)
 	def test_create_context(self):
 		"""Ensure creating an empty `Context` object fails."""
