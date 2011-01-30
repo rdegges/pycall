@@ -35,10 +35,9 @@ class TestContext(TestCase):
 
 	def test_attrs_stick(self):
 		"""Ensure attributes stick."""
-		c = Context('Callout', 's', '1')
-		eq_(c.context, 'Callout')
-		eq_(c.extension, 's')
-		eq_(c.priority, '1')
+		eq_(self.c.context, 'context')
+		eq_(self.c.extension, 'extension')
+		eq_(self.c.priority, 'priority')
 
 	def test_context_str(self):
 		"""Ensure the `__str__` method works."""
