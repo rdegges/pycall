@@ -95,8 +95,8 @@ class TestCallFile(TestCase):
 	def test_contents(self):
 		"""Ensure that the `contents` property works."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
-		ok_('local/18882223333@outgoing' in c.contents and
-				'Playback' in c.contents and 'hello-world' in c.contents)
+		ok_('channel' in c.contents and
+				'application' in c.contents and 'data' in c.contents)
 
 	def test_writefile_creates_file(self):
 		"""Ensure that `writefile` actually generates a call file on the disk.
