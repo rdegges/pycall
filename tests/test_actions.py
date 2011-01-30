@@ -39,8 +39,8 @@ class TestContext(TestCase):
 		eq_(self.c.extension, 'extension')
 		eq_(self.c.priority, 'priority')
 
-	def test_context_str(self):
-		"""Ensure the `__str__` method works."""
-		c = Context('Callout', 's', '1')
-		ok_('Callout' in ''.join(c.__str__()) and
-				's' in ''.join(c.__str__()) and '1' in ''.join(c.__str__()))
+	def test_str(self):
+		"""Ensure `__str__` works using test data."""
+		ok_('context' in ''.join(self.c.__str__()) and
+				'extension' in ''.join(self.c.__str__()) and
+				'priority' in ''.join(self.c.__str__()))
