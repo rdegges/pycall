@@ -27,7 +27,7 @@ class TestApplication(TestCase):
 
 
 class TestContext(TestCase):
-	"""Test the `pycall.actions.Context` class."""
+	"""Run tests on the `Context` class."""
 
 	def setUp(self):
 		"""Setup some default variables for test usage."""
