@@ -20,7 +20,7 @@ class TestApplication(TestCase):
 		eq_(self.a.application, 'application')
 		eq_(self.a.data, 'data')
 
-	def test_str_valid_application(self):
+	def test_str(self):
 		"""Ensure `__str__` works using test data."""
 		ok_('application' in ''.join(self.a.__str__()) and
 				'data' in ''.join(self.a.__str__()))
