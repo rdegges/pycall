@@ -20,13 +20,17 @@ class CallFile(object):
 	#: The default spooling directory (should be OK for most systems).
 	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
-	def __init__(self, call, action, archive=None, user=None, spool_dir=None):
+	def __init__(self, call, action, archive=None, filename=None, tempdir=None,
+			user=None, spool_dir=None):
 		"""Create a new `CallFile` obeject.
 
 		:param obj call: A `pycall.Call` instance.
 		:param obj action: Either a `pycall.actions.Application` instance
 			or a `pycall.actions.Context` instance.
 		:param bool archive: Should Asterisk archive the call file?
+		:param str filename: Filename of the call file.
+		:param str tempdir: Temporary directory to store the call file before
+			spooling.
 		:param str user: Username to spool the call file as.
 		:param str spool_dir: Directory to spool the call file to.
 		:rtype: `CallFile` object.
