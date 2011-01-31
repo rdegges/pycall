@@ -92,6 +92,11 @@ class TestCallFile(TestCase):
 				spool_dir=self.spool_dir)
 		ok_('Archive: yes' in ''.join(c.buildfile()))
 
+	def test_buildfile_invalid_archive(self):
+		"""Ensure `buildfile` works when `archive` is false."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		assert_false('Archive:' in ''.join(c.buildfile()))
+
 	def test_contents(self):
 		"""Ensure that the `contents` property works."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
