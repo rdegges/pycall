@@ -95,19 +95,6 @@ class CallFile(object):
 		"""
 		return '\n'.join(self.buildfile())
 
-	@property
-	def filename(self):
-		"""Get the name of our call file.
-
-		WARNING: This method will CREATE a temporary call file. It must do this
-		in order to reserve a unique name for the call file.
-
-		:returns: Name of this call file.
-		:rtype: String.
-		"""
-		self._fd, self._fname = mkstemp(suffix='.call')
-		return path(self._fname).abspath().basename()
-
 	def writefile(self):
 		"""
 		Write a temporary call file to disk.
