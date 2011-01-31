@@ -31,6 +31,12 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action)
 		eq_(c.spool_dir, CallFile.DEFAULT_SPOOL_DIR)
 
+	def test_str(self):
+		"""Ensure `__str__` works."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		ok_('archive' in c.__str__() and 'user' in c.__str__() and
+				'spool_dir' in c.__str__())
+
 	def test_is_valid_valid_call(self):
 		"""Ensure `is_valid` works using a valid `call` attribute."""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)

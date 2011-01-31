@@ -37,6 +37,15 @@ class CallFile(object):
 		self.user = user
 		self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
+	def __str__(self):
+		"""Render this call file object for developers.
+
+		:returns: String representation of this object.
+		:rtype: String.
+		"""
+		return 'CallFile-> archive: %s, user: %s, spool_dir: %s' % (
+				self.archive, self.user, self.spool_dir)
+
 	def is_valid(self):
 		"""Check to see if all attributes are valid.
 
