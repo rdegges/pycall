@@ -96,8 +96,7 @@ class CallFile(object):
 		return '\n'.join(self.buildfile())
 
 	def writefile(self):
-		"""
-		Write a temporary call file to disk.
+		"""Write a temporary call file to disk.
 
 		:returns: Absolute path name of the temporary call file.
 		:rtype: String.
