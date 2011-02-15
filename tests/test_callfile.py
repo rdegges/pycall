@@ -19,10 +19,13 @@ class TestCallFile(TestCase):
 
 	def test_attrs_stick(self):
 		"""Ensure attributes stick."""
-		c = CallFile('call', 'action', 'archive', 'user', 'spool_dir')
+		c = CallFile('call', 'action', 'archive', 'filename', 'tempdir',
+				'user', 'spool_dir')
 		eq_(c.call, 'call')
 		eq_(c.action, 'action')
 		eq_(c.archive, 'archive')
+		eq_(c.filename, 'filename')
+		eq_(c.tempdir, 'tempdir')
 		eq_(c.user, 'user')
 		eq_(c.spool_dir, 'spool_dir')
 
@@ -30,6 +33,16 @@ class TestCallFile(TestCase):
 		"""Ensure default `spool_dir` attribute works."""
 		c = CallFile(self.call, self.action)
 		eq_(c.spool_dir, CallFile.DEFAULT_SPOOL_DIR)
+
+	def test_attrs_default_filename(self):
+		"""Ensure default `filename` attribute works."""
+		c = CallFile(self.call, self.action)
+		ok_(c.filename)
+
+	def test_attrs_default_tempdir(self):
+		"""Ensure default `tempdir` attribute works."""
+		c = CallFile(self.call, self.action)
+		ok_(c.tempdir)
 
 	def test_str(self):
 		"""Ensure `__str__` works."""
