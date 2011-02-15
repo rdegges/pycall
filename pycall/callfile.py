@@ -108,19 +108,9 @@ class CallFile(object):
 		return '\n'.join(self.buildfile())
 
 	def writefile(self):
-		"""Write a temporary call file to disk.
-
-		:returns: Absolute path name of the temporary call file.
-		:rtype: String.
-		"""
-		try:
-			self.f[0]
-		except AttributeError:
-			self.filename
-
-		with fdopen(self.f[0], 'w') as f:
+		"""Write a temporary call file to disk."""
+		with open(path(self.tempdir) / path(self.filename), 'w') as f:
 			f.write(self.contents)
-		return self.f[1]
 
 	def spool(self):
 		"""Spool the call file with Asterisk."""
