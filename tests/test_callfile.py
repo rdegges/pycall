@@ -126,4 +126,5 @@ class TestCallFile(TestCase):
 		"""Ensure that `writefile` actually generates a call file on the disk.
 		"""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
-		ok_(path(c.writefile()).abspath().exists())
+		c.writefile()
+		ok_((path(c.tempdir) / path(c.filename)).abspath().exists())
