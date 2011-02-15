@@ -41,6 +41,14 @@ class CallFile(object):
 		self.user = user
 		self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
+		if filename and tempdir:
+			self.filename = path(filename)
+			self.tempdir = path(tempdir)
+		else:
+			f = path(mkstemp(suffix='.call')[1])
+			self.filename = f.name
+			self.tempdir = f.parent
+
 	def __str__(self):
 		"""Render this call file object for developers.
 
