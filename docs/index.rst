@@ -1,5 +1,5 @@
-Welcome to pycall's documentation!
-==================================
+pycall's Documentation
+======================
 
 Welcome to pycall's documentation. This documentation is divided into different
 parts. I would suggest to getting started with the :ref:`installation` docs,
