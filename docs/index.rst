@@ -1,7 +1,7 @@
 pycall's Documentation
 ======================
 
-Welcome to pycall's documentation. The documentation is divided into several
+Welcome to pycall's documentation. This documentation is divided into several
 different parts, and can be read through like a book. If you're relatively new
 to telephony, you may want to start at the :ref:`foreward`, and read through
 to the end. If you're interested in the API itself, you can skim through the
