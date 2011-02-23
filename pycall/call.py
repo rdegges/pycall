@@ -42,7 +42,7 @@ class Call(object):
 			return False
 		return True
 
-	def __str__(self):
+	def render(self):
 		"""Render this call as call file directives.
 
 		:returns: A list of call file directives.
