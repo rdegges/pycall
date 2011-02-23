@@ -45,6 +45,7 @@ class Call(object):
 	def __str__(self):
 		"""Render this call as call file directives.
 
+		:returns: A list of call file directives.
 		:rtype: List of strings.
 		"""
 		c = ['Channel: ' + self.channel]
