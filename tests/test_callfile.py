@@ -5,7 +5,8 @@ from unittest import TestCase
 from path import path
 from nose.tools import assert_false, eq_, ok_, raises
 
-from pycall import Application, Call, CallFile, ValidationError
+from pycall import Application, Call, CallFile, NoSpoolPermissionError, \
+		ValidationError
 
 
 class TestCallFile(TestCase):
