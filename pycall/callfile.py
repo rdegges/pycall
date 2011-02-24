@@ -117,6 +117,10 @@ class CallFile(object):
 		the Asterisk spooling directory. If the `time` attribute is specified,
 		then the call file will be spooled at the specified time instead of
 		immediately.
+
+		:param datetime time: The date and time to spool this call file. The
+			call file will be spooled instantly, but will only be launched by
+			Asterisk when the system time matches this date and time.
 		"""
 
 		raise NoActionDefinedError
