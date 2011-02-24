@@ -113,7 +113,10 @@ class CallFile(object):
 			f.write(self.contents)
 
 	def spool(self):
-		"""Spool the call file with Asterisk."""
+		"""Spool the call file with Asterisk. This will move the call file to
+		the Asterisk spooling directory. If the `time` attribute is specified,
+		then the call file will be spooled at the specified time instead of
+		immediately."""
 
 		raise NoActionDefinedError
 
