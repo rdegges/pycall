@@ -90,7 +90,7 @@ class CallFile(object):
 			raise ValidationError
 
 		cf = []
-		cf += self.call.__str__()
+		cf += self.call.render()
 		cf += self.action.__str__()
 
 		if self.archive:
