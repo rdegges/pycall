@@ -18,7 +18,7 @@ class Application(Action):
 		self.application = application
 		self.data = data
 
-	def __str__(self):
+	def render(self):
 		"""Render this action as call file directives.
 
 		:rtype: Tuple of strings.
@@ -40,7 +40,7 @@ class Context(Action):
 		self.extension = extension
 		self.priority = priority
 
-	def __str__(self):
+	def render(self):
 		"""Render this action as call file directives.
 
 		:rtype: Tuple of strings.

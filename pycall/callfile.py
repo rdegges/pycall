@@ -91,7 +91,7 @@ class CallFile(object):
 
 		cf = []
 		cf += self.call.render()
-		cf += self.action.__str__()
+		cf += self.action.render()
 
 		if self.archive:
 			cf.append('Archive: yes')

@@ -20,13 +20,13 @@ class TestApplication(TestCase):
 		eq_(self.a.application, 'application')
 		eq_(self.a.data, 'data')
 
-	def test_str_valid_application(self):
-		"""Ensure `__str__` works using a valid `application` attribute."""
-		ok_('application' in ''.join(self.a.__str__()))
+	def test_render_valid_application(self):
+		"""Ensure `render` works using a valid `application` attribute."""
+		ok_('application' in ''.join(self.a.render()))
 
 	def test_str_valid_data(self):
-		"""Ensure `__str__` works using a valid `data` attribute."""
-		ok_('data' in ''.join(self.a.__str__()))
+		"""Ensure `render` works using a valid `data` attribute."""
+		ok_('data' in ''.join(self.a.render()))
 
 
 class TestContext(TestCase):
@@ -42,14 +42,14 @@ class TestContext(TestCase):
 		eq_(self.c.extension, 'extension')
 		eq_(self.c.priority, 'priority')
 
-	def test_str_valid_context(self):
-		"""Ensure `__str__` works using a valid `context` attribute."""
-		ok_('context' in ''.join(self.c.__str__()))
+	def test_render_valid_context(self):
+		"""Ensure `render` works using a valid `context` attribute."""
+		ok_('context' in ''.join(self.c.render()))
 
-	def test_str_valid_extension(self):
-		"""Ensure `__str__` works using a valid `extension` attribute."""
-		ok_('extension' in ''.join(self.c.__str__()))
+	def test_render_valid_extension(self):
+		"""Ensure `render` works using a valid `extension` attribute."""
+		ok_('extension' in ''.join(self.c.render()))
 
-	def test_str_valid_priority(self):
-		"""Ensure `__str__` works using a valid `priority` attribute."""
-		ok_('priority' in ''.join(self.c.__str__()))
+	def test_render_valid_priority(self):
+		"""Ensure `render` works using a valid `priority` attribute."""
+		ok_('priority' in ''.join(self.c.render()))
