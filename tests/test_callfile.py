@@ -15,7 +15,7 @@ class TestCallFile(TestCase):
 		"""Setup some default variables for test usage."""
 		self.call = Call('channel')
 		self.action = Application('application', 'data')
-		self.spool_dir = '/'
+		self.spool_dir = '/tmp'
 
 	def test_attrs_stick(self):
 		"""Ensure attributes stick."""
