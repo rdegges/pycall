@@ -1,5 +1,5 @@
-pycall's Documentation
-======================
+pycall
+======
 
 Welcome to pycall's documentation. This documentation is divided into several
 different parts, and can be read through like a book. If you're relatively new
