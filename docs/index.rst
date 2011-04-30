@@ -17,10 +17,3 @@ If you want to contribute code to the project, please read the *entire*
     installation
     usage
     developing
-
-Indices and Tables
-------------------
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
