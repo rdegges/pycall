@@ -3,9 +3,9 @@
 Usage
 =====
 
-Eager to get started? This page gives a good introduction to pycall. This doc
-assumes you already have pycall installed. If not, head over to the
-:ref:`installation` section.
+Integrating pycall into your project is quick and easy! After reading through
+the sections below, you should be able to integrate pycall into your project,
+and understand what it can and cannot be used for.
 
 Preparation
 -----------
