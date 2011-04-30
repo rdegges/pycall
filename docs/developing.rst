@@ -92,3 +92,13 @@ Development Tracker
 pycall is proudly hosted at `Github <https://github.com/rdegges/pycall>`_. If
 you'd like to view the source code, contribute to the project, file bug reports
 or feature requests, please do so there.
+
+Submitting Code
+---------------
+
+The best way to submit code is to `fork pycall on Github
+<https://github.com/rdegges/pycall>`_, make your changes, then submit a pull
+request.
+
+If you're unfamiliar with forking on Github, please read this `awesome article
+<http://www.lornajane.net/posts/2010/Contributing-to-Projects-on-GitHub>`_.
