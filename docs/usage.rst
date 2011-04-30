@@ -10,15 +10,11 @@ and understand what it can and cannot be used for.
 Preparation
 -----------
 
-Before getting started with the rest of this quickstart, a few things must be
-ready and working.
+Before continuing, make sure the following things are ready:
 
 1.	Your Asterisk server should be up and running. If you don't have Asterisk
-	installed and working, you can read some of my blog posts which explain (in
-	detail) how to install and configure Asterisk:
-
-	*	`Installing Asterisk <http://projectb14ck.org/2010/02/28/transparent-telephony-part-2-installing-asterisk/>`_
-	*	`Making and Receiving Calls Using VoIP <http://projectb14ck.org/2010/03/03/transparent-telephony-part-3-making-your-first-call/>`_
+	installed and working, please visit the official `Asterisk website
+    <http://www.asterisk.org/>`_ to get started.
 
 2.	You should have some sort of PSTN (public switch telephone network)
 	connectivity configured and ready to go. Regardless of what sort of PSTN
