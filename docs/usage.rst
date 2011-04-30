@@ -1,7 +1,7 @@
-.. _quickstart:
+.. _usage:
 
-Quickstart
-==========
+Usage
+=====
 
 Eager to get started? This page gives a good introduction to pycall. This doc
 assumes you already have pycall installed. If not, head over to the
@@ -202,5 +202,5 @@ call file as the user asterisk: ::
 And bam! It magically works. Now we know that Asterisk is running as the user
 asterisk on our system, so pycall fixed all problems for us.
 
-**Scenario 2 - We Don't Have Permissions to 
+**Scenario 2 - We Don't Have Permissions to
 
