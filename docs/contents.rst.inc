@@ -12,6 +12,7 @@ pycall in a quick, simple manner.
 	quickstart
 	tutorial
 	testing
+	developing
 
 API Reference
 -------------
