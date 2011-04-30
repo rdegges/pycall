@@ -1,3 +1,5 @@
+.. _foreword:
+
 Foreword
 ========
 
@@ -50,9 +52,7 @@ leave it at that, but you want to *real* reasons right?
 *	**Well Documented**
 
 	pycall has great documentation (but you already know that by now, right?)
-	and active development. If you find issues or need help, just `create an
-    issue <https://github.com/rdegges/pycall/issues>`_ and you'll get a quick
-    response.
+	and active development.
 
 Target Audience
 ---------------
