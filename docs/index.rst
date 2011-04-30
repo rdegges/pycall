@@ -11,7 +11,13 @@ pages.
 If you want to contribute code to the project, please read the *entire*
 :ref:`developing` section before diving into the code.
 
-.. include:: contents.rst.inc
+.. toctree::
+
+    foreword
+    installation
+    quickstart
+    tutorial
+    developing
 
 Indices and Tables
 ------------------
