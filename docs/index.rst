@@ -16,7 +16,6 @@ If you want to contribute code to the project, please read the *entire*
     foreword
     installation
     quickstart
-    tutorial
     developing
 
 Indices and Tables
