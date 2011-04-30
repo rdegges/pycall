@@ -1,8 +1,6 @@
 include Makefile CHANGES UNLICENSE AUTHORS README
 recursive-include docs *
 recursive-include tests *
-recursive-include examples *
 recursive-exclude docs *.pyc
 recursive-exclude tests *.pyc
-recursive-exclude examples *.pyc
 prune docs/_build
