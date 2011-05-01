@@ -169,6 +169,15 @@ class TestCallFile(TestCase):
 				user='asjdfgkhkgaskqtjwhkjwetghqekjtbkwthbjkltwhwklt')
 		c.spool()
 
+	@raises(NoUserPermissionError)
+	def test_spool_no_time_no_user_permission_error(self):
+		"""Ensure that `spool` raises `NoUserPermissionError` if the user
+		specified does not have permissions to write to the Asterisk spooling
+		directory.
+		"""
+		c = CallFile(self.call, self.action, spool_dir='/', user='root')
+		c.spool()
+
 	@raises(InvalidTimeError)
 	def test_spool_time_no_user_time_error(self):
 		"""Ensure that `spool` raises `InvalidTimeError` if the user doesn't
