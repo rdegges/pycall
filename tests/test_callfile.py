@@ -8,7 +8,7 @@ from path import path
 from nose.tools import assert_false, eq_, ok_, raises
 
 from pycall import Application, Call, CallFile, InvalidTimeError, \
-		NoSpoolPermissionError, ValidationError
+		NoSpoolPermissionError, NoUserError, ValidationError
 
 
 class TestCallFile(TestCase):
@@ -157,6 +157,15 @@ class TestCallFile(TestCase):
 		"""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir,
 				user=getuser())
+		c.spool()
+
+	@raises(NoUserError)
+	def test_spool_no_time_no_user_error(self):
+		"""Ensure that `spool` raises `NoUserError` if the user attribute is
+		not a real system user.
+		"""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir,
+				user='asjdfgkhkgaskqtjwhkjwetghqekjtbkwthbjkltwhwklt')
 		c.spool()
 
 	@raises(InvalidTimeError)
