@@ -138,3 +138,14 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		c.spool()
 		ok_((path(c.spool_dir) / path(c.filename)).abspath().exists())
+
+	@raises(NoSpoolPermissionError)
+	def test_spool_no_time_no_user_permission_error(self):
+		"""Ensure that `spool` raises `NoSpoolPermissionError` if the user
+		doesn't have permissions to write to `spool_dir`.
+
+		NOTE: This test WILL fail if the user account you run this test under
+		has write access to the / directory on your local filesystem.
+		"""
+		c = CallFile(self.call, self.action, spool_dir='/')
+		c.spool()
