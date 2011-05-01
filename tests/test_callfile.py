@@ -1,5 +1,6 @@
 """Unit tests for `pycall.callfile`."""
 
+from getpass import getuser
 from datetime import datetime
 from unittest import TestCase
 
@@ -148,6 +149,14 @@ class TestCallFile(TestCase):
 		has write access to the / directory on your local filesystem.
 		"""
 		c = CallFile(self.call, self.action, spool_dir='/')
+		c.spool()
+
+	def test_spool_no_time_user(self):
+		"""Ensure that `spool` works when no `time` attribute is specified, and
+		a valid `user` attribute exists.
+		"""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir,
+				user=getuser())
 		c.spool()
 
 	@raises(InvalidTimeError)

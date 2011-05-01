@@ -125,6 +125,26 @@ class CallFile(object):
 		"""
 		self.writefile()
 
+		if self.user:
+			try:
+				pwd = getpwnam(self.user)
+				uid = pwd[2]
+				gid = pwd[3]
+
+				try:
+					chown(path(self.tempdir) / path(self.filename), uid, gid)
+				except error:
+					raise NoUserPermissionError
+			except KeyError:
+				raise NoUserError
+
+		if time:
+			try:
+				time = mktime(time.timetuple())
+				utime(path(self.tempdir) / path(self.filename), (time, time))
+			except (error, AttributeError, OverflowError, ValueError):
+				raise InvalidTimeError
+
 		try:
 			move(path(self.tempdir) / path(self.filename),
 					path(self.spool_dir) / path(self.filename))
