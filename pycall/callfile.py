@@ -125,7 +125,6 @@ class CallFile(object):
 		"""
 		self.writefile()
 
-		raise NoActionDefinedError
 
 	def run(self, time=None):
 		"""
