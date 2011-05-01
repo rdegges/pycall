@@ -1,0 +1,80 @@
+<!doctype html>
+
+<title>pycall | A flexible python library for creating and using Asterisk call files.</title>
+<meta charset=utf-8>
+<link rel=stylesheet type=text/css href="/static/style.css">
+
+<div class=box>
+
+	<!-- header -->
+	<div class=header>
+		<h1><span>pycall</span></h1>
+		<p>A flexible python library for creating and using Asterisk call files.
+	</div>
+	<!-- end header -->
+
+	<!-- navigation -->
+	<p class=nav>
+		<a href="/">overview</a> ~
+		<a href="http://docs.pycall.org/">documentation</a>
+	</p>
+	<!-- end navigation -->
+
+	<h1 class="title">Welcome</h1>
+
+	<blockquote>
+		pycall is a flexible python library for creating and using
+		<a href="http://www.asterisk.org/">Asterisk</a>
+		<a href="http://www.voip-info.org/wiki/view/Asterisk+auto-dial+out">call files</a>.
+		It's free, easy to use, well documented, and open source.
+	</blockquote>
+
+	<div class="section" id="pycal-is-simple">
+		<h2>pycall is Simple</h2>
+		<pre class="literal-block">
+		# Initiate an outbound call to 1-888-222-3333 and say 'hello world!' when
+    		# the caller answers.
+
+    		from pycall import CallFile, Call, Application
+
+    		call = Call('SIP/flowroute/18882223333')
+    		action = Application('Playback', 'hello-world')
+
+    		c = CallFile(call, action)
+    		c.spool()
+		</pre>
+	</div>
+
+	<div class="section" id="and-powerful">
+		<h2>And Powerful</h2>
+		<p>
+			pycall fully supports *all* Asterisk call file attributes. It provides
+			a flexible layer between your application and your Asterisk server,
+			allowing you to focus on your application's core logic.
+		</p>
+		<p>
+			pycall is used every day on numerous production servers for both hobby
+			and large business projects.
+		</p>
+	</div>
+
+	<div class="section" id="contribute">
+		<h2>Contribute</h2>
+		<p>
+			Found a bug? Have a good idea for improving pycall? Head over to
+			<a class="reference external" href="https://github.com/rdegges/pycall">our github page</a>
+			and create a new issue or fork the project.
+		</p>
+	</div>
+
+	<a href="https://github.com/rdegges/pycall">
+		<img style="position: fixed; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+	</a>
+
+</div>
+
+<div>
+	<p class=footer>
+		&copy; copyright 2011 by <a href=http://rdegges.org/>Randall Degges</a>
+	</p>
+</div>
