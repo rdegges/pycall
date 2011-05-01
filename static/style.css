@@ -6,7 +6,7 @@ a:hover      { color: #dd0000; border-bottom: 1px solid #dd0000; }
 .box         { width: 540px; margin: 40px auto; }
 h1, h2, h3   { font-family: 'Crimson Text', 'Georgia', serif; font-weight: normal; }
 .header      { height: 165px; }
-.header h1   { margin: 0 0 30px 0; background: url(/static/logo.png) no-repeat center;
+.header h1   { margin: 0 0 30px 0; background: url(http://rdegges.github.com/pycall/static/logo.png) no-repeat center;
                font-size: 50px; padding-top: 50px; height: 120px; }
 .header h1 span, .header p { display: none; }
 h1           { font-size: 34px; margin: 25px 0 5px 0; }
