@@ -8,22 +8,21 @@ class PycallError(Exception):
 	pass
 
 class ValidationError(PycallError):
-	def __str__(self): return 'CallFile could not be validated.'
-
-class UnknownError(PycallError):
-	def __str__(self): return 'Something must have gone horribly wrong.'
-
-class NoUserPermissionError(PycallError):
-	def __str__(self):
-		return 'You do not have the appropriate permissions to change ' \
-			'ownership of the call file.'
-
-class NoUserError(PycallError):
-	def __str__(self):
-		return 'No user found. You must specify an actual user in the ' \
-			'`user` attribute to change call file ownership to.'
+	"""CallFile could not be validated."""
 
 class NoSpoolPermissionError(PycallError):
-	def __str__(self):
-		return 'You do not have the appropriate permissions to spool the ' \
-			'call file.'
+	"""You do not have permission to spool this call file."""
+
+class InvalidTimeError(PycallError):
+	"""You must specify a valid datetime object for the spool method's time
+	parameter.
+	"""
+
+class UnknownError(PycallError):
+	"""Something must have gone horribly wrong."""
+
+class NoUserPermissionError(PycallError):
+	"""You do not have permission to change the ownership of this call file."""
+
+class NoUserError(PycallError):
+	"""User does not exist."""
