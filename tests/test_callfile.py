@@ -1,5 +1,6 @@
 """Unit tests for `pycall.callfile`."""
 
+from time import mktime
 from getpass import getuser
 from datetime import datetime
 from unittest import TestCase
@@ -185,3 +186,10 @@ class TestCallFile(TestCase):
 		"""
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		c.spool(666)
+
+	def test_spool_time_no_user(self):
+		"""Ensure that `spool` works when given a valid `time` parameter."""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		d = datetime.now()
+		c.spool(d)
+		eq_((path(c.tempdir) / path(c.filename)).abspath().atime, mktime(d.timetuple()))
