@@ -1,12 +1,13 @@
 """Unit tests for `pycall.callfile`."""
 
+from datetime import datetime
 from unittest import TestCase
 
 from path import path
 from nose.tools import assert_false, eq_, ok_, raises
 
-from pycall import Application, Call, CallFile, NoSpoolPermissionError, \
-		ValidationError
+from pycall import Application, Call, CallFile, InvalidTimeError, \
+		NoSpoolPermissionError, ValidationError
 
 
 class TestCallFile(TestCase):
