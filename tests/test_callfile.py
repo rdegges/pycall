@@ -142,7 +142,7 @@ class TestCallFile(TestCase):
 		ok_((path(c.spool_dir) / path(c.filename)).abspath().exists())
 
 	@raises(NoSpoolPermissionError)
-	def test_spool_no_time_no_user_permission_error(self):
+	def test_spool_no_time_no_spool_permission_error(self):
 		"""Ensure that `spool` raises `NoSpoolPermissionError` if the user
 		doesn't have permissions to write to `spool_dir`.
 
