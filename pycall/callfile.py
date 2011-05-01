@@ -123,6 +123,7 @@ class CallFile(object):
 		:param datetime time: The date and time to spool this call file (eg:
 			Asterisk will run this call file at the specified time).
 		"""
+		self.writefile()
 
 		raise NoActionDefinedError
 
