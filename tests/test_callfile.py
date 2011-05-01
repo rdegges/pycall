@@ -179,7 +179,7 @@ class TestCallFile(TestCase):
 		c.spool()
 
 	@raises(InvalidTimeError)
-	def test_spool_time_no_user_time_error(self):
+	def test_spool_time_no_user_invalid_time_error(self):
 		"""Ensure that `spool` raises `InvalidTimeError` if the user doesn't
 		specify a valid `time` parameter.
 		"""
