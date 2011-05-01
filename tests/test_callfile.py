@@ -8,7 +8,8 @@ from path import path
 from nose.tools import assert_false, eq_, ok_, raises
 
 from pycall import Application, Call, CallFile, InvalidTimeError, \
-		NoSpoolPermissionError, NoUserError, ValidationError
+		NoSpoolPermissionError, NoUserError, NoUserPermissionError, \
+		ValidationError
 
 
 class TestCallFile(TestCase):
