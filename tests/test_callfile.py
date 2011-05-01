@@ -130,3 +130,11 @@ class TestCallFile(TestCase):
 		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
 		c.writefile()
 		ok_((path(c.tempdir) / path(c.filename)).abspath().exists())
+
+	def test_spool_no_time_no_user(self):
+		"""Ensure `spool` works when no `time` attribute is supplied, and no
+		`user` attribute exists.
+		"""
+		c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
+		c.spool()
+		ok_((path(c.spool_dir) / path(c.filename)).abspath().exists())
