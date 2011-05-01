@@ -113,15 +113,15 @@ class CallFile(object):
 		with open(path(self.tempdir) / path(self.filename), 'w') as f:
 			f.write(self.contents)
 
-	def spool(self):
-		"""Spool the call file with Asterisk. This will move the call file to
-		the Asterisk spooling directory. If the `time` attribute is specified,
-		then the call file will be spooled at the specified time instead of
-		immediately.
+	def spool(self, time=None):
+		"""Spool the call file with Asterisk.
 
-		:param datetime time: The date and time to spool this call file. The
-			call file will be spooled instantly, but will only be launched by
-			Asterisk when the system time matches this date and time.
+		This will move the call file to the Asterisk spooling directory. If
+		the `time` attribute is specified, then the call file will be spooled
+		at the specified time instead of immediately.
+
+		:param datetime time: The date and time to spool this call file (eg:
+			Asterisk will run this call file at the specified time).
 		"""
 
 		raise NoActionDefinedError
