@@ -125,6 +125,11 @@ class CallFile(object):
 		"""
 		self.writefile()
 
+		try:
+			move(path(self.tempdir) / path(self.filename),
+					path(self.spool_dir) / path(self.filename))
+		except IOError:
+			raise NoSpoolPermissionError
 
 	def run(self, time=None):
 		"""
