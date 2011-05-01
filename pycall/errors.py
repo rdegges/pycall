@@ -1,13 +1,4 @@
-"""
-	pycall.errors
-	~~~~~~~~~~~~~
-
-	Implements custom error classes for signaling specific failure conditions
-	to developers.
-
-	:copyright: (c) 2010 by Randall Degges.
-	:license: BSD, see LICENSE for more details.
-"""
+"""Custom error classes for signaling issues."""
 
 
 from exceptions import Exception
