@@ -32,16 +32,16 @@
 	<div class="section" id="pycal-is-simple">
 		<h2>pycall is Simple</h2>
 		<pre class="literal-block">
-		# Initiate an outbound call to 1-888-222-3333 and say 'hello world!' when
-    		# the caller answers.
+# Initiate an outbound call to 1-888-222-3333 and say 'hello world!' when
+# the caller answers.
 
-    		from pycall import CallFile, Call, Application
+from pycall import CallFile, Call, Application
 
-    		call = Call('SIP/flowroute/18882223333')
-    		action = Application('Playback', 'hello-world')
+call = Call('SIP/flowroute/18882223333')
+action = Application('Playback', 'hello-world')
 
-    		c = CallFile(call, action)
-    		c.spool()
+c = CallFile(call, action)
+c.spool()
 		</pre>
 	</div>
 
