@@ -7,6 +7,7 @@ Integrating pycall into your project is quick and easy! After reading through
 the sections below, you should be able to integrate pycall into your project,
 and understand what it can and cannot be used for.
 
+
 Preparation
 -----------
 
@@ -20,6 +21,7 @@ The rest of this guide assumes you have the following:
 
 For simplicity's sake, I'm going to assume for the rest of this guide that you
 have a SIP trunk named `flowroute` defined.
+
 
 Hello, World!
 -------------
@@ -85,6 +87,7 @@ Code Breakdown
 4.	Finally, we create the actual :class:`~pycall.CallFile` object, and run
 	its :meth:`~pycall.CallFile.spool` method to have Asterisk make the call.
 
+
 Scheduling a Call in the Future
 -------------------------------
 
@@ -121,19 +124,14 @@ tell Asterisk to run the call file at exactly 1:00 AM on December 1, 2010. ::
 	from pycall.callfile import CallFile
 
 	def call(number, time=None):
-		cf = CallFile(
-			trunk_type = 'Local',
-			trunk_name = 'from-internal',
-			number = number,
-			application = 'Playback',
-			data = 'hello-world'
-		)
-		cf.run(time)
+		c = Call('SIP/flowroute/%s' % number)
+		a = Application('Playback', 'hello-world')
+		cf = CallFile(c, a)
+		cf.spool(time)
 
 	if __name__ == '__main__':
 		call(sys.argv[1], datetime(2010, 12, 1, 1, 0, 0))
 
-Scheduling calls is a piece of cake!
 
 How to Run Call Files Under Another User
 ----------------------------------------
