@@ -290,3 +290,46 @@ Using these attributes is simple: ::
 
 	c = Call('SIP/flowroute/18002223333', wait_time=10, retry_time=60,
 			max_retries=2)
+
+
+Archiving Call Files
+--------------------
+
+If, for some reason, you want to archive call files that have already been
+spooled with Asterisk, just set the :attr:`~pycall.CallFile.archive` attribute
+to `True`: ::
+
+	cf = CallFile(..., archive=True)
+
+and Asterisk will copy the call file (with a status code) to the archive
+directory (typically `/var/spool/asterisk/outgoing_done`).
+
+
+Dealing with Non-Standard Asterisk Installs
+-------------------------------------------
+
+If your Asterisk server isn't installed with the defaults, chances are you need
+to make some changes. pycall provides a ton of flexibility in this regard, so
+you should have no problems getting things running.
+
+Specifying a Specific Name for Call Files
+*****************************************
+
+If you need to name your call file something special, just specify a value for
+both the :attr:`~pycall.CallFile.filename` and :attr:`~pycall.CallFile.tempdir`
+attributes: ::
+
+	cf = CallFile(..., filename='test.call', tempdir='/tmp')
+
+.. note::
+
+	By default, pycall will randomly generate a call file name.
+
+Specifing a Custom Spooling Directory
+-------------------------------------
+
+If you're Asterisk install doesn't spool to the default
+`/var/spool/asterisk/outgoing` directory, you can override it with the
+:attr:`~pycall.CallFile.spool_dir` attribute: ::
+
+	cf = CallFile(..., spool_dir='/tmp/outgoing')
