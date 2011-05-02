@@ -4,6 +4,19 @@ pycall Changelog
 Here you can see the full list of changes between each pycall release.
 
 
+Version 2.0
+-----------
+
+Released on May 1, 2011.
+
+- Complete re-write of codebase.
+- Added full unit-test suite.
+- 100% test coverage.
+- Full set of Sphinx documentation.
+- Numerous code improvements.
+- New website!
+
+
 Version 1.6
 -----------
 

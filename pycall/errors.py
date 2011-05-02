@@ -1,13 +1,4 @@
-"""
-	pycall.errors
-	~~~~~~~~~~~~~
-
-	Implements custom error classes for signaling specific failure conditions
-	to developers.
-
-	:copyright: (c) 2010 by Randall Degges.
-	:license: BSD, see LICENSE for more details.
-"""
+"""Custom error classes for signaling issues."""
 
 
 from exceptions import Exception
@@ -16,31 +7,22 @@ from exceptions import Exception
 class PycallError(Exception):
 	pass
 
-class UnknownError(PycallError):
-	def __str__(self): return 'Something must have gone horribly wrong.'
-
-class NoChannelDefinedError(PycallError):
-	def __str__(self):
-		return 'You must define either the `channel` attribute or the ' \
-			'`trunk_type`, `trunk_name`, and `number` attributes.'
-
-class NoActionDefinedError(PycallError):
-	def __str__(self):
-		return 'You must define either the `application` and `data` ' \
-			'attributes or the `context`, `extension`, and `priority` ' \
-			'attributes.'
-
-class NoUserPermissionError(PycallError):
-	def __str__(self):
-		return 'You do not have the appropriate permissions to change ' \
-			'ownership of the call file.'
-
-class NoUserError(PycallError):
-	def __str__(self):
-		return 'No user found. You must specify an actual user in the ' \
-			'`user` attribute to change call file ownership to.'
+class InvalidTimeError(PycallError):
+	"""You must specify a valid datetime object for the spool method's time
+	parameter.
+	"""
 
 class NoSpoolPermissionError(PycallError):
-	def __str__(self):
-		return 'You do not have the appropriate permissions to spool the ' \
-			'call file.'
+	"""You do not have permission to spool this call file."""
+
+class NoUserError(PycallError):
+	"""User does not exist."""
+
+class NoUserPermissionError(PycallError):
+	"""You do not have permission to change the ownership of this call file."""
+
+class UnknownError(PycallError):
+	"""Something must have gone horribly wrong."""
+
+class ValidationError(PycallError):
+	"""CallFile could not be validated."""

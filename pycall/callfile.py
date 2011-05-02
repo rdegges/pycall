@@ -1,157 +1,129 @@
-#!/usr/bin/python
-"""
-	pycall.callfile
-	~~~~~~~~~~~~~~~
-
-	Implements a `CallFile` class for creating, editing, and spooling Asterisk
-	call files.
-
-	:copyright: (c) 2010 by Randall Degges.
-	:license: BSD, see LICENSE for more details.
-"""
+"""A simple wrapper for Asterisk call files."""
 
 
 from shutil import move
 from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
-from datetime import datetime
-from os import path, chown, utime, fdopen
+from os import chown, error, utime
+
+from path import path
+
+from .call import Call
+from .actions import Action
+from .errors import InvalidTimeError, NoSpoolPermissionError, NoUserError, \
+		NoUserPermissionError, ValidationError
 
 
-class CallFile:
-	"""
-	Stores and manipulates call file information. Also allows users to schedule
-	call files to be spooled.
-	"""
+class CallFile(object):
+	"""Stores and manipulates Asterisk call files."""
 
-	def __init__(
-		self, channel=None, trunk_type=None, trunk_name=None, number=None,
-		callerid=None, callerid_name=None, callerid_num=None, wait_time=None,
-		max_retries=None, retry_time=None, account=None, application=None,
-		data=None, context=None, extension=None, priority=None, set_var=None,
-		archive=None, user=None, tmpdir=None,
-		spool_dir='/var/spool/asterisk/outgoing/'
-	):
+	#: The default spooling directory (should be OK for most systems).
+	DEFAULT_SPOOL_DIR = '/var/spool/asterisk/outgoing'
 
-		args = dict(locals())
-		args.pop('self')
-		for name, value in args.items():
-			setattr(self, name, value)
+	def __init__(self, call, action, archive=None, filename=None, tempdir=None,
+			user=None, spool_dir=None):
+		"""Create a new `CallFile` obeject.
 
-	def _is_valid(self):
+		:param obj call: A `pycall.Call` instance.
+		:param obj action: Either a `pycall.actions.Application` instance
+			or a `pycall.actions.Context` instance.
+		:param bool archive: Should Asterisk archive the call file?
+		:param str filename: Filename of the call file.
+		:param str tempdir: Temporary directory to store the call file before
+			spooling.
+		:param str user: Username to spool the call file as.
+		:param str spool_dir: Directory to spool the call file to.
+		:rtype: `CallFile` object.
 		"""
-		Checks all current class attributes to ensure that there are no
-		lurking problems.
+		self.call = call
+		self.action = action
+		self.archive = archive
+		self.user = user
+		self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
-		:return:	True if no problems. False if problems. May raise
-					exceptions if necessary.
+		if filename and tempdir:
+			self.filename = path(filename)
+			self.tempdir = path(tempdir)
+		else:
+			f = path(mkstemp(suffix='.call')[1])
+			self.filename = f.name
+			self.tempdir = f.parent
+
+	def __str__(self):
+		"""Render this call file object for developers.
+
+		:returns: String representation of this object.
+		:rtype: String.
 		"""
-		if not (self.channel or (self.trunk_type and self.trunk_name and \
-			self.number)):
-			raise NoChannelDefinedError
+		return 'CallFile-> archive: %s, user: %s, spool_dir: %s' % (
+				self.archive, self.user, self.spool_dir)
 
-		if not ((self.application and self.data) or \
-			(self.context and self.extension and self.priority)):
-			raise NoActionDefinedError
+	def is_valid(self):
+		"""Check to see if all attributes are valid.
+
+		:returns: True if all attributes are valid, False otherwise.
+		:rtype: Boolean.
+		"""
+		if not isinstance(self.call, Call):
+			return False
+
+		if not isinstance(self.action, Action):
+			return False
+
+		if self.spool_dir and not path(self.spool_dir).abspath().isdir():
+			return False
+
+		if not self.call.is_valid():
+			return False
 
 		return True
 
-	def _buildfile(self):
-		"""
-		Use the class attributes to build a call file string.
+	def buildfile(self):
+		"""Build a call file in memory.
 
-		:return:	A list which contains one call file directive in each
-					element. These can be written to a file.
+		:raises: `ValidationError` if this call file can not be validated.
+		:returns: A list of call file directives as they will be written to the
+			disk.
+		:rtype: List of strings.
 		"""
-		if not self._is_valid():
-			raise UnknownError
+		if not self.is_valid():
+			raise ValidationError
 
 		cf = []
-
-		if self.channel:
-			cf.append('Channel: '+self.channel)
-		elif self.trunk_type and self.trunk_name and self.number:
-			if self.trunk_type.lower() == 'local':
-				cf.append('Channel: %s/%s@%s' % (self.trunk_type, self.number,
-					self.trunk_name))
-			else:
-				cf.append('Channel: %s/%s/%s' % (self.trunk_type,
-					self.trunk_name, self.number))
-		else:
-			raise UnknownError
-
-		if self.application:
-			cf.append('Application: '+self.application)
-			cf.append('Data: '+self.data)
-		elif self.context and self.extension and self.priority:
-			cf.append('Context: '+self.context)
-			cf.append('Extension: '+self.extension)
-			cf.append('Priority: '+self.priority)
-		else:
-			raise UnknownError
-
-		if self.set_var:
-			for var, value in self.set_var.items():
-				cf.append('Set: %s=%s' % (var, value))
-
-		if self.callerid:
-			cf.append('Callerid: %s' % self.callerid)
-		elif self.callerid_name and self.callerid_num:
-			cf.append('Callerid: "%s" <%s>' % (self.callerid_name,
-				self.callerid_num))
-		elif self.callerid_name:
-			cf.append('Callerid: "%s"' % self.callerid_name)
-		elif self.callerid_num:
-			cf.append('Callerid: "" <%s>' % self.callerid_num)
-
-		if self.wait_time:
-			cf.append('WaitTime: %s' % self.wait_time)
-
-		if self.max_retries:
-			cf.append('Maxretries: %s' % self.max_retries)
-
-		if self.retry_time:
-			cf.append('RetryTime: %s' % self.retry_time)
-
-		if self.account:
-			cf.append('Account: %s' % self.account)
+		cf += self.call.render()
+		cf += self.action.render()
 
 		if self.archive:
 			cf.append('Archive: yes')
 
 		return cf
 
-	def _writefile(self, cf):
+	@property
+	def contents(self):
+		"""Get the contents of this call file.
+
+		:returns: Call file contents.
+		:rtype: String.
 		"""
-		Write a temporary call file.
+		return '\n'.join(self.buildfile())
 
-		:param cf:	List of call file directives.
-		:return:	Absolute path name (as a string) to the temporary call
-					file.
+	def writefile(self):
+		"""Write a temporary call file to disk."""
+		with open(path(self.tempdir) / path(self.filename), 'w') as f:
+			f.write(self.contents)
+
+	def spool(self, time=None):
+		"""Spool the call file with Asterisk.
+
+		This will move the call file to the Asterisk spooling directory. If
+		the `time` attribute is specified, then the call file will be spooled
+		at the specified time instead of immediately.
+
+		:param datetime time: The date and time to spool this call file (eg:
+			Asterisk will run this call file at the specified time).
 		"""
-		if self.tmpdir:
-			file, fname = mkstemp(suffix='.call', dir=self.tmpdir)
-		else:
-			file, fname = mkstemp('.call')
-
-		with fdopen(file, 'w') as f:
-			for line in cf:
-				f.write(line+'\n')
-
-		return fname
-
-	def run(self, time=None):
-		"""
-		Uses the class attributes to submit this `CallFile` to the Asterisk
-		spooling directory.
-
-		:param time:	[optional] The time (as a python datetime object) to
-						submit this `CallFile` to the Asterisk spooling
-						directory.
-		:return:		True on success. False on failure.
-		"""
-		fname = self._writefile(self._buildfile())
+		self.writefile()
 
 		if self.user:
 			try:
@@ -160,29 +132,21 @@ class CallFile:
 				gid = pwd[3]
 
 				try:
-					chown(fname, uid, gid)
-				except:
+					chown(path(self.tempdir) / path(self.filename), uid, gid)
+				except error:
 					raise NoUserPermissionError
-			except:
+			except KeyError:
 				raise NoUserError
 
-		# Change the modification and access time on the file so that Asterisk
-		# knows when to place the call. If time is not specified, then we place
-		# the call immediately.
-		try:
-			time = mktime(time.timetuple())
-			utime(fname, (time, time))
-		except:
-			pass
+		if time:
+			try:
+				time = mktime(time.timetuple())
+				utime(path(self.tempdir) / path(self.filename), (time, time))
+			except (error, AttributeError, OverflowError, ValueError):
+				raise InvalidTimeError
 
 		try:
-			move(fname, self.spool_dir+path.basename(fname))
-		except:
+			move(path(self.tempdir) / path(self.filename),
+					path(self.spool_dir) / path(self.filename))
+		except IOError:
 			raise NoSpoolPermissionError
-
-		return True
-
-
-if __name__ == '__main__':
-	print 'You have successfully installed pycall. Check out our website ' \
-		'for more information: http://pycall.org/'

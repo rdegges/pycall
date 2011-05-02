@@ -1,15 +1,28 @@
-.PHONY: clean-tmp test
+## Helpful make targets for coding.
 
-all: clean-tmp test
 
+## Clean up the project directory, and run tests.
+all: clean test
+
+
+## Clean the project directory.
+clean:
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+
+
+## Run the test suite.
 test:
 	python setup.py nosetests
 
-clean-tmp:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*.swp' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
 
+## Distribute the latest release to PyPI.
 release:
-	python setyp.py register
+	python setup.py release sdist upload
+
+
+## Build the documentation with Sphinx.
+docs:
+	$(MAKE) -C docs html dirhtml latex
+	$(MAKE) -C docs/_build/latex all-pdf

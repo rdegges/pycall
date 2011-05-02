@@ -1,18 +1,17 @@
-Welcome to pycall's documentation!
-==================================
+pycall
+======
 
-Welcome to pycall's documentation. This documentation is divided into different
-parts. I would suggest to getting started with the :ref:`installation` docs,
-then heading over to the :ref:`quickstart` section. Besides the quickstart
-there is also a more detailed :ref:`tutorial` that shows you how to create a
-complete (albeit small) application with pycall. If you want to dive into all
-the internal parts of pycall, checkout the :ref:`api` documentation.
+Welcome to pycall's documentation. This documentation is divided into several
+different parts, and can be read through like a book. If you're relatively new
+to telephony, you may want to start at the :ref:`foreword`, and read through
+to the end; otherwise, you can jump right into the :ref:`usage` docs.
 
-.. include:: contents.rst.inc
+If you want to contribute code to the project, please read the *entire*
+:ref:`developing` section before diving into the code.
 
-Indices and Tables
-------------------
+.. toctree::
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    foreword
+    installation
+    usage
+    developing

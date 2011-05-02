@@ -1,17 +1,5 @@
-#!/usr/bin/python
-"""
-	pycall setup
-	~~~~~~~~~~~~
+"""Handles packaging, distribution, and testing."""
 
-	Handles the packaging, distribution, and testing of the pycall library.
-
-	:copyright: (c) 2010 by Randall Degges.
-	:license: BSD, see LICENSE for more details.
-"""
-
-
-import ez_setup
-ez_setup.use_setuptools()
 
 from setuptools import setup
 from setuptools import find_packages
@@ -25,20 +13,21 @@ setup(
 	packages = find_packages(),
 
 	# Packaging options.
+	zip_safe = False,
 	include_package_data = True,
 
 	# Package dependencies.
-	install_requires = 'docutils>=0.7',
-	tests_require = ['coverage>=3.3.1', 'nose>=0.11.4'],
+	install_requires = ['path.py>=2.2.2'],
+	tests_require = ['coverage>=3.4', 'nose>=0.11.4'],
 
 	# Metadata for PyPI.
 	author = 'Randall Degges',
 	author_email = 'rdegges@gmail.com',
-	license = 'BSD',
+	license = 'UNLICENSE',
 	url = 'http://pycall.org/',
-	download_url = 'fillmein',
 	keywords = 'asterisk callfile call file telephony voip',
-	description = 'A flexible python library for creating and using Asterisk call files.',
+	description = 'A flexible python library for creating and using Asterisk' \
+			' call files.',
 	long_description = open('README').read()
 
 )
