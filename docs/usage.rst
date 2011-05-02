@@ -326,7 +326,7 @@ attributes: ::
 	By default, pycall will randomly generate a call file name.
 
 Specifing a Custom Spooling Directory
--------------------------------------
+*************************************
 
 If you're Asterisk install doesn't spool to the default
 `/var/spool/asterisk/outgoing` directory, you can override it with the
