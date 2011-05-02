@@ -255,3 +255,19 @@ And somewhere in our `extensions.conf` file... ::
 
 As you can see, our dial plan code can now access the variable 'greeting' and
 its value.
+
+
+Track Your Calls with Asterisk Account Codes
+--------------------------------------------
+
+Asterisk call files allow you to specify that a certain call should be
+associated with a certain account. This is mainly useful for logging purposes.
+This example logs the call with the 'randall' account: ::
+
+	c = Call('SIP/flowroute/18002223333', account='randall')
+
+.. note::
+
+	For more information on call logs, read the `CDR documentation
+	<http://www.voip-info.org/wiki/view/Asterisk+cdr+csv>`_.
+
