@@ -195,7 +195,6 @@ world". In the example below, we'll harness the power of the
 `dial plan <http://www.voip-info.org/tiki-index.php?page=Asterisk%20config%20extensions.conf>`_
 code after the caller answers. ::
 
-	import sys
 	from pycall import CallFile, Call, Context
 
 	c = Call('SIP/flowroute/18002223333')
@@ -227,3 +226,32 @@ when making outbound calls. To do this, simply specify a value for the
 Now, when Asterisk makes your call, the person receiving the call (depending on
 their phone and service type) should see a call coming from "Test User" who's
 phone number is 555-555-5555!
+
+
+Passing Variables to Your Dial Plan
+-----------------------------------
+
+Often times, when building complex applications, you'll want to pass specific
+data from your application to Asterisk, so that you can read the information
+later.
+
+The example below will pass some information to our Asterisk dial plan code, so
+that it can use the information in our call. ::
+
+	from pycall import CallFile, Call, Context
+
+	vars = {'greeting': 'tt-monkeys'}
+
+	c = Call('SIP/flowroute/18882223333', variables=vars)
+	x = Context('survey', 's', '1')
+	cf = CallFile(c, x)
+	cf.spool()
+
+And somewhere in our `extensions.conf` file... ::
+
+	[survey]
+	exten => s,1,Playback(${greeting})
+	exten => s,n,Hangup()
+
+As you can see, our dial plan code can now access the variable 'greeting' and
+its value.
