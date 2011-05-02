@@ -88,39 +88,30 @@ Code Breakdown
 Scheduling a Call in the Future
 -------------------------------
 
-In addition to providing an extremely easy way to initiate call files (as we
-saw in the previous section, pycall also supports timed call file initiation.
+Let's say you want to have Asterisk make a call at a certain time in the
+future--no problem. The :meth:`~pycall.CallFile.spool` method allows you to
+specify an optional datetime object to tell Asterisk when you want the magic to
+happen.
 
-Put simply: pycall allows you to specify a time to run the call file. Let's
-take a look at a short example. In this example, we'll have pycall schedule our
-call file to launch precisely one hour from now: ::
+In this example, we'll tell Asterisk to run the call in exactly 1 hour: ::
 
 	import sys
 	from datetime import datetime
 	from datetime import timedelta
-	from pycall.callfile import CallFile
+	from pycall import CallFile, Call, Application
 
 	def call(number, time=None):
-		cf = CallFile(
-			trunk_type = 'Local',
-			trunk_name = 'from-internal',
-			number = number,
-			application = 'Playback',
-			data = 'hello-world'
-		)
-		cf.run(time)
+		c = Call('SIP/flowroute/%s' % number)
+		a = Application('Playback', 'hello-world')
+		cf = CallFile(c, a)
+		cf.spool(time)
 
 	if __name__ == '__main__':
 		call(sys.argv[1], datetime.now()+timedelta(hours=1))
 
-What did we change? Not much. The :meth:`~callfile.CallFile.run` method
-supports an optional datetime argument which can be used to specify at which
-time Asterisk should actually run the call file.
+.. note::
 
-What pycall actually does if the *time* argument is supplied is set the call
-file's modification time and access time so that the Asterisk spooling daemon
-will leave the call file in the Asterisk spooling directory until the system
-time reaches the modification time.
+	If you specify a value of `None`, the call file will be ran immediately.
 
 Just for the heck of it, let's look at one more code snippet. This time we'll
 tell Asterisk to run the call file at exactly 1:00 AM on December 1, 2010. ::
