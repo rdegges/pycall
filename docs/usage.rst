@@ -133,76 +133,54 @@ tell Asterisk to run the call file at exactly 1:00 AM on December 1, 2010. ::
 		call(sys.argv[1], datetime(2010, 12, 1, 1, 0, 0))
 
 
-How to Run Call Files Under Another User
-----------------------------------------
-
-One problem we often face as programmers is getting proper permissions on our
-running code. With Asterisk, and call files, this can be especially tricky as
-the Asterisk spooling daemon will only read call files that is has permission
-to read.
+Setting Call File Permissions
+-----------------------------
 
 In most environments, Asterisk is installed and ran as the user / group
-'asterisk', which poses a problem, as your code will surely not be running as
-the 'asterisk' user. If by chance your Asterisk install doesn't run as the
-'asterisk' user, then feel free to make mental substitutions as necessary.
+'asterisk', which often poses a problem if your application doesn't run under
+the 'asterisk' user account.
 
 pycall recognizes that this is a frustrating problem to deal with, and provides
 three mechanisms for helping make permissions as painless as possible: the
-:attr:`~callfile.CallFile.user` attribute, the
-:class:`~callfileexceptions.NoUserException` exception, and the
-:class:`~callfileexceptions.NoPermissionException` exception.
+:attr:`~pycall.CallFile.user` attribute, the
+:class:`~pycall.errors.NoUserError`, and the
+:class:`~pycall.errors.NoUserPermissionError`.
 
-The :attr:`~callfile.CallFile.user` attribute is used to speciy the user
-account that your call file should be ran as. The
-:class:`~callfileexceptions.NoUserException` exception will be raised in your
-code if the user attribute you specify doesn't exist on the system, and the
-:class:`~callfileexceptions.NoPermissionException` exception will be raised if
-you specify a user account in your user attribute that your running user
-account doesn't have permission to change file ownership for.
+*	The :attr:`~pycall.CallFile.user` attribute lets you specify a system
+	username that your call file should be ran as. For example, if your
+	application is running as 'root', you could say::
 
-To help understand why pycall provides these mechanisms, let's use our
-imagination. All scenarios below are based on the following code: ::
+		cf = CallFile(c, a, user='asterisk')
 
-	from sys import argv
-	from pycall.callfile import CallFile
-	from pycall.callfileexceptions import NoUserException
-	from pycall.callfileexceptions import NoPermissionException
+	and pycall would chown the call file to the 'asterisk' user before
+	spooling.
+
+*	If you specify the :attr:`~pycall.CallFile.user` attribute, but the user
+	doesn't exist, pycall will raise the :class:`~pycall.errors.NoUserError` so
+	you know what's wrong.
+
+*	Lastly, if your application doesn't have the proper permissions to change
+	the ownership of your call file, pycall will raise the
+	:class:`~pycall.errors.NoUserPermissionError`.
+
+As an example, here we'll change the call file permissions so that Asterisk can
+actually read our call file: ::
+
+	import sys
+	from pycall import CallFile, Call, Application
 
 	def call(number):
-		cf = CallFile(
-			trunk_type = 'Local',
-			trunk_name = 'from-internal',
-			number = number,
-			application = 'Playback',
-			data = 'hello-world'
-		)
-		cf.run()
+		c = Call('SIP/flowroute/%s' % number)
+		a = Application('Playback', 'hello-world')
+		cf = CallFile(c, a, user='asterisk')
+		cf.spool(time)
 
 	if __name__ == '__main__':
-		call(argv[1])
+		call(sys.argv[1])
 
-**Scenario 1 - Not Sure Which User Asterisk Runs As**
+.. note::
 
-In this scenario, we're developing an application using pycall, but we aren't
-really sure which user Asterisk is configured to run as. In this situation, we
-first try running the code above exactly as-is, but we notice that the Asterisk
-spooling daemon never runs our call file.
-
-Next, we try setting the :attr:`~callfile.CallFile.user` attribute to run the
-call file as the user asterisk: ::
-
-	cf = CallFile(
-		trunk_type = 'Local',
-		trunk_name = 'from-internal',
-		number = number,
-		application = 'Playback',
-		data = 'hello-world',
-		user = 'asterisk'
-	)
-	cf.run()
-
-And bam! It magically works. Now we know that Asterisk is running as the user
-asterisk on our system, so pycall fixed all problems for us.
-
-**Scenario 2 - We Don't Have Permissions to
-
+	If you run this code on a system that doesn't have Asterisk installed, you
+	will most likely get a :class:`~pycall.errors.NoUserError` since pycall
+	won't be able to find the 'asterisk' user that it's trying to grant
+	permissions to.
