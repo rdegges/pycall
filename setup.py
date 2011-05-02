@@ -20,7 +20,7 @@ setup(
 	include_package_data = True,
 
 	# Package dependencies.
-	install_requires = ['docutils>=0.7', 'path.py>=2.2.2'],
+	install_requires = ['path.py>=2.2.2'],
 	tests_require = ['coverage>=3.4', 'nose>=0.11.4'],
 
 	# Metadata for PyPI.
