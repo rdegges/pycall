@@ -184,3 +184,46 @@ actually read our call file: ::
 	will most likely get a :class:`~pycall.errors.NoUserError` since pycall
 	won't be able to find the 'asterisk' user that it's trying to grant
 	permissions to.
+
+
+Adding Complex Call Logic
+-------------------------
+
+Most applications you write will probably be a bit more complex than "hello
+world". In the example below, we'll harness the power of the
+:class:`~pycall.Context` class to instruct Asterisk to run some custom
+`dial plan <http://www.voip-info.org/tiki-index.php?page=Asterisk%20config%20extensions.conf>`_
+code after the caller answers. ::
+
+	import sys
+	from pycall import CallFile, Call, Context
+
+	c = Call('SIP/flowroute/18002223333')
+	con = Context('survey', 's', '1')
+	cf = CallFile(c, con)
+	cf.spool()
+
+For example purposes, let's assume that somewhere in your Asterisk
+`extensions.conf` file there exists some dial plan in a context labeled
+`survey`.
+
+After the caller answers our call, Asterisk will immediately jump to the dial
+plan code we've specified at `survey,s,1` and start executing as much logic as
+desired.
+
+This allows us to build complex applications like phone surveys, web hooks, and
+lots of other goodies.
+
+
+Setting a CallerID
+------------------
+
+A lot of the time, you'll want to force Asterisk to assume a specific caller ID
+when making outbound calls. To do this, simply specify a value for the
+:attr:`~pycall.Call.callerid` attribute: ::
+
+	c = Call('SIP/flowroute/18002223333', callerid="'Test User' <5555555555>'")
+
+Now, when Asterisk makes your call, the person receiving the call (depending on
+their phone and service type) should see a call coming from "Test User" who's
+phone number is 555-555-5555!
