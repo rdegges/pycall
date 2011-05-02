@@ -210,8 +210,6 @@ After the caller answers our call, Asterisk will immediately jump to the dial
 plan code we've specified at `survey,s,1` and start executing as much logic as
 desired.
 
-This allows us to build complex applications.
-
 
 Setting a CallerID
 ------------------
