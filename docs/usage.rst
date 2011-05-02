@@ -10,14 +10,13 @@ and understand what it can and cannot be used for.
 Preparation
 -----------
 
-The rest of this guide assumes you have the following things ready and working:
+The rest of this guide assumes you have the following:
 
-1.	Your Asterisk server should be up and running.
+1.	A working Asterisk server.
 
-2.	You should have some sort of PSTN (public switch telephone network)
-	connectivity configured and ready to go. Regardless of what sort of PSTN
-	connection you have (SIP / DAHDI / ZAPTEL / ISDN / etc.), as long as you
-	can	make calls, you're fine.
+2.	Some sort of PSTN (public switch telephone network) connectivity.
+    Regardless of what sort of PSTN connection you have (SIP / DAHDI / ZAPTEL /
+    ISDN / etc.), as long as you can make calls, you're fine.
 
 For simplicity's sake, I'm going to assume for the rest of this guide that you
 have a SIP trunk named `flowroute` defined.
