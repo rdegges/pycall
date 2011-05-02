@@ -15,58 +15,75 @@ The rest of this guide assumes you have the following:
 1.	A working Asterisk server.
 
 2.	Some sort of PSTN (public switch telephone network) connectivity.
-    Regardless of what sort of PSTN connection you have (SIP / DAHDI / ZAPTEL /
-    ISDN / etc.), as long as you can make calls, you're fine.
+	Regardless of what sort of PSTN connection you have (SIP / DAHDI / ZAPTEL /
+	ISDN / etc.), as long as you can make calls, you're fine.
 
 For simplicity's sake, I'm going to assume for the rest of this guide that you
 have a SIP trunk named `flowroute` defined.
 
-A Minimal Application
----------------------
+Hello, World!
+-------------
 
-A minimal pycall application looks something like this::
+pycall allows you to build applications that automate outbound calling. In the
+example below, we'll call a phone number specified on the command line, say
+"hello world", then hang up! ::
 
 	import sys
-	from pycall.callfile import CallFile
+	from pycall import CallFile, Call, Application
 
 	def call(number):
-		cf = CallFile(
-			trunk_type = 'Local',
-			trunk_name = 'from-internal',
-			number = number,
-			application = 'Playback',
-			data = 'hello-world'
-		)
-		cf.run()
+		c = Call('SIP/flowroute/%s' % number)
+		a = Application('Playback', 'hello-world')
+		cf = CallFile(c, a)
+		cf.spool()
 
 	if __name__ == '__main__':
 		call(sys.argv[1])
 
-Just save it as `hello.py` or something similar, and run it with your Python
-interpreter. ::
+Just save the code above in a file named `call.py` and run it with python! ::
 
-	$ python hello.py 18002223333
+	$ python call.py 18002223333
 
-Now if all is working, your phone should be getting a call, and once you pick
-up the call, you should hear Asterisk say 'hello world' then hang up the call.
+Assuming your Asterisk server is setup correctly, your program just placed a
+call to the phone number `18002223333`, and said "hello world" to the person
+who answered the phone!
 
-So what did the code do?
+Code Breakdown
+**************
 
-1.	First we imported the :class:`~callfile.CallFile` class. An instance of
-	this class holds all relative Asterisk information needed to generate a
-	valid call file object.
+1.	First we imported the pycall classes. The :class:`~callfile.CallFile` class
+	allows us to make call files. The :class:`~pycall.Call` class stores
+	information about a specific call, and the :class:`~pycall.Application`
+	class lets us specify an Asterisk application as our
+	:class:`~pycall.Action`.  Every call file requires some sort of action
+	(what do you want to do when the caller answers?).
 
-2.	Next, we create an instance of it. We pass it the trunk type that our
-	Asterisk system uses (`Local` is a safe default), and the trunk name
-	(`from-internal` is a safe default). We then specify the number to call.
-	Lastly, we choose an Asterisk application to execute once the call has been
-	answered, and provide data to the application.
+2.	Next, we build a :class:`~pycall.Call` object, and specify the phone number
+	to call in `standard Asterisk format
+	<http://www.voip-info.org/wiki/view/Asterisk+cmd+Dial>`_. This tells
+	Asterisk who to call.
 
-3.	We submit the call file to the Asterisk spooler by calling the
-	:meth:`~callfile.CallFile.run` method to tell pycall to generate the call
-	file and make the call instantly.
+.. note::
 
-Pretty simple right?
+   In this example we made a call out of a SIP trunk named `flowroute`, but you
+   can specify any sort of dial string in its place. You can even tell Asterisk
+   to call multiple phone numbers at once by separating your dial strings with
+   the & character (eg: `Local/1000@internal&SIP/flowroute/18002223333`).
+
+3.	Then we build an :class:`~pycall.Application` object that tells Asterisk
+	what to do when the caller answers our call. In this case, we tell Asterisk
+	to run the `Playback
+	<http://www.voip-info.org/wiki/view/Asterisk+cmd+Playback>`_ command, and
+	pass the argument 'hello-world' to it.
+
+.. note::
+
+	The name 'hello-world' here refers to one of the default Asterisk sound
+	files that comes with all Asterisk installations. This file can be found in
+	the directory `/var/lib/asterisk/sounds/en/` on most systems.
+
+4.	Finally, we create the actual :class:`~pycall.CallFile` object, and run
+	its :meth:`~pycall.CallFile.spool` method to have Asterisk make the call.
 
 Scheduling a Call in the Future
 -------------------------------
