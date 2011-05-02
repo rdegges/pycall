@@ -51,7 +51,7 @@ who answered the phone!
 Code Breakdown
 **************
 
-1.	First we imported the pycall classes. The :class:`~callfile.CallFile` class
+1.	First we imported the pycall classes. The :class:`~pycall.CallFile` class
 	allows us to make call files. The :class:`~pycall.Call` class stores
 	information about a specific call, and the :class:`~pycall.Application`
 	class lets us specify an Asterisk application as our
