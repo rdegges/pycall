@@ -268,3 +268,25 @@ This example logs the call with the 'randall' account: ::
 	For more information on call logs, read the `CDR documentation
 	<http://www.voip-info.org/wiki/view/Asterisk+cdr+csv>`_.
 
+
+Specify Call Timing Values
+--------------------------
+
+pycall provides several ways to control the timing of your calls.
+
+1.	:attr:`~pycall.Call.wait_time` lets you specify the amount of time to wait
+	(in seconds) for the caller to answer before we consider our call attempt
+	unsuccessful.
+
+2.	:attr:`~pycall.Call.retry_time` lets you specify the amount of time to wait
+	(in seconds) between retries. Let's say you try to call the number
+	1-800-222-3333 but they don't answer, Asterisk will wait for
+	:attr:`~pycall.Call.retry_time` seconds before calling the person again.
+
+3.	:attr:`~pycall.Call.max_retries` lets you specify the maximum amount of
+	retry attempts (you don't want to call someone forever, do you?).
+
+Using these attributes is simple: ::
+
+	c = Call('SIP/flowroute/18002223333', wait_time=10, retry_time=60,
+			max_retries=2)
