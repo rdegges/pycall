@@ -1,9 +1,5 @@
-                       _ _
- _ __  _   _  ___ __ _| | |
-| '_ \| | | |/ __/ _` | | |
-| |_) | |_| | (_| (_| | | |
-| .__/ \__, |\___\__,_|_|_|
-|_|    |___/
+pycall
+======
 
 A flexible python library for creating and using Asterisk call files.
 
@@ -15,7 +11,13 @@ http://pycall.org/
 Details
 -------
 
-author:		Randall Degges
-email:		rdegges@gmail.com
-license:	UNLICENSE (see UNLICENSE for more information)
-website:	http://pycall.org/
+author:     Randall Degges
+email:      rdegges@gmail.com
+license:    UNLICENSE (see UNLICENSE for more information)
+website:    http://pycall.org/
+
+
+Build Status
+------------
+
+[![Build Status](https://secure.travis-ci.org/rdegges/pycall.png?branch=master)](http://travis-ci.org/rdegges/pycall)
