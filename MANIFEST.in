@@ -1,4 +1,4 @@
-include Makefile CHANGES UNLICENSE AUTHORS README
+include Makefile CHANGES UNLICENSE AUTHORS README.md
 recursive-include docs *
 recursive-include tests *
 recursive-exclude docs *.pyc
