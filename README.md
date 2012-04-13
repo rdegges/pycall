@@ -11,10 +11,10 @@ http://pycall.org/
 Details
 -------
 
-author:     Randall Degges
-email:      rdegges@gmail.com
-license:    UNLICENSE (see UNLICENSE for more information)
-website:    http://pycall.org/
+* author:     Randall Degges
+* email:      rdegges@gmail.com
+* license:    UNLICENSE (see UNLICENSE for more information)
+* website:    http://pycall.org/
 
 
 Build Status
