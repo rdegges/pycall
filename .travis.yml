@@ -1,0 +1,9 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+install:
+  - python setup.py develop
+  - pip install coverage>=3.4
+  - pip install nose>=0.11.4
+script: nosetests
