@@ -1,6 +1,7 @@
 """A simple wrapper for Asterisk call files."""
 
 
+from __future__ import with_statement
 from shutil import move
 from time import mktime
 from pwd import getpwnam
