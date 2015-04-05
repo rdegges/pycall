@@ -4,6 +4,15 @@ pycall Changelog
 Here you can see the full list of changes between each pycall release.
 
 
+Version 2.1
+-----------
+
+Released on April 4, 2015.
+
+- Fixing issue where Contexts weren't considered valid actions for some reason.
+- PEP-8'ing source code.
+
+
 Version 2.0
 -----------
 
