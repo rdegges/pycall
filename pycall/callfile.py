@@ -10,7 +10,7 @@ from os import chown, error, utime
 from path import path
 
 from .call import Call
-from .actions import Action
+from .actions import Action, Context
 from .errors import InvalidTimeError, NoSpoolPermissionError, NoUserError, \
     NoUserPermissionError, ValidationError
 
@@ -68,7 +68,8 @@ class CallFile(object):
         if not isinstance(self.call, Call):
             return False
 
-        if not isinstance(self.action, Action):
+        if not (isinstance(self.action, Action) or
+                isinstance(self.context, Context)):
             return False
 
         if self.spool_dir and not path(self.spool_dir).abspath().isdir():
