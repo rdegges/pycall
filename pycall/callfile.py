@@ -69,7 +69,7 @@ class CallFile(object):
             return False
 
         if not (isinstance(self.action, Action) or
-                isinstance(self.context, Context)):
+                isinstance(self.action, Context)):
             return False
 
         if self.spool_dir and not path(self.spool_dir).abspath().isdir():
