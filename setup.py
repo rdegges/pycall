@@ -9,7 +9,7 @@ setup(
 
     # Basic package information.
     name = 'pycall',
-    version = '2.1',
+    version = '2.2',
     packages = find_packages(),
 
     # Packaging options.
