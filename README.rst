@@ -1,8 +1,6 @@
 pycall
 ======
 
-A flexible python library for creating and using Asterisk call files.
-
 .. image:: https://img.shields.io/pypi/v/pycall.svg
     :alt: pycall Release
     :target: https://pypi.python.org/pypi/pycall
@@ -23,6 +21,7 @@ A flexible python library for creating and using Asterisk call files.
     :alt: pycall Coverage
     :target: https://coveralls.io/github/rdegges/pycall?branch=master
 
+A flexible python library for creating and using Asterisk call files.
 
 Please visit our official website to get an overview, and see the docs:
 http://pycall.org/
