@@ -38,7 +38,7 @@ setup(
 
     # Basic package information.
     name = 'pycall',
-    version = '2.2',
+    version = '2.3.0',
     packages = find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests']),
 
     # Packaging options.
