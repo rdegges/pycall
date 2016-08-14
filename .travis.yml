@@ -5,8 +5,5 @@ python:
   - "2.7"
   - "3.4"
   - "3.5"
-install:
-  - python setup.py develop
-  - pip install coverage>=3.4
-  - pip install nose>=0.11.4
-script: nosetests
+install: pip install -e .[test]
+script: python setup.py test
