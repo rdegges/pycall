@@ -1,8 +1,37 @@
 """Handles packaging, distribution, and testing."""
 
 
-from setuptools import setup
-from setuptools import find_packages
+from sys import exit
+from subprocess import call
+
+from setuptools import Command, find_packages, setup
+
+
+class BaseCommand(Command):
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+
+class TestCommand(BaseCommand):
+    description = 'run tests'
+
+    def run(self):
+        exit(call(['py.test', '--quiet', '--cov-report=term-missing', '--cov', 'pycall']))
+
+
+class ReleaseCommand(BaseCommand):
+
+    description = 'cut a new PyPI release'
+
+    def run(self):
+        call(['rm', '-rf', 'build', 'dist'])
+        ret = call(['python', 'setup.py', 'sdist', 'bdist_wheel', '--universal', 'upload'])
+        exit(ret)
 
 
 setup(
@@ -10,7 +39,7 @@ setup(
     # Basic package information.
     name = 'pycall',
     version = '2.2',
-    packages = find_packages(),
+    packages = find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests']),
 
     # Packaging options.
     zip_safe = False,
@@ -18,7 +47,13 @@ setup(
 
     # Package dependencies.
     install_requires = ['path.py>=2.2.2'],
-    tests_require = ['coverage>=3.4', 'nose>=0.11.4'],
+    extras_require = {
+        'test': ['codacy-coverage', 'python-coveralls', 'pytest', 'pytest-cov', 'sphinx'],
+    },
+    cmdclass = {
+        'test': TestCommand,
+        'release': ReleaseCommand,
+    },
 
     # Metadata for PyPI.
     author = 'Randall Degges',
