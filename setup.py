@@ -26,8 +26,7 @@ setup(
     license = 'UNLICENSE',
     url = 'http://pycall.org/',
     keywords = 'asterisk callfile call file telephony voip',
-    description = 'A flexible python library for creating and using Asterisk' \
-        ' call files.',
-    long_description = open('README.md').read()
+    description = 'A flexible python library for creating and using Asterisk call files.',
+    long_description = open('README.rst').read()
 
 )
