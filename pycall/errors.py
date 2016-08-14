@@ -4,7 +4,7 @@
 from sys import version_info
 
 
-if sys.version_info < (3, 0, 0):
+if version_info < (3, 0, 0):
     from exceptions import Exception
 
 
