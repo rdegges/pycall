@@ -21,6 +21,10 @@ pycall
     :alt: pycall Coverage
     :target: https://coveralls.io/github/rdegges/pycall?branch=master
 
+.. image:: https://img.shields.io/gratipay/user/rdegges.svg?maxAge=2592000
+    :alt: Randall Degges on Gratipay
+    :target: https://gratipay.com/~rdegges/
+
 A flexible python library for creating and using Asterisk call files.
 
 Please visit our official website to get an overview, and see the docs:
