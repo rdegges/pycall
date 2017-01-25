@@ -5,7 +5,7 @@ from getpass import getuser
 from datetime import datetime
 from unittest import TestCase
 
-from path import path
+from path import Path
 
 from pycall import Application, Call, CallFile, InvalidTimeError, \
     NoSpoolPermissionError, NoUserError, NoUserPermissionError, \
@@ -133,7 +133,7 @@ class TestCallFile(TestCase):
         """
         c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
         c.writefile()
-        self.assertTrue((path(c.tempdir) / path(c.filename)).abspath().exists())
+        self.assertTrue((Path(c.tempdir) / Path(c.filename)).abspath().exists())
 
     def test_spool_no_time_no_user(self):
         """Ensure `spool` works when no `time` attribute is supplied, and no
@@ -141,7 +141,7 @@ class TestCallFile(TestCase):
         """
         c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
         c.spool()
-        self.assertTrue((path(c.spool_dir) / path(c.filename)).abspath().exists())
+        self.assertTrue((Path(c.spool_dir) / Path(c.filename)).abspath().exists())
 
     def test_spool_no_time_no_spool_permission_error(self):
         """Ensure that `spool` raises `NoSpoolPermissionError` if the user
@@ -197,4 +197,4 @@ class TestCallFile(TestCase):
         c = CallFile(self.call, self.action, spool_dir=self.spool_dir)
         d = datetime.now()
         c.spool(d)
-        self.assertEqual((path(c.tempdir) / path(c.filename)).abspath().atime, mktime(d.timetuple()))
+        self.assertEqual((Path(c.tempdir) / Path(c.filename)).abspath().atime, mktime(d.timetuple()))
