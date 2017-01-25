@@ -8,7 +8,7 @@ from pwd import getpwnam
 from tempfile import mkstemp
 from os import chown, error, utime
 
-from path import path
+from path import Path
 
 from .call import Call
 from .actions import Action, Context
@@ -44,10 +44,10 @@ class CallFile(object):
         self.spool_dir = spool_dir or self.DEFAULT_SPOOL_DIR
 
         if filename and tempdir:
-            self.filename = path(filename)
-            self.tempdir = path(tempdir)
+            self.filename = Path(filename)
+            self.tempdir = Path(tempdir)
         else:
-            f = path(mkstemp(suffix='.call')[1])
+            f = Path(mkstemp(suffix='.call')[1])
             self.filename = f.name
             self.tempdir = f.parent
 
@@ -73,7 +73,7 @@ class CallFile(object):
                 isinstance(self.action, Context)):
             return False
 
-        if self.spool_dir and not path(self.spool_dir).abspath().isdir():
+        if self.spool_dir and not Path(self.spool_dir).abspath().isdir():
             return False
 
         if not self.call.is_valid():
@@ -112,7 +112,7 @@ class CallFile(object):
 
     def writefile(self):
         """Write a temporary call file to disk."""
-        with open(path(self.tempdir) / path(self.filename), 'w') as f:
+        with open(Path(self.tempdir) / Path(self.filename), 'w') as f:
             f.write(self.contents)
 
     def spool(self, time=None):
@@ -134,7 +134,7 @@ class CallFile(object):
                 gid = pwd[3]
 
                 try:
-                    chown(path(self.tempdir) / path(self.filename), uid, gid)
+                    chown(Path(self.tempdir) / Path(self.filename), uid, gid)
                 except error:
                     raise NoUserPermissionError
             except KeyError:
@@ -143,12 +143,12 @@ class CallFile(object):
         if time:
             try:
                 time = mktime(time.timetuple())
-                utime(path(self.tempdir) / path(self.filename), (time, time))
+                utime(Path(self.tempdir) / Path(self.filename), (time, time))
             except (error, AttributeError, OverflowError, ValueError):
                 raise InvalidTimeError
 
         try:
-            move(path(self.tempdir) / path(self.filename),
-                    path(self.spool_dir) / path(self.filename))
+            move(Path(self.tempdir) / Path(self.filename),
+                    Path(self.spool_dir) / Path(self.filename))
         except IOError:
             raise NoSpoolPermissionError
