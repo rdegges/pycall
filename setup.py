@@ -46,7 +46,7 @@ setup(
     include_package_data = True,
 
     # Package dependencies.
-    install_requires = ['path.py>=2.2.2'],
+    install_requires = ['path.py>=6.2.0'],
     extras_require = {
         'test': ['codacy-coverage', 'python-coveralls', 'pytest', 'pytest-cov', 'sphinx'],
     },
