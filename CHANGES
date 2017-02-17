@@ -4,6 +4,16 @@ pycall Changelog
 Here you can see the full list of changes between each pycall release.
 
 
+Version 2.3.1
+-------------
+
+Released February 17, 2017.
+
+- Upgrading path.py dependency support.
+- Cleaning up some deprecated code.
+- Fixing tests.
+
+
 Version 2.2
 -----------
 
