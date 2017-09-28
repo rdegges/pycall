@@ -7,6 +7,7 @@ from time import mktime
 from pwd import getpwnam
 from tempfile import mkstemp
 from os import chown, error, utime
+import os
 
 from path import Path
 
@@ -47,9 +48,11 @@ class CallFile(object):
             self.filename = Path(filename)
             self.tempdir = Path(tempdir)
         else:
-            f = Path(mkstemp(suffix='.call')[1])
+            tup = mkstemp(suffix='.call')
+            f = Path(tup[1])
             self.filename = f.name
             self.tempdir = f.parent
+            os.close(tup[0])
 
     def __str__(self):
         """Render this call file object for developers.
